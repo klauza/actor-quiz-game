@@ -1,5 +1,8 @@
+/*
 
+*/
 import UICtrl from './UICtrl.js';
+import JSONCtrl from './JSONCtrl.js';
 
 const App = (function(UICtrl){
 
@@ -7,26 +10,31 @@ const App = (function(UICtrl){
 
   const loadEventListeners = function(){
    
-    const selectors = UICtrl.getSelectors();
-    console.log(selectors);
+    const selectors = UICtrl.getSelectors();  
 
     document.querySelector(selectors.formSubmit).addEventListener('click', submitTest);
   }
 
   const submitTest = function(e){
-    e.preventDefault();
-
+   
     console.log('form submitted!');
-    const startingInputValue = document.querySelector('#start-input');
-    console.log(startingInputValue.value);
+    const nameInputValue = document.querySelector('#start-input').value;
+    console.log('Value was: ', nameInputValue);
 
+    JSONCtrl.getJson();
     
+    //JSONCtrl.postJson("Title stolec", "body kloc");
+    e.preventDefault();
   }
+
+
 
 
   return {
     init: function(){
      
+      UICtrl.showHideCreateInput();
+      
 
       loadEventListeners();
     }
