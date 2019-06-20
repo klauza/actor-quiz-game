@@ -21,7 +21,7 @@ const App = (function(UICtrl){
     const nameInputValue = document.querySelector('#start-input').value;
     console.log('Value was: ', nameInputValue);
 
-    JSONCtrl.getJson();
+    
     
     //JSONCtrl.postJson("Title stolec", "body kloc");
     e.preventDefault();
@@ -32,9 +32,10 @@ const App = (function(UICtrl){
 
   return {
     init: function(){
-     
       UICtrl.showHideCreateInput();
-      
+
+      JSONCtrl.getJson(); // Load Json into UI
+
 
       loadEventListeners();
     }

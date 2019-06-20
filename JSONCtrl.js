@@ -14,17 +14,22 @@ const JSONCtrl = (function(){
         console.log(data);
         let output = '';
         data.forEach(function(post){
-          output += `<li>${post.title}</li>`;
+          output += 
+          `
+          <div class="person-block">
+            <div class="img-container">
+              <img src="${post.image}">
+            </div>
+            <p>${post.title}</p>
+            <p>${post.body}</p>
+          </div>
+          `;
         });
         document.querySelector('.content').innerHTML = output;
       })
       .catch(err => console.log(err));
     }
   
-
-
-    
-
   }
 })();
 

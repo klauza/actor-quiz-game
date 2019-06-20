@@ -1,5 +1,5 @@
-the game
+the person game
+- revealing module pattern
+- local storage
 - babel installed `npm install @babel/core -save-dev`
-- json-server installed `npm install json-server --save`
-
-start json server with command json-server --watch db.json
+- content is being loaded from local json file

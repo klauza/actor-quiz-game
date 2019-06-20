@@ -1,14 +1,27 @@
 [
   {
-    "title": "post one",
-    "body": "This is post one"
+    "title": "Jon Snow",
+    "body": "The Wall",
+    "image": "./api/imgs/kit-harington-sad-jon-snow-game-of-thrones.0.0.jpg"
   },
   {
     "title": "post two",
-    "body": "This is post two"
+    "body": "This is post two",
+    "image": "http://placehold.jp/200x100.png"
   },
   {
     "title": "post three",
-    "body": "This is post three"
+    "body": "This is post three",
+    "image": "http://placehold.jp/200x100.png"
+  },
+  {
+    "title": "post four",
+    "body": "This is post four",
+    "image": "http://placehold.jp/200x100.png"
+  },
+  {
+    "title": "post five",
+    "body": "This is post five",
+    "image": "http://placehold.jp/200x100.png"
   }
 ]
