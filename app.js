@@ -6,27 +6,28 @@ import JSONCtrl from './JSONCtrl.js';
 
 const App = (function(UICtrl){
 
+  class HTTP{
+    // Make an HTTP GET Request
+      async get(url){
+        const response = await fetch(url);
   
+        const resData = await response.json();
+  
+        return resData;
+      }
+    }
 
+
+  // Event Listeners
   const loadEventListeners = function(){
-   
     const selectors = UICtrl.getSelectors();  
 
-    // document.querySelector(selectors.formSubmit).addEventListener('click', submitTest);
 
    
 
 
   }
 
-  const submitTest = function(e){
-    console.log('form submitted!');
-    const nameInputValue = document.querySelector('#start-input').value;
-    console.log('Value was: ', nameInputValue);
-
-    //JSONCtrl.postJson("Title stolec", "body kloc");
-    e.preventDefault();
-  }
 
 
 
@@ -35,8 +36,27 @@ const App = (function(UICtrl){
     init: function(){
       UICtrl.showHideCreateInput();
 
-      JSONCtrl.getJson(); // Load Json into UI
+      //JSONCtrl.getJson(); // Load Json into UI
+
+      const http = new HTTP();
       
+      const getJson = function(){
+        http.get('./api/db.json') 
+          .then(data => UICtrl.renderPeople(data))
+          .catch(err => console.log(err));
+      }
+ 
+      getJson();
+    
+
+      
+
+ 
+      
+
+      
+
+     
       setTimeout(() => {  // get click Events, has to wait on JSON thus setTimeout
         UICtrl.getItemClickEvents();
         

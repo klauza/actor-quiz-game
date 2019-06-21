@@ -16,6 +16,28 @@ const UICtrl = (function(){
       // else if key in localstorage == true
       // hide the button
     },
+    renderPeople: function(data){
+
+      console.log(data);
+      let output = '';
+        data.forEach(function(post){
+          output += 
+          `
+          <div class="person-block">
+            <div class="img-container">
+              <img src="${post.image}">
+            </div>
+            <p>${post.title}</p>
+            <p>${post.body}</p>
+          </div>
+          `;
+        });
+      document.querySelector('.content').innerHTML = output;
+      
+    },
+
+
+
 
     getItemClickEvents: function(){
       const persons = document.querySelectorAll(".person-block");
