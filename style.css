@@ -1,12 +1,36 @@
+*, *::before, *::after{
+  box-sizing: border-box;
+  padding: 0; margin: 0;
+}
 .content{
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-
+  display: inline-block;
+  margin-top: 200px;
 }
 .person-block{
+  display: inline-block;
   opacity: 0;
   animation: personAnimate 1s forwards;
+  border: 1px solid black;
+  /* transition: 1s all ease; */
 }
+.person-block:hover{
+  cursor: pointer;
+}
+.person-block:hover p{
+  cursor: pointer;
+  color: white;
+  background: black;
+}
+
+@keyframes personAnimate{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
 .person-block:nth-child(even){
   animation-delay: 250ms;
 }
@@ -28,21 +52,10 @@
 }
 .person-block p{
   text-align: center;
+  padding: 15px 0;
 }
 
 
-.person-block:hover{
-  filter: brightness(1.5);
-  color: grey;
-  background: black;
-  cursor: pointer;
-}
-@keyframes personAnimate{
-  0%{
-    opacity: 0;
-  }
-  100%{
-    opacity: 1;
-  }
-}
+
+
 

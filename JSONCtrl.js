@@ -11,7 +11,7 @@ const JSONCtrl = (function(){
     fetch('./api/db.json')
       .then(res => res.json())
       .then(data =>{
-        console.log(data);
+        //console.log(data);
         let output = '';
         data.forEach(function(post){
           output += 

@@ -1,5 +1,5 @@
-the person game
+the person game: complete 3 tasks as a famous person to win
 - revealing module pattern
 - local storage
-- babel installed `npm install @babel/core -save-dev`
-- content is being loaded from local json file
+- content is being fetched from local json file
+- `@babel/core` installed 
