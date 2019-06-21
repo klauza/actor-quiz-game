@@ -23,11 +23,8 @@ const App = (function(UICtrl){
     const selectors = UICtrl.getSelectors();  
 
 
-   
-
-
   }
-
+  // const UICtrl.getButtons();
 
 
 
@@ -41,28 +38,46 @@ const App = (function(UICtrl){
       const http = new HTTP();
       
       const getJson = function(){
-        http.get('./api/db.json') 
-          .then(data => UICtrl.renderPeople(data))
-          .catch(err => console.log(err));
+
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+
+            http.get('./api/db.json') 
+            .then(data => UICtrl.renderPeople(data))
+            .catch(err => console.log(err));
+            
+            const error = false;
+            if(!error){
+              resolve();
+            } else {
+              reject('Error');
+            }
+          }, 250)
+        })
+       
       }
  
-      getJson();
+      //getJson();
     
 
       
 
- 
+
+      const putLayout = function(){ 
+
+        setTimeout(() => {
+          UICtrl.getItemClickEvents();
+        }, 350);
+      
+      }
+
+  
+      
+      getJson()
+        .then(putLayout())
+        .catch(err => console.log(err));
       
 
-      
-
-     
-      setTimeout(() => {  // get click Events, has to wait on JSON thus setTimeout
-        UICtrl.getItemClickEvents();
-        
-      }, 250)
-   
-    
 
 
       loadEventListeners();

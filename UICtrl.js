@@ -2,7 +2,8 @@ const UICtrl = (function(){
   const UISelectors = {
     formSubmit: '#start-button',
     startingInput: '#start-input',
-    createInput: '#create-input'
+    createInput: '#create-input',
+    buttonAfterLayoutLoad: '.button-with-class'
   }
 
 
@@ -16,6 +17,15 @@ const UICtrl = (function(){
       // else if key in localstorage == true
       // hide the button
     },
+
+
+    getButtons: function(){
+      const buttons = document.querySelectorAll(UISelectors.buttonAfterLayoutLoad);
+      // console.log(buttons);
+      buttons.forEach((button) => {button.style.opacity = "1"});
+    },
+
+
     renderPeople: function(data){
 
       console.log(data);
@@ -33,7 +43,6 @@ const UICtrl = (function(){
           `;
         });
       document.querySelector('.content').innerHTML = output;
-      
     },
 
 
@@ -43,6 +52,11 @@ const UICtrl = (function(){
       const persons = document.querySelectorAll(".person-block");
       persons.forEach((person)=>{
         person.addEventListener('click', function(){
+
+          // show buttons
+          setTimeout(function(){
+            UICtrl.getButtons();
+          }, 2500)
 
           let clickedPerson = this;
           let clickedPersonCoords = this.getBoundingClientRect();
