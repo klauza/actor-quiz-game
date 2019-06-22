@@ -1,25 +1,33 @@
 [
   {
+    "id": 1,
     "title": "Jon Snow",
     "body": "The Wall",
-    "image": "./api/imgs/kit-harington-sad-jon-snow-game-of-thrones.0.0.jpg"
+    "image": "./api/imgs/kit-harington-sad-jon-snow-game-of-thrones.0.0.jpg",
+    "skill1": "He knows something",
+    "skill2": "Horse riding",
+    "skill3": "Can wield all type of weapons"
   },
   {
+    "id": 2,
     "title": "post two",
     "body": "This is post two",
     "image": "http://placehold.jp/200x100.png"
   },
   {
+    "id": 3,
     "title": "post three",
     "body": "This is post three",
     "image": "http://placehold.jp/200x100.png"
   },
   {
+    "id": 4,
     "title": "post four",
     "body": "This is post four",
     "image": "http://placehold.jp/200x100.png"
   },
   {
+    "id": 5,
     "title": "post five",
     "body": "This is post five",
     "image": "http://placehold.jp/200x100.png"

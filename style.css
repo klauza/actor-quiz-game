@@ -82,3 +82,13 @@
   top: 60px; left: 0;
 }
 
+.statistics{
+  margin-left: 50px;
+  margin-top: -200px;
+  display: none;
+  opacity: 0;
+  transition: 1s all ease;
+}
+.statistics label{
+  display: block;
+}

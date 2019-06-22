@@ -1,3 +1,5 @@
+import PersonCtrl from './PersonCtrl.js';
+
 const UICtrl = (function(){
   const UISelectors = {
     formSubmit: '#start-button',
@@ -6,17 +8,40 @@ const UICtrl = (function(){
     buttonAfterLayoutLoad: '.button-with-class'
   }
 
+  
+  const person = {
+    //items: PersonCtrl.getDataAboutPerson()
+    // items: [
+    //   {id: 0, name: 'Steak Dinner', calories: 1200},
+    //   {id: 1, name: 'Cookie', calories: 200},
+    //   {id: 2, name: 'Eggs', calories: 300}
+    // ]
+    items: []
+  }
+
 
   return {
 
-    showHideCreateInput: function(){
-      console.log('hi');
-
-      // if key in localstorage == "" // null
-      //document.querySelector(UISelectors.createInput).style.display = "block";
-      // else if key in localstorage == true
-      // hide the button
+    getPerson: function(){
+      return person.items;
     },
+
+
+    // NEW NEW NEW
+    getItemById: function(id){
+      // loop through the items and match the id
+
+      let found = null;
+      person.items.forEach(function(item){
+        if(item.id === id){
+          found = item;
+        }
+      });
+
+      return found;
+    },
+
+  
 
 
     getButtons: function(){
@@ -27,13 +52,17 @@ const UICtrl = (function(){
 
 
     renderPeople: function(data){
+      //console.log(data);
 
-      console.log(data);
+   
       let output = '';
         data.forEach(function(post){
+
+          person.items.push(post);  // put all json into person.items
+
           output += 
           `
-          <div class="person-block">
+          <div id="${post.id}" class="person-block">
             <div class="img-container">
               <img src="${post.image}">
             </div>
@@ -42,11 +71,12 @@ const UICtrl = (function(){
           </div>
           `;
         });
+        
       document.querySelector('.content').innerHTML = output;
+      return data
     },
 
-
-
+   
 
     getItemClickEvents: function(){
       const persons = document.querySelectorAll(".person-block");
@@ -100,6 +130,14 @@ const UICtrl = (function(){
     
     getSelectors: function(){
       return UISelectors;
+    },
+
+    displayPersonStatistics: function(){
+      setTimeout(() => {
+        document.querySelector('.statistics').style.transition = "all 1s ease-in-out";
+        document.querySelector('.statistics').style.display = "block";
+        document.querySelector('.statistics').style.opacity = "1";
+      }, 2500)
     }
   }
 })();
