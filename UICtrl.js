@@ -1,5 +1,3 @@
-import PersonCtrl from './PersonCtrl.js';
-
 const UICtrl = (function(){
   const UISelectors = {
     formSubmit: '#start-button',
@@ -10,25 +8,14 @@ const UICtrl = (function(){
 
   
   const person = {
-    //items: PersonCtrl.getDataAboutPerson()
-    // items: [
-    //   {id: 0, name: 'Steak Dinner', calories: 1200},
-    //   {id: 1, name: 'Cookie', calories: 200},
-    //   {id: 2, name: 'Eggs', calories: 300}
-    // ]
-    items: []
+    items: [] // all characters from renderPeople
   }
-
 
   return {
 
-    getPerson: function(){
-      return person.items;
-    },
-
-
+    
     // NEW NEW NEW
-    getItemById: function(id){
+    getPersonById: function(id){
       // loop through the items and match the id
 
       let found = null;
@@ -53,7 +40,7 @@ const UICtrl = (function(){
 
     renderPeople: function(data){
       //console.log(data);
-
+     
    
       let output = '';
         data.forEach(function(post){
@@ -71,7 +58,7 @@ const UICtrl = (function(){
           </div>
           `;
         });
-        
+  
       document.querySelector('.content').innerHTML = output;
       return data
     },

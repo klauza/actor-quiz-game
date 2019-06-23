@@ -1,7 +1,14 @@
 const PersonCtrl = (function(){
 
-  const singlePerson = {
-    person: []
+  const chosenPerson = {
+    data: {}
+    // id: '',
+    // title: '',
+    // body: '',
+    // image: '',
+    // skill1: '',
+    // skill2: '',
+    // skill3: ''
 
   }
 
@@ -9,7 +16,7 @@ const PersonCtrl = (function(){
 
     personFillUi: function(data){
       let person = data;
-      // console.log('from personctrl: ', data);
+
       document.querySelector('#skill-1').textContent = person.skill1;
       document.querySelector('#skill-2').textContent = person.skill2;
       document.querySelector('#skill-3').textContent = person.skill3;
@@ -17,7 +24,28 @@ const PersonCtrl = (function(){
       document.querySelector('#attribute2').value = 10;
       document.querySelector('#personName').textContent = person.title;
       document.querySelector('#personFrom').textContent = person.body;
+    },
+
+    savePerson: function(data){
+      chosenPerson.data = data;
+    },
+
+    getPerson: function(){
+      return chosenPerson.data;
+    },
+
+    SetPersonToLocalStorage(data){  
+      let person = data;
+      console.log(person + ' person b in LS set successfully');
+      let LSperson = [];  // init person in local storage
+
+      LSperson.push(person)
+      
+      localStorage.setItem('LSperson', JSON.stringify(LSperson));
+
+      
     }
+
    
 
 

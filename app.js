@@ -7,75 +7,67 @@ import PersonCtrl from './PersonCtrl.js';
 
 const App = (function(UICtrl){
 
-  class HTTP{
-    // Make an HTTP GET Request
-    async get(url){
-      const response = await fetch(url);
-
-      const resData = await response.json();
-
-      return resData;
-    }
-  }
-
 
   // Event Listeners
   const loadEventListeners = function(){
-  const selectors = UICtrl.getSelectors();  
-  document.addEventListener('DOMContentLoaded', getDataFromJson);
+    const selectors = UICtrl.getSelectors();  
+    document.addEventListener('DOMContentLoaded', getJson);
+
+    document.querySelector('.button-1').addEventListener('click', getChosenPerson);
   
   }
 
+    ///////////-GAME INIT-//////////
 
-  const http = new HTTP();
-  const getJson = function(){
-
-    return new Promise((resolve, reject) => {
-    
-        http.get('./api/db.json') 
-        .then(data => UICtrl.renderPeople(data))
-        .catch(err => console.log(err));
-        
-        const error = false;
-        if(!error){
-          resolve();
-        } else {
-          reject('Error');
-        }
-    })
-   
+  // Get from API from local file :)
+  function getJson(){
+    fetch('./api/db.json')
+      .then(res => res.json())
+      .then(data => {
+        UICtrl.renderPeople(data);    // Put data from json onto UI
+        setTimeout(() => {
+          UICtrl.getItemClickEvents(); //animations and stuff apply to each block of person
+          document.querySelectorAll('.person-block').forEach((button) => { button.addEventListener('click', personClick)}); //add listener to each block
+        }, 350);
+         // passing data to another function
+      })
+      .catch(err => console.log(err));
+      
   }
+  
 
-  const putLayout = function(){ 
+  ///////////-GAME START-//////////
 
-    setTimeout(() => {
-      UICtrl.getItemClickEvents()
-      // apply event to each block
-      document.querySelectorAll('.person-block').forEach((button) => { button.addEventListener('click', personClick)});
-    }, 350);
-  }
+  const personClick = function(){   
 
-  const getDataFromJson = function(){
-  getJson()
-    .then(putLayout())
-    .catch(err => console.log(err));
-  }
+    console.log(this);
 
-  const personClick = function(){
-   
-    
-    let id = parseInt(this.id); // MAKE SURE IT'S A NUMBER
-    let person = UICtrl.getItemById(id);
-    
-    PersonCtrl.personFillUi(person);
+    let id = parseInt(this.id); // convert ID to number
+
+    let person = UICtrl.getPersonById(id);
     //console.log(person.skill1); //valid
 
+    PersonCtrl.personFillUi(person);
+    PersonCtrl.savePerson(person);
+    PersonCtrl.SetPersonToLocalStorage(person);
     
     // Display Statistics of a person
     UICtrl.displayPersonStatistics();
-   
-    
   }
+
+
+
+ ///////////-GAME AFTER CHOOSING PERSON-//////////
+
+ // Button-1 test - log into console chosen person
+ const getChosenPerson = function(e){
+
+  const person = PersonCtrl.getPerson();
+
+  console.log('Chosen person is: ',person);
+  e.preventDefault();
+}
+
 
 
 
@@ -84,14 +76,6 @@ const App = (function(UICtrl){
     init: function(){
 
       
-      
-      
-      
-
-      
-
-
-
 
       loadEventListeners();
     }
