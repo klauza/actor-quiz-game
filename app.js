@@ -14,6 +14,8 @@ const App = (function(UICtrl){
     document.addEventListener('DOMContentLoaded', getJson);
 
     document.querySelector('.button-1').addEventListener('click', getChosenPerson);
+    document.querySelector('.button-2').addEventListener('click', changeSkill1);
+    document.querySelector('.local-storage-reset').addEventListener('click', resetGame);
   
   }
 
@@ -47,9 +49,9 @@ const App = (function(UICtrl){
     let person = UICtrl.getPersonById(id);
     //console.log(person.skill1); //valid
 
-    PersonCtrl.personFillUi(person);
     PersonCtrl.savePerson(person);  // save locally
-    PersonCtrl.SetPersonToLocalStorage(person);
+    PersonCtrl.personFillUi(); // get from local
+    PersonCtrl.setPersonToLocalStorage(person); // save to LS
     UICtrl.showPersonUi();
   }
 
@@ -66,10 +68,26 @@ const App = (function(UICtrl){
   e.preventDefault();
 }
 
+  const changeSkill1 = function(e){
+    let person = PersonCtrl.getPerson();
+    // console.log(person.skill1); // -valid
+    let newValue = "Has skateboard";
+
+    PersonCtrl.changeSkill(newValue);   // change skill with newValue
+    PersonCtrl.personFillUi();        // repaint the UI
+    e.preventDefault();
+  }
 
 
+  ///////////-GAME RESET-//////////
+  const resetGame = function(e){
 
+    // empty local storage
+    PersonCtrl.deletePersonFromLocalStorage();
 
+    location.reload();
+    e.preventDefault();
+  }
   return {
     init: function(){
 
