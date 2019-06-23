@@ -2,14 +2,6 @@ const PersonCtrl = (function(){
 
   const chosenPerson = {
     data: {}
-    // id: '',
-    // title: '',
-    // body: '',
-    // image: '',
-    // skill1: '',
-    // skill2: '',
-    // skill3: ''
-
   }
 
   return {

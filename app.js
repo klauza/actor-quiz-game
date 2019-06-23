@@ -48,11 +48,9 @@ const App = (function(UICtrl){
     //console.log(person.skill1); //valid
 
     PersonCtrl.personFillUi(person);
-    PersonCtrl.savePerson(person);
+    PersonCtrl.savePerson(person);  // save locally
     PersonCtrl.SetPersonToLocalStorage(person);
-    
-    // Display Statistics of a person
-    UICtrl.displayPersonStatistics();
+    UICtrl.showPersonUi();
   }
 
 
@@ -60,7 +58,7 @@ const App = (function(UICtrl){
  ///////////-GAME AFTER CHOOSING PERSON-//////////
 
  // Button-1 test - log into console chosen person
- const getChosenPerson = function(e){
+  const getChosenPerson = function(e){
 
   const person = PersonCtrl.getPerson();
 

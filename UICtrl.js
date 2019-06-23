@@ -31,12 +31,25 @@ const UICtrl = (function(){
   
 
 
-    getButtons: function(){
-      const buttons = document.querySelectorAll(UISelectors.buttonAfterLayoutLoad);
-      // console.log(buttons);
-      buttons.forEach((button) => {button.style.opacity = "1"});
+    showPersonUi: function(){
+      setTimeout(() =>{
+        const buttons = document.querySelectorAll(UISelectors.buttonAfterLayoutLoad);
+        // console.log(buttons);
+        buttons.forEach((button) => {
+          button.style.display = "block";
+          setTimeout(()=> {
+            button.style.opacity = "1";
+          }, 50)
+        });
+        document.querySelector('.statistics').style.display = "block";
+        setTimeout(()=> {
+          document.querySelector('.statistics').style.opacity = "1";
+        }, 50)
+
+      }, 2500)
     },
 
+ 
 
     renderPeople: function(data){
       //console.log(data);
@@ -70,10 +83,7 @@ const UICtrl = (function(){
       persons.forEach((person)=>{
         person.addEventListener('click', function(){
 
-          // show buttons
-          setTimeout(function(){
-            UICtrl.getButtons();
-          }, 2500)
+      
 
           let clickedPerson = this;
           let clickedPersonCoords = this.getBoundingClientRect();
@@ -117,15 +127,9 @@ const UICtrl = (function(){
     
     getSelectors: function(){
       return UISelectors;
-    },
-
-    displayPersonStatistics: function(){
-      setTimeout(() => {
-        document.querySelector('.statistics').style.transition = "all 1s ease-in-out";
-        document.querySelector('.statistics').style.display = "block";
-        document.querySelector('.statistics').style.opacity = "1";
-      }, 2500)
     }
+
+   
   }
 })();
 
