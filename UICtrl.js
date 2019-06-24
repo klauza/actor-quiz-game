@@ -86,10 +86,10 @@ const UICtrl = (function(){
           setTimeout(()=>{
             document.querySelector('.fill-background-top > .welcome-text').style.opacity ="0";
           }, 150);
-          
+
           setTimeout(()=>{
             let textNode = document.querySelector('.welcome-text');
-            let parent = document.querySelector('.fill-background-top');
+            // let parent = document.querySelector('.fill-background-top');
             
             textNode.style.animation = "animationText forwards 2.5s";
             textNode.textContent = "Okay, let's start!";

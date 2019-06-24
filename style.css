@@ -136,14 +136,40 @@
 
 /* Reset button */
 .local-storage-reset{
-  border: 2px solid black;
+  border: 1px solid black;
   width: 100px;
   height: 30px;
   position: absolute;
-  bottom: 15px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
+  color: black;
+  background-color: white;
+  transition: 250ms all ease;
+  border-radius: 2px;
+  box-shadow: 0px 10px 17px -5px rgba(0,0,0,0.75);
 }
 .local-storage-reset:hover{
   cursor: pointer;
+  background-color: red;
+  color: white;
+  transition: 250ms all ease;
+  box-shadow: 0px 10px 17px 1px rgba(0,0,0,0.75);
 }
+
+/* ICONS */
+.social-icons-block{
+  text-align: right;
+  margin-right: 20px;
+}
+.fa-volume-up, .fa-volume-off{
+  font-size: 2em;
+  color: rgb(122, 122, 122);
+}
+.fa-volume-up:hover{
+  color: green;
+}
+.fa-volume-off:hover{
+  color: red;
+}
+.fa-volume-off{ margin-left: 10px;}
