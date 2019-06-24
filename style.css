@@ -2,11 +2,48 @@
   box-sizing: border-box;
   padding: 0; margin: 0;
 }
+.fill-background-top{
+  text-align: center;
+  width: 100%;
+  height: 200px;
+  background: whitesmoke;
+  position: relative;
+}
+.fill-background-top span{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+  transition: 500ms all ease-in-out;
+  font-family: Verdana;
+}
+
+@keyframes animationText{
+  0%{
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+
+  50%{
+    opacity: 0;
+    color: red;
+  }
+  95%{
+    color: red;
+  }
+  100%{
+    opacity: 1;
+    transform: translate(-50%, 550%);
+    color: black;
+  }
+}
+
 .content{
   display: inline-block;
-  margin-top: 200px;
 }
 .person-block{
+  background: white;
   display: inline-block;
   opacity: 0;
   animation: personAnimate 1s forwards;
@@ -90,6 +127,23 @@
   opacity: 0;
   transition: 1s all ease;
 }
+.statistics #personName{
+  margin-top: 25px;
+}
 .statistics label{
   display: block;
+}
+
+/* Reset button */
+.local-storage-reset{
+  border: 2px solid black;
+  width: 100px;
+  height: 30px;
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.local-storage-reset:hover{
+  cursor: pointer;
 }

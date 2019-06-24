@@ -30,7 +30,7 @@ const UICtrl = (function(){
 
   
 
-
+    // Starting animation, display ="block" all UI
     showPersonUi: function(){
       setTimeout(() =>{
         const buttons = document.querySelectorAll(UISelectors.buttonAfterLayoutLoad);
@@ -77,28 +77,41 @@ const UICtrl = (function(){
     },
 
    
-
+    // Animation on clicked person [ starting phase ]
     getItemClickEvents: function(){
       const persons = document.querySelectorAll(".person-block");
       persons.forEach((person)=>{
         person.addEventListener('click', function(){
 
-      
+          setTimeout(()=>{
+            document.querySelector('.fill-background-top > .welcome-text').style.opacity ="0";
+          }, 150);
+          
+          setTimeout(()=>{
+            let textNode = document.querySelector('.welcome-text');
+            let parent = document.querySelector('.fill-background-top');
+            
+            textNode.style.animation = "animationText forwards 2.5s";
+            textNode.textContent = "Okay, let's start!";
+           
+          }, 625)
+
+
 
           let clickedPerson = this;
           let clickedPersonCoords = this.getBoundingClientRect();
-          let marginLeft = (clickedPersonCoords.x)+'px';
-          let marginTop = (clickedPersonCoords.y);
-          marginTop = marginTop-200+'px';
+          let positionLeft = (clickedPersonCoords.x)+'px';    // distance from left edge
+          let positionTop = (clickedPersonCoords.y);          // distance from top edge
+          positionTop = positionTop-200+'px';
           
-          console.log(marginLeft);
+          console.log(positionLeft);
           // move the item to the corner
           let content = Array.from(document.querySelector('.content').children);
           content.map((item) => item.style.display ='none' ); // hide all blocks
 
           
           // set CSS of clicked element
-          let personCssSetBeforeAnimation = `display: block; transform: translate(${marginLeft}, ${marginTop});`;
+          let personCssSetBeforeAnimation = `display: block; transform: translate(${positionLeft}, ${positionTop});`;
           //clickedPerson.style.cssText = personCssSetBeforeAnimation;
           clickedPerson.style.cssText = personCssSetBeforeAnimation;
           

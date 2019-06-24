@@ -42,7 +42,6 @@ const App = (function(UICtrl){
 
   const personClick = function(){   
 
-    console.log(this);
 
     let id = parseInt(this.id); // convert ID to number
 
