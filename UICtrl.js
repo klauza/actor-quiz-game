@@ -59,10 +59,11 @@ const UICtrl = (function(){
         data.forEach(function(post){
 
           person.items.push(post);  // put all json into person.items
-
+          let delay = (post.id)*150;
+          
           output += 
           `
-          <div id="${post.id}" class="person-block">
+          <div id="${post.id}" class="person-block" style="animation-delay: ${delay}ms">
             <div class="img-container">
               <img src="${post.image}">
             </div>
@@ -70,8 +71,9 @@ const UICtrl = (function(){
             <p>${post.body}</p>
           </div>
           `;
+          
         });
-  
+      
       document.querySelector('.content').innerHTML = output;
       return data
     },

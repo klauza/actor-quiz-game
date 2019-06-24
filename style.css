@@ -40,7 +40,8 @@
 }
 
 .content{
-  display: inline-block;
+  display: flex;
+  flex-wrap: wrap;
 }
 .person-block{
   background: white;
@@ -68,12 +69,6 @@
   }
 }
 
-.person-block:nth-child(even){
-  animation-delay: 250ms;
-}
-.person-block:nth-child(odd){
-  animation-delay: 500ms;
-}
 .img-container{
   height: 100px;
   width: 200px;
@@ -104,11 +99,12 @@
 }
 
 .button-with-class{
+  z-index: 3;
   position: absolute;
   width: 100px;
   transition: opacity 1s;
-  display: none;
-  opacity: 0;
+  display: block;
+  opacity: 1;
 }
 .button-with-class:nth-of-type(1){
   top: 0; left: 0;
@@ -120,18 +116,55 @@
   top: 60px; left: 0;
 }
 
+/* STATISTICS */
 .statistics{
-  margin-left: 50px;
+  margin-left: 10px;
   margin-top: -200px;
+  max-width: 190px;
   display: none;
   opacity: 0;
   transition: 1s all ease;
 }
+.stats-name-from{
+  font-size: 0.75rem;
+  color: grey;
+}
+.stats-name-from, #personName, #personFrom{
+  display: inline-block;
+}
+
+.statistics ul li{
+  list-style: none;
+}
 .statistics #personName{
   margin-top: 25px;
 }
-.statistics label{
+
+/* Attributes */
+.attributes{
+  margin-top: 5px;
+}
+.attributes label{
   display: block;
+}
+
+/* Perks */
+.perks-container{
+  margin-top: 5px;
+  background: grey;
+}
+.perks-container p{
+  color: white;
+}
+
+
+
+/* Task counter */
+.tasksToComplete{
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* Reset button */

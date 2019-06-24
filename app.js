@@ -5,7 +5,7 @@ import UICtrl from './UICtrl.js';
 //import JSONCtrl from './JSONCtrl.js';
 import PersonCtrl from './PersonCtrl.js';
 
-const App = (function(UICtrl){
+const App = (function(UICtrl, PersonCtrl){
 
 
   // Event Listeners
@@ -95,7 +95,7 @@ const App = (function(UICtrl){
       loadEventListeners();
     }
   }
-})(UICtrl);
+})(UICtrl, PersonCtrl);
 
 App.init();
 
