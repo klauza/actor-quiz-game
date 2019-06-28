@@ -13,7 +13,7 @@ const ThreeCtrl = (function(){
 
     textChange: function(){
       document.querySelector('.welcome-text').classList.remove('textHover');
-      document.querySelector('.welcome-text').textContent = `Question 3: Just pick first option.`;
+      document.querySelector('.welcome-text').textContent = `Question 3: Pick the movie the actor has shown in.`;
 
       document.querySelector('.welcome-text').removeEventListener("click", ThreeCtrl.textChange, false);      // Succeeds
 
@@ -26,17 +26,37 @@ const ThreeCtrl = (function(){
       allAnswers.style.display = "block";
       let answers = Array.from(allAnswers.children);
 
-      // const live = PersonCtrl.getPerson().body;
+      let actorId = PersonCtrl.getPerson().id;
+      let actorMovie = PersonCtrl.getPerson().movie1;
+     
+      switch(actorId){
+        case 1:   // Jon Snow
+          answers[0].textContent = actorMovie;
+          answers[1].textContent = 'Batman';
+          answers[2].textContent = 'Warrior';
+          break;
+        case 2:   // Michael J. Fox
+          answers[0].textContent = actorMovie;
+          answers[1].textContent = 'Batman Forever';
+          answers[2].textContent = 'Spiderman';
+          break;
+        case 3:   // Leonardo DiCaprio
+          answers[0].textContent = actorMovie;
+          answers[1].textContent = 'Avengers';
+          answers[2].textContent = 'Tomb Raider';
+          break;
+        case 4:   // Ryan Gosling
+          answers[0].textContent = actorMovie;
+          answers[1].textContent = 'Game of Thrones';
+          answers[2].textContent = 'The Shawshank Redemption';
+          break;
+        case 5:   // Zoe Saldana
+          answers[0].textContent = actorMovie;
+          answers[1].textContent = 'Matrix';
+          answers[2].textContent = 'Harry Potter';
+          break;
+      }
 
-      let randomNumber = Math.random() * 3;  // 0 1 2
-      let random = Math.floor(randomNumber); 
-
-      let randomNameSet = ['I am winner', 'Wrong answer here', 'You still here?'];
-
-
-      answers[0].textContent = randomNameSet[0];
-      answers[1].textContent = randomNameSet[1];
-      answers[2].textContent = randomNameSet[2];
 
 
       // guess the answer

@@ -6,7 +6,8 @@
     "image": "./api/imgs/kit-harington-sad-jon-snow-game-of-thrones.0.0.jpg",
     "skill1": "Knows nothing",
     "skill2": "Has a wolf",
-    "skill3": "High skill in sword wielding"
+    "skill3": "High skill in sword wielding",
+    "movie1": "Game of Thrones"
   },
   {
     "id": 2,
@@ -15,7 +16,8 @@
     "image": "./api/imgs/263509.1.jpg",
     "skill1": "Has DeLorean",
     "skill2": "Can go back to the past",
-    "skill3": "Weak will"
+    "skill3": "Weak will",
+    "movie1": "Back to the Future"
   },
   {
     "id": 3,
@@ -24,7 +26,8 @@
     "image": "./api/imgs/leonardo-dicaprio.jpg",
     "skill1": "Can swim in cold water",
     "skill2": "Will win any bet",
-    "skill3": "Icebraker"
+    "skill3": "Icebraker",
+    "movie1": "Titanic"
   },
   {
     "id": 4,
@@ -33,7 +36,8 @@
     "image": "./api/imgs/maxresdefault.jpg",
     "skill1": "Has a Chevrolet Malibu",
     "skill2": "Firm and serious",
-    "skill3": "Can dazzle"
+    "skill3": "Can dazzle",
+    "movie1": "Drive"
   },
   {
     "id": 5,
@@ -42,6 +46,7 @@
     "image": "./api/imgs/281230__35809.1342528245.380.500.jpg",
     "skill1": "An outsider",
     "skill2": "Aiming at the goal",
-    "skill3": "Can break a rule"
+    "skill3": "Can break a rule",
+    "movie1": "Avatar"
   }
 ]
