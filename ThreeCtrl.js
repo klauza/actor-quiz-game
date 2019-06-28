@@ -23,7 +23,7 @@ const ThreeCtrl = (function(){
     ThreeAnswers: function(){
       
       let allAnswers = document.querySelector('.answers');
-      allAnswers.style.display = "block";
+      allAnswers.style.display = "flex";
       let answers = Array.from(allAnswers.children);
 
       let actorId = PersonCtrl.getPerson().id;
@@ -65,9 +65,9 @@ const ThreeCtrl = (function(){
       })
 
       function tryGuess(){
-        let buttonID = this.dataset.num
-        let answer = 1;
-        if (answer == buttonID){
+        let buttonText = this.textContent;
+        let correctAnswer = actorMovie;
+        if (correctAnswer == buttonText){
           console.log('correct!');
           allAnswers.style.display = "none";    // hide buttons
           document.querySelector('.tasksToCompleteValue').textContent = '0'; // decrement tasks to win a game

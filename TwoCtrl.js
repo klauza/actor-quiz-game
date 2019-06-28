@@ -24,7 +24,7 @@ const TwoCtrl = (function(){
     TwoAnswers: function(){
       
       let allAnswers = document.querySelector('.answers');
-      allAnswers.style.display = "block";
+      allAnswers.style.display = "flex";
       let answers = Array.from(allAnswers.children);
 
       const live = PersonCtrl.getPerson().body;

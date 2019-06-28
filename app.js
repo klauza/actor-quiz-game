@@ -2,7 +2,6 @@
 
 */
 import UICtrl from './UICtrl.js';
-//import JSONCtrl from './JSONCtrl.js';
 import PersonCtrl from './PersonCtrl.js';
 
 import OneCtrl from './OneCtrl.js';
@@ -62,10 +61,12 @@ const App = (function(UICtrl, PersonCtrl){
   }
   const randomPerson = function(){
     // Randomize the person's ID
-    let id = Math.random() * 5 ;  // from 0 to 4
-    id = Math.floor(id);
-
     let allActors = Array.from(document.querySelectorAll('.person-block'));
+
+    let actorCount = allActors.length;  // 5
+    let id = Math.random() * actorCount;  // from 0 to 4
+    id = Math.floor(id);
+    
     let pickActor = allActors[id];  //target actor with randomized id
 
     pickActor.click();  // click on actor with random id
@@ -106,7 +107,7 @@ const App = (function(UICtrl, PersonCtrl){
   return {
     init: function(){
       
-
+      document.querySelector('.button-container').style.display = "none";
       loadEventListeners();
     }
   }
