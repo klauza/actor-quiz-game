@@ -32,21 +32,31 @@ const OneCtrl = (function(){
 
       let answers = Array.from(allAnswers.children);
 
-        // put actor's name into button1 textNode
+      // put actor's name into button1 textNode
       const name = PersonCtrl.getPerson().title;  // get name
       const newName = name.replace(/\s.*/, '');  // split name from surname
-      answers[0].textContent = newName;   
+        
+      let randomNumber = Math.random() * 3;  // 0 1 2
+      let random = Math.floor(randomNumber); 
+      
+      let randomNameSet1 = ['George', 'Barbara', 'Gutek'];
+      let randomNameSet2 = ['Bary', 'Susan', 'Doe'];
 
+      answers[0].textContent = newName; 
+      answers[1].textContent = randomNameSet1[random];
+      answers[2].textContent = randomNameSet2[random];
+      
 
+      // guess the answer
       answers.forEach((button)=>{
         button.addEventListener('click', tryGuess);
         
       })
 
       function tryGuess(){
-        let but = this.dataset.num
+        let buttonID = this.dataset.num
         let answer = 1;
-        if (answer == but){
+        if (answer == buttonID){
           console.log('correct!');
           allAnswers.style.display = "none";    // hide buttons
           document.querySelector('.tasksToCompleteValue').textContent = '2'; // decrement tasks to win a game
@@ -61,7 +71,7 @@ const OneCtrl = (function(){
         } else {
           console.log('bad answer!');
         }
-        
+
       }
     }
 
