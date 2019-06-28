@@ -8,13 +8,20 @@ const UICtrl = (function(){
 
   
   const person = {
-    items: [] // all characters from renderPeople
+    items: [], // all characters from renderPeople
+    stage: 0
   }
 
   return {
-
+    getStage: function(){
+      return person.stage;
+    },
+    updateStage: function(){
+      person.stage++;
+      console.log('stage updated, now stage: ', person.stage);
+    },
     
-    // NEW NEW NEW
+ 
     getPersonById: function(id){
       // loop through the items and match the id
 
@@ -53,7 +60,7 @@ const UICtrl = (function(){
 
     renderPeople: function(data){
       //console.log(data);
-     
+      document.querySelector('.welcome-text').style.display = "block";
    
       let output = '';
         data.forEach(function(post){
@@ -94,7 +101,8 @@ const UICtrl = (function(){
             // let parent = document.querySelector('.fill-background-top');
             
             textNode.style.animation = "animationText forwards 2.5s";
-            textNode.textContent = "Okay, let's start!";
+            textNode.textContent = "Okay, let's start! - click me to begin.";
+            
            
           }, 625)
 

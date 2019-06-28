@@ -5,9 +5,11 @@ import UICtrl from './UICtrl.js';
 //import JSONCtrl from './JSONCtrl.js';
 import PersonCtrl from './PersonCtrl.js';
 
+import OneCtrl from './OneCtrl.js';
+
 const App = (function(UICtrl, PersonCtrl){
 
-
+  
   // Event Listeners
   const loadEventListeners = function(){
     const selectors = UICtrl.getSelectors();  
@@ -52,6 +54,10 @@ const App = (function(UICtrl, PersonCtrl){
     PersonCtrl.personFillUi(); // get from local
     PersonCtrl.setPersonToLocalStorage(person); // save to LS
     UICtrl.showPersonUi();
+    
+   
+    UICtrl.updateStage();
+    OneCtrl.initOne();
   }
 
 
@@ -89,7 +95,6 @@ const App = (function(UICtrl, PersonCtrl){
   }
   return {
     init: function(){
-
       
 
       loadEventListeners();
