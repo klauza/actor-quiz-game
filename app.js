@@ -32,6 +32,7 @@ const App = (function(UICtrl, PersonCtrl){
         setTimeout(() => {
           UICtrl.getItemClickEvents(); //animations and stuff apply to each block of person
           document.querySelectorAll('.person-block').forEach((button) => { button.addEventListener('click', personClick)}); //add listener to each block
+          document.querySelector('.random-block').addEventListener('click', randomPerson);
         }, 350);
          // passing data to another function
       })
@@ -59,7 +60,16 @@ const App = (function(UICtrl, PersonCtrl){
     UICtrl.updateStage();
     OneCtrl.initOne();
   }
+  const randomPerson = function(){
+    // Randomize the person's ID
+    let id = Math.random() * 5 ;  // from 0 to 4
+    id = Math.floor(id);
 
+    let allActors = Array.from(document.querySelectorAll('.person-block'));
+    let pickActor = allActors[id];  //target actor with randomized id
+
+    pickActor.click();  // click on actor with random id
+  }
 
 
  ///////////-GAME AFTER CHOOSING PERSON-//////////

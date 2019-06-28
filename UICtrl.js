@@ -80,13 +80,27 @@ const UICtrl = (function(){
           `;
           
         });
+
+        // add random block
+       // let length = person.items;
+        let delay = 6*150;
+        output += 
+        `
+        <div class="random-block" style="animation-delay: ${delay}ms">
+            <div class="img-container">
+              <img src="/random.jpg">
+            </div>
+            <p>Random</p>
+            <p>Actor</p>
+          </div>
+        `;
       
       document.querySelector('.content').innerHTML = output;
       return data
     },
 
    
-    // Animation on clicked person [ starting phase ]
+    // Add Animation on clicked person [ starting phase ]
     getItemClickEvents: function(){
       const persons = document.querySelectorAll(".person-block");
       persons.forEach((person)=>{

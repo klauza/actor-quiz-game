@@ -46,7 +46,8 @@
   display: flex;
   flex-wrap: wrap;
 }
-.person-block{
+.person-block, 
+.random-block{
   background: white;
   display: inline-block;
   opacity: 0;
@@ -54,10 +55,12 @@
   border: 1px solid black;
   /* transition: 1s all ease; */
 }
-.person-block:hover{
+.person-block:hover,
+.random-block:hover{
   cursor: pointer;
 }
-.person-block:hover p{
+.person-block:hover p,
+.random-block:hover p{
   cursor: pointer;
   color: white;
   background: black;
@@ -79,13 +82,15 @@
   margin: 0 auto;
   margin-top: 2px;
 }
-.person-block .img-container img{
+.person-block .img-container img,
+.random-block .img-container img{
   width: 100%;
   height: 100%;
   object-fit: cover;
   
 }
-.person-block p{
+.person-block p,
+.random-block p{
   text-align: center;
   padding: 15px 0;
 }
