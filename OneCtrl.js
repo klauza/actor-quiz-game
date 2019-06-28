@@ -1,4 +1,5 @@
 import PersonCtrl from './PersonCtrl.js';
+import TwoCtrl from './TwoCtrl.js';
 
 const OneCtrl = (function(){
   const stage = {
@@ -21,11 +22,11 @@ const OneCtrl = (function(){
 
       document.querySelector('.welcome-text').removeEventListener("click", OneCtrl.textChange, false);      // Succeeds
 
-      OneCtrl.showAnswers();  
+      OneCtrl.OneAnswers();  
     },
 
 
-    showAnswers: function(){
+    OneAnswers: function(){
       let allAnswers = document.querySelector('.answers');
       allAnswers.style.display = "block";
 
@@ -47,14 +48,20 @@ const OneCtrl = (function(){
         let answer = 1;
         if (answer == but){
           console.log('correct!');
-          allAnswers.style.display = "none";
-          document.querySelector('.welcome-text').textContent = `Correct answer! Go to next question. Click.`;
+          allAnswers.style.display = "none";    // hide buttons
           document.querySelector('.tasksToCompleteValue').textContent = '2'; // decrement tasks to win a game
-          // hide buttons
-          // init TwoCtrl
+
+            // remove event listeners from buttons
+          answers.forEach((button)=>{
+            button.removeEventListener("click", tryGuess, false);
+          })
+          
+          TwoCtrl.initTwo();// init TwoCtrl
+
         } else {
           console.log('bad answer!');
         }
+        
       }
     }
 
