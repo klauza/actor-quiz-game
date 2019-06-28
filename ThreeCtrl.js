@@ -22,17 +22,18 @@ const ThreeCtrl = (function(){
 
     ThreeAnswers: function(){
       
+      // put UI
       let allAnswers = document.querySelector('.answers');
       allAnswers.style.display = "flex";
       let answers = Array.from(allAnswers.children);
-
+      // get data
       let actorId = PersonCtrl.getPerson().id;
       let actorMovie = PersonCtrl.getPerson().movie1;
      
       switch(actorId){
         case 1:   // Jon Snow
-          answers[0].textContent = actorMovie;
-          answers[1].textContent = 'Batman';
+          answers[0].textContent = 'Batman';
+          answers[1].textContent = actorMovie;
           answers[2].textContent = 'Warrior';
           break;
         case 2:   // Michael J. Fox
@@ -41,23 +42,21 @@ const ThreeCtrl = (function(){
           answers[2].textContent = 'Spiderman';
           break;
         case 3:   // Leonardo DiCaprio
-          answers[0].textContent = actorMovie;
+          answers[0].textContent = 'Tomb Raider';
           answers[1].textContent = 'Avengers';
-          answers[2].textContent = 'Tomb Raider';
+          answers[2].textContent = actorMovie;
           break;
         case 4:   // Ryan Gosling
-          answers[0].textContent = actorMovie;
-          answers[1].textContent = 'Game of Thrones';
+          answers[0].textContent = 'Game of Thrones';
+          answers[1].textContent = actorMovie;
           answers[2].textContent = 'The Shawshank Redemption';
           break;
         case 5:   // Zoe Saldana
-          answers[0].textContent = actorMovie;
+          answers[0].textContent = 'Harry Potter';
           answers[1].textContent = 'Matrix';
-          answers[2].textContent = 'Harry Potter';
+          answers[2].textContent = actorMovie;
           break;
       }
-
-
 
       // guess the answer
       answers.forEach((button)=>{

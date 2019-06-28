@@ -121,27 +121,36 @@ const UICtrl = (function(){
           }, 625)
 
 
-
+          
+          // Setting the coords of person
           let clickedPerson = this;
           let clickedPersonCoords = this.getBoundingClientRect();
-          let positionLeft = (clickedPersonCoords.x)+'px';    // distance from left edge
+          console.log(clickedPersonCoords);
+          let positionLeft = (clickedPersonCoords.x);    // distance from left edge
           let positionTop = (clickedPersonCoords.y);          // distance from top edge
-          positionTop = positionTop-200+'px';
+
+          let contentWidth = document.querySelector('.content').getBoundingClientRect().width;
+          let personBlockWidth = this.getBoundingClientRect().width;
+          personBlockWidth = personBlockWidth/2;
+          positionLeft = positionLeft-contentWidth/2;
+          positionLeft = positionLeft+personBlockWidth;
           
-          console.log(positionLeft);
-          // move the item to the corner
+          positionTop = positionTop-200;
+
+          // hide siblings of chosen actor
           let content = Array.from(document.querySelector('.content').children);
           content.map((item) => item.style.display ='none' ); // hide all blocks
 
-          
+           
           // set CSS of clicked element
-          let personCssSetBeforeAnimation = `display: block; transform: translate(${positionLeft}, ${positionTop});`;
+          let personCssSetBeforeAnimation = `display: block; transform: translate(${positionLeft}px, ${positionTop}px);`;
           //clickedPerson.style.cssText = personCssSetBeforeAnimation;
           clickedPerson.style.cssText = personCssSetBeforeAnimation;
           
           // animate chosen block to the top left corner
           personAnimationToTop(clickedPerson);
 
+          // move the item to the top center
           function personAnimationToTop(person){
             setTimeout(function(){
               person.style.transition = 'transform 2s';
