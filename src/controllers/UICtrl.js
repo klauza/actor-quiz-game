@@ -88,7 +88,7 @@ const UICtrl = (function(){
         `
         <div class="random-block" style="animation-delay: ${delay}ms">
             <div class="img-container">
-              <img src="/random.jpg">
+              <img src="./img/random.jpg">
             </div>
             <p>Random</p>
             <p>Actor</p>

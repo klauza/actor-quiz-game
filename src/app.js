@@ -1,10 +1,10 @@
 /*
 
 */
-import UICtrl from './UICtrl.js';
-import PersonCtrl from './PersonCtrl.js';
+import UICtrl from './controllers/UICtrl.js/index.js';
+import PersonCtrl from './controllers/PersonCtrl.js/index.js';
 
-import OneCtrl from './OneCtrl.js';
+import OneCtrl from './controllers/OneCtrl.js/index.js';
 
 const App = (function(UICtrl, PersonCtrl){
 
