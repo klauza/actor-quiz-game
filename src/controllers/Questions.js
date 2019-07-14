@@ -119,7 +119,7 @@ const QuestionsCtrl = (function(){
           QuestionsCtrl.hideAnswers();   // hide block 'answers'
 
           LevelCtrl.IncreaseScoreByOne(); // incement score 
-
+          
           // remove event listeners from buttons
           answers.forEach((button)=>{
             button.removeEventListener("click", tryGuess, false);

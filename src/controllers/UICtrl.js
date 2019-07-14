@@ -1,4 +1,5 @@
 import LocalStorageCtrl from './LocalStorage.js';
+import LevelCtrl from './Level.js';
 
 
 const UICtrl = (function(){
@@ -27,7 +28,13 @@ const UICtrl = (function(){
       //console.log('stage updated, now stage: ', person.stage);
     },
     
- 
+    showScore: function(){
+      let score = LocalStorageCtrl.getScore(); // get score
+      LevelCtrl.updateScoreFromLS(score);
+      console.log('score is: ',score);
+      document.querySelector('.scoreValue').textContent = score; 
+    },
+
     getPersonById: function(id){
       // loop through the items and match the id
 
@@ -62,11 +69,10 @@ const UICtrl = (function(){
       }, 2500)
     },
 
- 
 
     renderPeople: function(data){
-      document.querySelector('.welcome-text').style.display = "block";
-
+      document.querySelector('.welcome-text').style.display = "block";  // show text
+    
       // get actor ids data from ls to be filtered
       let idsFromLS = LocalStorageCtrl.getIdFromStorage();
       
@@ -212,6 +218,7 @@ const UICtrl = (function(){
       // empty local storage
       LocalStorageCtrl.deletePersonFromLocalStorage();
       LocalStorageCtrl.deleteIdFromLS();
+      LocalStorageCtrl.deleteScore();
   
       location.reload(true);
     }

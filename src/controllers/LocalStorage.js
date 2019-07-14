@@ -7,11 +7,35 @@ const LocalStorageCtrl = (function(){
 
   return{
     // SCORE
-    getScore: function(){
+    getScore: function(){   // display on game start
+      let score; // actual score
+      if(localStorage.getItem('scoreAmount') === null){
+        score = [];
 
+      } else {
+        score = JSON.parse(localStorage.getItem('scoreAmount'));
+      }
+      return score;
     },
-    addScore: function(){
 
+    addScore: function(increment){
+      let sum = increment;
+      let score;
+      if(localStorage.getItem('scoreAmount') === null){  // if null set first score
+        score = [];
+        score=score+sum;  // add X to sum
+
+        localStorage.setItem('scoreAmount', JSON.stringify(score));
+
+      } else {    // if not null, add more
+        score = JSON.parse(localStorage.getItem('scoreAmount')); // get existing score
+        score=parseInt(score,10)+sum;
+        localStorage.setItem('scoreAmount', JSON.stringify(score)); // update score in LS
+      }
+    },
+
+    deleteScore: function(){
+      localStorage.removeItem('scoreAmount');
     },
 
 
@@ -33,7 +57,7 @@ const LocalStorageCtrl = (function(){
       let id = data;
       let existingIds;
       if(localStorage.getItem('actorIdToFilterOut') === null){  // if null set first item
-        let existingIds = [];
+        existingIds = [];
         existingIds.push(id);
         localStorage.setItem('actorIdToFilterOut', JSON.stringify(existingIds));
         // first id stored

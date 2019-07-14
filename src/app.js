@@ -33,6 +33,7 @@ const App = (function(UICtrl, PersonCtrl){
     fetch('./api/db.json')
       .then(res => res.json())
       .then(data => {
+        UICtrl.showScore();
         UICtrl.renderPeople(data);    // rendering people. Putting data from json onto UI.
       })
       .then(()=>{

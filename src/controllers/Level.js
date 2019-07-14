@@ -1,5 +1,6 @@
 import QuestionsCtrl from './Questions.js';
 import UICtrl from './UICtrl.js';
+import LocalStorageCtrl from './LocalStorage.js';
 
 const LevelCtrl = (function(){
   
@@ -51,6 +52,9 @@ const LevelCtrl = (function(){
           // clickable after level 3
           // may be put some string as an actor is completed
           // update score to localstorage?
+          LocalStorageCtrl.addScore(3);
+          console.log('score updated by 3 in LS');
+
           UICtrl.continueGame();
           console.log('error level - actor completed');
           break;
@@ -60,6 +64,10 @@ const LevelCtrl = (function(){
 
     initQuestion: function(){
       // get question from QuestionCtrl.js
+    },
+    
+    updateScoreFromLS: function(data){
+      storage.score = data;
     },
 
     IncreaseScoreByOne: function(){
