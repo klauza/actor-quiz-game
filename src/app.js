@@ -18,10 +18,12 @@ const App = (function(UICtrl, PersonCtrl){
     const selectors = UICtrl.getSelectors();  
     document.addEventListener('DOMContentLoaded', displayDataFromAPI);
 
-    //document.querySelector('.button-1').addEventListener('click', getChosenPerson);
-   // document.querySelector('.button-2').addEventListener('click', changeSkill1);
-    document.querySelector('.local-storage-reset').addEventListener('click', resetGame);
-  
+    // document.querySelector('.button-1').addEventListener('click', getChosenPerson);
+    // document.querySelector('.button-2').addEventListener('click', changeSkill1);
+    document.querySelector('.local-storage-reset').addEventListener('click', UICtrl.resetGame);
+
+    document.querySelector('.nextActor').addEventListener('click', function(){location.reload(true)}); // continue to next actor
+
   }
 
     ///////////-GAME INIT-//////////
@@ -103,16 +105,8 @@ const App = (function(UICtrl, PersonCtrl){
   }
 */
 
-  ///////////-GAME RESET-//////////
-  const resetGame = function(e){
 
-    // empty local storage
-    LocalStorageCtrl.deletePersonFromLocalStorage();
-    LocalStorageCtrl.deleteIdFromLS();
 
-    location.reload();
-    e.preventDefault();
-  }
   return {
     init: function(){
       

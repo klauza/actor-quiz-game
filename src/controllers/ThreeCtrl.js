@@ -85,16 +85,9 @@ const ThreeCtrl = (function(){
 
       }
 
-    },
-
-    winGame: function(){
-      console.log('you won!');
-      document.querySelector('.welcome-text').textContent = `you won!`;
-      document.querySelector('.local-storage-reset').style.transform = 'translateY(-600px) translateX(-50%)';
-      document.querySelector('.statistics').style.display = "none";
-      document.querySelector('.content').style.display = "none";
-      document.querySelector('.button-container').style.display = "none";
     }
+
+   
 
   }
 })();

@@ -78,7 +78,7 @@ const UICtrl = (function(){
 
       let output = '';
 
-      // check if game is completed
+      // check if game is completed     ------------------------------ GAME COMPLETED ---------------------------------
       if(filtered == ''){
         alert("Congratulations, you have completed all tasks, click reset button to start over xD");
 
@@ -188,8 +188,33 @@ const UICtrl = (function(){
         });
        });
        
-    }
+    },
 
+    continueGame: function(){
+      console.log('Actor questions complete!');
+      document.querySelector('.welcome-text').textContent = "Actor questions complete!";
+      document.querySelector('.nextActor').style.opacity = "1";
+      document.querySelector('.nextActor').style.transform = 'translateY(-600px) translateX(-50%)';
+      document.querySelector('.nextActor').style.transition = '250ms all ease';
+
+    },
+
+    winGame: function(){
+      console.log('Game completed');
+      document.querySelector('.local-storage-reset').style.transform = 'translateY(-600px) translateX(-50%)';
+      document.querySelector('.statistics').style.display = "none";
+      document.querySelector('.content').style.display = "none";
+      document.querySelector('.button-container').style.display = "none";
+    },
+
+    resetGame: function(e){
+      e.preventDefault();
+      // empty local storage
+      LocalStorageCtrl.deletePersonFromLocalStorage();
+      LocalStorageCtrl.deleteIdFromLS();
+  
+      location.reload(true);
+    }
     
     
    

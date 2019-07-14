@@ -1,4 +1,5 @@
 import QuestionsCtrl from './Questions.js';
+import UICtrl from './UICtrl.js';
 
 const LevelCtrl = (function(){
   
@@ -50,6 +51,7 @@ const LevelCtrl = (function(){
           // clickable after level 3
           // may be put some string as an actor is completed
           // update score to localstorage?
+          UICtrl.continueGame();
           console.log('error level - actor completed');
           break;
       }
