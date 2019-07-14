@@ -128,7 +128,7 @@ const UICtrl = (function(){
           // Setting the coords of person
           let clickedPerson = this;
           let clickedPersonCoords = this.getBoundingClientRect();
-          console.log(clickedPersonCoords);
+          //console.log(clickedPersonCoords);
           let positionLeft = (clickedPersonCoords.x);    // distance from left edge
           let positionTop = (clickedPersonCoords.y);          // distance from top edge
 

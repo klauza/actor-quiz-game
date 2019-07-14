@@ -14,8 +14,8 @@ const App = (function(UICtrl, PersonCtrl){
     const selectors = UICtrl.getSelectors();  
     document.addEventListener('DOMContentLoaded', displayDataFromAPI);
 
-    document.querySelector('.button-1').addEventListener('click', getChosenPerson);
-    document.querySelector('.button-2').addEventListener('click', changeSkill1);
+    //document.querySelector('.button-1').addEventListener('click', getChosenPerson);
+   // document.querySelector('.button-2').addEventListener('click', changeSkill1);
     document.querySelector('.local-storage-reset').addEventListener('click', resetGame);
   
   }
@@ -57,6 +57,7 @@ const App = (function(UICtrl, PersonCtrl){
    
     UICtrl.updateStage();
     
+    // initialization of game start           /* GAME STARTS HERE */
     OneCtrl.initOne();
   }
 
@@ -77,6 +78,7 @@ const App = (function(UICtrl, PersonCtrl){
  ///////////-GAME AFTER CHOOSING PERSON-//////////
 
  // Button-1 test - log into console chosen person
+ /*
   const getChosenPerson = function(e){
 
   const person = PersonCtrl.getPerson();
@@ -94,7 +96,7 @@ const App = (function(UICtrl, PersonCtrl){
     PersonCtrl.personFillUi();        // repaint the UI
     e.preventDefault();
   }
-
+*/
 
   ///////////-GAME RESET-//////////
   const resetGame = function(e){

@@ -10,7 +10,7 @@ const OneCtrl = (function(){
   return{
 
     initOne: function(){
-      console.log('First task initialized');
+      // console.log('First task initialized');
 
       document.querySelector('.welcome-text').classList.add('textHover');
       document.querySelector('.welcome-text').addEventListener('click', OneCtrl.textChange); // puts first question
@@ -59,7 +59,7 @@ const OneCtrl = (function(){
         if (answer == buttonID){
           console.log('correct!');
           allAnswers.style.display = "none";    // hide buttons
-          document.querySelector('.tasksToCompleteValue').textContent = '2'; // decrement tasks to win a game
+          document.querySelector('.scoreValue').textContent = '1'; // incement score 
 
             // remove event listeners from buttons
           answers.forEach((button)=>{

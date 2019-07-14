@@ -80,7 +80,7 @@ const TwoCtrl = (function(){
         if (correctAnswer == buttonText){
           console.log('correct!');
           allAnswers.style.display = "none";    // hide buttons
-          document.querySelector('.tasksToCompleteValue').textContent = '1'; // decrement tasks to win a game
+          document.querySelector('.scoreValue').textContent = '2'; // incement score 
 
             // remove event listeners from buttons
           answers.forEach((button)=>{

@@ -69,7 +69,7 @@ const ThreeCtrl = (function(){
         if (correctAnswer == buttonText){
           console.log('correct!');
           allAnswers.style.display = "none";    // hide buttons
-          document.querySelector('.tasksToCompleteValue').textContent = '0'; // decrement tasks to win a game
+          document.querySelector('.scoreValue').textContent = '3'; // incement score 
 
             // remove event listeners from buttons
           answers.forEach((button)=>{
@@ -91,7 +91,6 @@ const ThreeCtrl = (function(){
       console.log('you won!');
       document.querySelector('.welcome-text').textContent = `you won!`;
       document.querySelector('.local-storage-reset').style.transform = 'translateY(-600px) translateX(-50%)';
-      document.querySelector('.tasksToComplete').style.display = "none";
       document.querySelector('.statistics').style.display = "none";
       document.querySelector('.content').style.display = "none";
       document.querySelector('.button-container').style.display = "none";
