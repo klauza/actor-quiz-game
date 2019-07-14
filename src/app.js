@@ -6,6 +6,9 @@ import PersonCtrl from './controllers/PersonCtrl.js';
 
 import OneCtrl from './controllers/OneCtrl.js';
 
+import LevelCtrl from './controllers/Level.js';
+// import questions
+
 const App = (function(UICtrl, PersonCtrl){
 
   
@@ -58,7 +61,7 @@ const App = (function(UICtrl, PersonCtrl){
     UICtrl.updateStage();
     
     // initialization of game start           /* GAME STARTS HERE */
-    OneCtrl.initOne();
+    LevelCtrl.initText();
   }
 
   const randomPerson = function(){

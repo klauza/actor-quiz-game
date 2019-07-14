@@ -1,4 +1,4 @@
-// import another ctrl?
+import QuestionsCtrl from './Questions.js';
 
 const LevelCtrl = (function(){
   
@@ -9,7 +9,17 @@ const LevelCtrl = (function(){
 
   return{
     initText: function(){
-      
+      document.querySelector('.welcome-text').classList.add('textHover'); // add hover
+      document.querySelector('.welcome-text').addEventListener('click', LevelCtrl.showQuestionText); // puts first question
+    },
+    // change text to question
+    showQuestionText: function(){
+      document.querySelector('.welcome-text').classList.remove('textHover'); // remove hover
+      document.querySelector('.welcome-text').textContent = `Question content from level ctrl`;
+
+      document.querySelector('.welcome-text').removeEventListener("click", LevelCtrl.showQuestionText, false);      // Succeeds
+
+      QuestionsCtrl.showQuestion();  // show question
     },
 
     showLevel: function(){
