@@ -1,4 +1,6 @@
 import PersonCtrl from './PersonCtrl.js';
+import LevelCtrl from './Level.js';
+
 
 const QuestionsCtrl = (function(){
   
@@ -28,10 +30,6 @@ const QuestionsCtrl = (function(){
       let random1 = Math.floor(randomNumber1); 
       let randomNumber2 = Math.random() * 3;  // 0 1 2
       let random2 = Math.floor(randomNumber2); 
-
-      // answers[0].textContent = actorMovie; 
-      // answers[1].textContent = randomMovie1[random1];
-      // answers[2].textContent = randomMovie2[random2];
 
       // put all answers in new array
       let newArray = new Array; // init new array
@@ -99,36 +97,47 @@ const QuestionsCtrl = (function(){
       // guess the answer
       answers.forEach((button)=>{
         button.addEventListener('click', tryGuess);
-        
       })
 
       function tryGuess(){
-        let buttonID = this.dataset.num
-        let answer = 1;
-        if (answer == buttonID){
-          console.log('correct!');
-          allAnswers.style.display = "none";    // hide buttons
-          document.querySelector('.scoreValue').textContent = '1'; // incement score 
+        let guess = this.textContent;   // string of clicked answer
+        let correctAnswer = actorMovie;   // string of correct answer
 
-            // remove event listeners from buttons
+        if (correctAnswer == guess){ 
+          console.log('correct!');
+
+          QuestionsCtrl.clearAnswers();
+          QuestionsCtrl.hideAnswers();
+
+          LevelCtrl.IncreaseScoreByOne(); // incement score 
+
+          // remove event listeners from buttons
           answers.forEach((button)=>{
             button.removeEventListener("click", tryGuess, false);
           })
-          
-          TwoCtrl.initTwo();// init TwoCtrl
+
+          // clear block answers
+
+          LevelCtrl.initText();  // init next level
+         
 
         } else {
-          console.log('bad answer!');
+          console.log('bad answer! Game over!');
+          //game over
         }
 
       }
 
     },
 
-    hideQuestion: function(){
-      // hides question
-
-      // push next level
+    clearAnswers: function(){
+      let allAnswers = document.querySelector('.answers');
+      let answers = Array.from(allAnswers.children);
+      answers.forEach((answer)=> {answer.textContent=''}); // loop
+      
+    },
+    hideAnswers: function(){
+      document.querySelector('.answers').style.display = "none";    // hide buttons
     }
 
 

@@ -3,7 +3,8 @@ import QuestionsCtrl from './Questions.js';
 const LevelCtrl = (function(){
   
   const storage = {
-    number: ''
+    number: '',
+    score: 0
   }
 
 
@@ -32,6 +33,12 @@ const LevelCtrl = (function(){
 
     initQuestion: function(){
       // get question from QuestionCtrl.js
+    },
+
+    IncreaseScoreByOne: function(){
+      console.log('score has been increased');
+      storage.score++;
+      document.querySelector('.scoreValue').textContent = storage.score; 
     }
 
   }
