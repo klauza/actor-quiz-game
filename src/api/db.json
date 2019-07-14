@@ -7,7 +7,7 @@
     "skill1": "Knows nothing",
     "skill2": "Has a wolf",
     "skill3": "High skill in sword wielding",
-    "movies": "Game of Thrones"
+    "movies": ["Game of Thrones", "Testament of Youth", "Pompeii"]
   },
   {
     "id": 2,

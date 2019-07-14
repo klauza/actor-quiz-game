@@ -6,20 +6,43 @@ const LocalStorageCtrl = (function(){
   }
 
   return{
+    getIdFromStorage: function(){
+      let ids;
+
+      if(localStorage.getItem('actorIdToFilterOut') === null){
+        ids = [];
+
+      } else {
+        ids = JSON.parse(localStorage.getItem('actorIdToFilterOut'));
+      }
+
+      return ids;
+    },
+
     setPersonIdToLS: function(data){  // receive the id of already 'won' actor
       let id = data;
-      console.log('id stored');
-      let LSId = [];  // init id in LS
+      let existingIds;
+      if(localStorage.getItem('actorIdToFilterOut') === null){  // if null set first item
+        let existingIds = [];
+        existingIds.push(id);
+        localStorage.setItem('actorIdToFilterOut', JSON.stringify(existingIds));
+        console.log('first id stored');
 
-      LSId.push(id)
+      } else {    // if not null, add more
+        existingIds = JSON.parse(localStorage.getItem('actorIdToFilterOut'));
+        existingIds.push(id);
+        localStorage.setItem('actorIdToFilterOut', JSON.stringify(existingIds));
+        console.log('another id stored');
+      }
       
-      localStorage.setItem('actorIdToFilterOut', JSON.stringify(LSId));
-
     },
+
 
     deleteIdFromLS: function(){
       localStorage.removeItem('actorIdToFilterOut');
     },
+
+  
 
 
   }

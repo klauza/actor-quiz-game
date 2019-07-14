@@ -1,3 +1,6 @@
+import LocalStorageCtrl from './LocalStorage.js';
+
+
 const UICtrl = (function(){
   const UISelectors = {
     formSubmit: '#start-button',
@@ -62,41 +65,52 @@ const UICtrl = (function(){
  
 
     renderPeople: function(data){
-      //console.log(data);
       document.querySelector('.welcome-text').style.display = "block";
-   
+
+      // get actor ids data from ls
+      let idsFromLS = LocalStorageCtrl.getIdFromStorage();
+      console.log('ids to filter out: ', idsFromLS);
+      
+      // filter out completed actors and create new array - multiple filter
+      var filtered = data.filter(function(e){
+          return this.indexOf(e.id) < 0;
+        }, idsFromLS
+      );
+      console.log('filtered: ',filtered);
+
       let output = '';
-        data.forEach(function(post){
 
-          person.items.push(post);  // put each json unit into person.items
-          let delay = (post.id)*150;
-          
-          output += 
-          `
-          <div id="${post.id}" class="person-block" style="animation-delay: ${delay}ms">
-            <div class="img-container">
-              <img src="${post.image}">
-            </div>
-            <p>${post.title}</p>
-            <p>${post.body}</p>
-          </div>
-          `;
-          
-        });
+      filtered.forEach(function(post){
 
-        // add random block
-       // let length = person.items;
-        let delay = 6*150;
+        person.items.push(post);  // put each json unit into person.items
+        let delay = (post.id)*150;
+        
         output += 
         `
-        <div class="random-block" style="animation-delay: ${delay}ms">
-            <div class="img-container">
-              <img src="./img/random.jpg">
-            </div>
-            <p>Random</p>
-            <p>Actor</p>
+        <div id="${post.id}" class="person-block" style="animation-delay: ${delay}ms">
+          <div class="img-container">
+            <img src="${post.image}">
           </div>
+          <p>${post.title}</p>
+          <p>${post.body}</p>
+        </div>
         `;
+        
+      });
+
+      // add random block
+      // let length = person.items;
+      let delay = 6*150;
+      output += 
+      `
+      <div class="random-block" style="animation-delay: ${delay}ms">
+          <div class="img-container">
+            <img src="./img/random.jpg">
+          </div>
+          <p>Random</p>
+          <p>Actor</p>
+        </div>
+      `;
       
       document.querySelector('.content').innerHTML = output;
       return data
