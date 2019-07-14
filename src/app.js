@@ -51,7 +51,7 @@ const App = (function(UICtrl, PersonCtrl){
 
     let person = UICtrl.getPersonById(id);  // store a person
     //console.log(person.skill1); //valid
-    console.log(person);
+    //console.log(person);
 
     PersonCtrl.savePerson(person);  // save locally
     PersonCtrl.personFillUi(); // get from local

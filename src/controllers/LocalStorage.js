@@ -6,6 +6,14 @@ const LocalStorageCtrl = (function(){
   }
 
   return{
+    // SCORE
+    getScore: function(){
+
+    },
+    addScore: function(){
+
+    },
+
 
     // ID
     getIdFromStorage: function(){
@@ -28,13 +36,13 @@ const LocalStorageCtrl = (function(){
         let existingIds = [];
         existingIds.push(id);
         localStorage.setItem('actorIdToFilterOut', JSON.stringify(existingIds));
-        console.log('first id stored');
+        // first id stored
 
       } else {    // if not null, add more
         existingIds = JSON.parse(localStorage.getItem('actorIdToFilterOut'));
         existingIds.push(id);
         localStorage.setItem('actorIdToFilterOut', JSON.stringify(existingIds));
-        console.log('another id stored');
+        // another id stored
       }
       
     },

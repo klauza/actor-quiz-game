@@ -24,7 +24,7 @@ const UICtrl = (function(){
     },
     updateStage: function(){
       person.stage++;
-      console.log('stage updated, now stage: ', person.stage);
+      //console.log('stage updated, now stage: ', person.stage);
     },
     
  
@@ -67,53 +67,57 @@ const UICtrl = (function(){
     renderPeople: function(data){
       document.querySelector('.welcome-text').style.display = "block";
 
-      // get actor ids data from ls
+      // get actor ids data from ls to be filtered
       let idsFromLS = LocalStorageCtrl.getIdFromStorage();
-      console.log('ids to filter out: ', idsFromLS);
       
-      // filter out completed actors and create new array - multiple filter
+      // filter out completed actors and create new array 'filtered'
       var filtered = data.filter(function(e){
           return this.indexOf(e.id) < 0;
         }, idsFromLS
       );
-      console.log('filtered: ',filtered);
 
       let output = '';
 
-      filtered.forEach(function(post){
+      // check game is completed
+      if(filtered == ''){
+        alert("Congratulations, you have completed all tasks, click reset button to start over xD");
+      } else {
 
-        person.items.push(post);  // put each json unit into person.items
-        let delay = (post.id)*150;
-        
+        filtered.forEach(function(post){
+
+          person.items.push(post);  // put each json unit into person.items
+          let delay = (post.id)*150;
+          
+          output += 
+          `
+          <div id="${post.id}" class="person-block" style="animation-delay: ${delay}ms">
+            <div class="img-container">
+              <img src="${post.image}">
+            </div>
+            <p>${post.title}</p>
+            <p>${post.body}</p>
+          </div>
+          `;
+          
+        });
+
+        // add random block
+        // let length = person.items;
+        let delay = 6*150;
         output += 
         `
-        <div id="${post.id}" class="person-block" style="animation-delay: ${delay}ms">
-          <div class="img-container">
-            <img src="${post.image}">
+        <div class="random-block" style="animation-delay: ${delay}ms">
+            <div class="img-container">
+              <img src="./img/random.jpg">
+            </div>
+            <p>Random</p>
+            <p>Actor</p>
           </div>
-          <p>${post.title}</p>
-          <p>${post.body}</p>
-        </div>
         `;
         
-      });
-
-      // add random block
-      // let length = person.items;
-      let delay = 6*150;
-      output += 
-      `
-      <div class="random-block" style="animation-delay: ${delay}ms">
-          <div class="img-container">
-            <img src="./img/random.jpg">
-          </div>
-          <p>Random</p>
-          <p>Actor</p>
-        </div>
-      `;
-      
-      document.querySelector('.content').innerHTML = output;
-      return data
+        document.querySelector('.content').innerHTML = output;
+        return data
+      }
     },
 
    

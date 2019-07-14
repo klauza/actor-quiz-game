@@ -16,7 +16,7 @@ const LevelCtrl = (function(){
     // change text to question
     showQuestionText: function(){
       document.querySelector('.welcome-text').classList.remove('textHover'); // remove hover
-      document.querySelector('.welcome-text').textContent = `Question content from level ctrl`;
+      document.querySelector('.welcome-text').textContent = "In which movie has this actor been playing?";
 
       document.querySelector('.welcome-text').removeEventListener("click", LevelCtrl.showQuestionText, false);      // Succeeds
 
