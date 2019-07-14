@@ -6,6 +6,8 @@ const LocalStorageCtrl = (function(){
   }
 
   return{
+
+    // ID
     getIdFromStorage: function(){
       let ids;
 
@@ -36,10 +38,26 @@ const LocalStorageCtrl = (function(){
       }
       
     },
-
-
+    
     deleteIdFromLS: function(){
       localStorage.removeItem('actorIdToFilterOut');
+    },
+
+
+    // PERSON 
+    setPersonToLocalStorage: function(data){  
+      let person = data;
+     // console.log('person has been set successfully in LocalStorage');
+      let LSperson = [];  // init person in local storage
+
+      LSperson.push(person)
+      
+      localStorage.setItem('LSperson', JSON.stringify(LSperson));
+
+    },
+
+    deletePersonFromLocalStorage: function(){
+      localStorage.removeItem('LSperson');
     },
 
   

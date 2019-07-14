@@ -1,6 +1,7 @@
 /*
 
 */
+import LocalStorageCtrl from './controllers/LocalStorage.js';
 import UICtrl from './controllers/UICtrl.js';
 import PersonCtrl from './controllers/PersonCtrl.js';
 
@@ -54,7 +55,7 @@ const App = (function(UICtrl, PersonCtrl){
 
     PersonCtrl.savePerson(person);  // save locally
     PersonCtrl.personFillUi(); // get from local
-    PersonCtrl.setPersonToLocalStorage(person); // save to LS
+    LocalStorageCtrl.setPersonToLocalStorage(person); // save to LS
     //UICtrl.showPersonUi();
     
    
@@ -105,7 +106,8 @@ const App = (function(UICtrl, PersonCtrl){
   const resetGame = function(e){
 
     // empty local storage
-    PersonCtrl.deletePersonFromLocalStorage();
+    LocalStorageCtrl.deletePersonFromLocalStorage();
+    LocalStorageCtrl.deleteIdFromLS();
 
     location.reload();
     e.preventDefault();

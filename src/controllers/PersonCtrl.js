@@ -26,21 +26,7 @@ const PersonCtrl = (function(){
       return chosenPerson.data;
     },
 
-    setPersonToLocalStorage: function(data){  
-      let person = data;
-     // console.log('person has been set successfully in LocalStorage');
-      let LSperson = [];  // init person in local storage
 
-      LSperson.push(person)
-      
-      localStorage.setItem('LSperson', JSON.stringify(LSperson));
-
-    },
-
-    deletePersonFromLocalStorage: function(){
-      localStorage.removeItem('LSperson');
-
-    },
 
     changeSkill: function(newSkill){
       chosenPerson.data.skill1 = newSkill;
