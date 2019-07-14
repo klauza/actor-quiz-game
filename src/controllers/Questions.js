@@ -3,6 +3,7 @@ import LevelCtrl from './Level.js';
 import LocalStorageCtrl from './LocalStorage.js';
 
 
+
 const QuestionsCtrl = (function(){
   
   const question = {
@@ -37,8 +38,8 @@ const QuestionsCtrl = (function(){
 
      
       // hardcoded wrong answers
-      let randomMovie1 = ['randomMovie1', 'randomMovie2', 'randomMovie3'];
-      let randomMovie2 = ['randomMovie4', 'randomMovie5', 'randomMovie6'];
+      let randomMovie1 = ['Fight Club', 'The Green Mile', 'The Matrix', 'Intouchables', 'Pirates of the Caribbean', 'Cast Away', 'The Butterfly Effect'];
+      let randomMovie2 = ['randomMovie4', 'Léon', 'Gladiator', 'The Hangover', 'Se7en', 'Seven Pounds', 'A Beautiful Mind', 'The Da Vinci Code', 'Gran Torino'];
 
       let randomNumber1 = Math.random() * randomMovie1.length;  // 0 1 2 => length 3
       let random1 = Math.floor(randomNumber1); 
@@ -134,7 +135,10 @@ const QuestionsCtrl = (function(){
           console.log('the id of an actor: ',actor.id)
           // store actor's id into LS
           LocalStorageCtrl.setPersonIdToLS(actorId);  // init next level
-         
+
+          setTimeout(()=>{
+            location.reload(true);
+          }, 1000);
 
         } else {
           console.log('bad answer! Game over!');
