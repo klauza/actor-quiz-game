@@ -31,7 +31,10 @@ const UICtrl = (function(){
     showScore: function(){
       let score = LocalStorageCtrl.getScore(); // get score
       LevelCtrl.updateScoreFromLS(score);
+      if( score.length === 0 ){ score=Number(score); }  // sets score to 0 if the LS does not exist yet
+
       console.log('score is: ',score);
+      
       document.querySelector('.scoreValue').textContent = score; 
     },
 
