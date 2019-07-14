@@ -30,26 +30,30 @@ const LevelCtrl = (function(){
       switch(level){
         case 1: 
           document.querySelector('.welcome-text').textContent = "In which movie has this actor been playing?";
-          QuestionsCtrl.showQuestion();  // show question
+          QuestionsCtrl.showQuestion(1);  // show question
           console.log('level 1');
           break;
 
         case 2:
           document.querySelector('.welcome-text').textContent = "LEVEL 2";
+          QuestionsCtrl.showQuestion(2);  // show question
           console.log('level 2');
           break;
 
         case 3:
           document.querySelector('.welcome-text').textContent = "LEVEL 3";
+          QuestionsCtrl.showQuestion(3);  // show question
           console.log('level 3');
           break;
 
         default:
-          console.log('error level');
+          // clickable after level 3
+          // may be put some string as an actor is completed
+          console.log('error level - actor completed');
           break;
       }
     },
-    
+
 
     initQuestion: function(){
       // get question from QuestionCtrl.js

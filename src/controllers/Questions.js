@@ -18,8 +18,20 @@ const QuestionsCtrl = (function(){
       // return question.cookie_1_movie
     },
 
-    showQuestion: function(){
-
+    showQuestion: function(level){
+      console.log(level);
+      switch(level){
+        case 1:
+          console.log('hello 1');
+          break;
+        case 2:
+          console.log('hello 2');
+          break;
+        case 3:
+          console.log('hello 3');
+          break
+        
+      }
       // display block with questions
       let allAnswers = document.querySelector('.answers');
       allAnswers.style.display = "flex";
@@ -123,11 +135,6 @@ const QuestionsCtrl = (function(){
 
           LevelCtrl.initText();     // go to next level
 
-          // setTimeout(()=>{
-          //   location.reload(true);
-          // }, 1000);
-
-          
         } else {
           console.log('bad answer! Game over!');
           //game over
