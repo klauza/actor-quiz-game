@@ -27,7 +27,7 @@
     "skill1": "Can swim in cold water",
     "skill2": "Will win any bet",
     "skill3": "Icebraker",
-    "movies": "Titanic"
+    "movies": ["Titanic", "Inception", "Django Unchained", "Gangs of New York", "The Wolf of Wall Street"]
   },
   {
     "id": 4,
@@ -37,7 +37,7 @@
     "skill1": "Has a Chevrolet Malibu",
     "skill2": "Firm and serious",
     "skill3": "Can dazzle",
-    "movies": "Drive"
+    "movies": ["Drive", "Blade Runner 2049", "Lars and the Real Girl"]
   },
   {
     "id": 5,
@@ -47,6 +47,6 @@
     "skill1": "An outsider",
     "skill2": "Aiming at the goal",
     "skill3": "Can break a rule",
-    "movies": "Avatar"
+    "movies": ["Avatar", "Guardians of the Galaxy", "Star Trek"]
   }
 ]
