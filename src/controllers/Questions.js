@@ -115,12 +115,19 @@ const QuestionsCtrl = (function(){
 
           let actorId = actor.id;
           // store actor's id into LS
-          LocalStorageCtrl.setPersonIdToLS(actorId);  // init next level
+          LocalStorageCtrl.setPersonIdToLS(actorId);  // mark an actor as completed, put his/her id to local storage to filter it out at new game
 
-          setTimeout(()=>{
-            location.reload(true);
-          }, 1000);
+          document.querySelector('.welcome-text').textContent = "Very good, proceed to next level"; // change text before level 2 start
 
+          LevelCtrl.updateLevel();  // update level by 1
+
+          LevelCtrl.initText();     // go to next level
+
+          // setTimeout(()=>{
+          //   location.reload(true);
+          // }, 1000);
+
+          
         } else {
           console.log('bad answer! Game over!');
           //game over
