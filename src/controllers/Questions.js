@@ -19,16 +19,25 @@ const QuestionsCtrl = (function(){
       allAnswers.style.display = "flex";
       let answers = Array.from(allAnswers.children);
 
-      // get data 
-      let actorMovie = PersonCtrl.getPerson().movies[1];  // get a random movie
+      
+      // get chosen actor's data
+      // let actorMovie = PersonCtrl.getPerson().movies[1];  // get a random movie
+      let actor = PersonCtrl.getPerson();
+      let actorMoviesAmount = actor.movies.length;   // sum of actor movies
+      console.log('ilosc filmów: ', actorMoviesAmount);
+
+      let randomActorMovieId = Math.floor(Math.random() * actorMoviesAmount); 
+      let actorMovie = actor.movies[randomActorMovieId];
+
+
 
       // hardcoded wrong answers
       let randomMovie1 = ['randomMovie1', 'randomMovie2', 'randomMovie3'];
       let randomMovie2 = ['randomMovie4', 'randomMovie5', 'randomMovie6'];
 
-      let randomNumber1 = Math.random() * 3;  // 0 1 2
+      let randomNumber1 = Math.random() * randomMovie1.length;  // 0 1 2 => length 3
       let random1 = Math.floor(randomNumber1); 
-      let randomNumber2 = Math.random() * 3;  // 0 1 2
+      let randomNumber2 = Math.random() * randomMovie2.length;  // 0 1 2
       let random2 = Math.floor(randomNumber2); 
 
       // put all answers in new array
@@ -94,7 +103,7 @@ const QuestionsCtrl = (function(){
       
 
 
-      // guess the answer
+      // GUESSING THE ANSWER
       answers.forEach((button)=>{
         button.addEventListener('click', tryGuess);
       })
