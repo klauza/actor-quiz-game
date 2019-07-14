@@ -48,5 +48,15 @@
     "skill2": "Aiming at the goal",
     "skill3": "Can break a rule",
     "movies": ["Avatar", "Guardians of the Galaxy", "Star Trek"]
+  },
+  {
+    "id": 6,
+    "title": "Ian McKellen",
+    "body": "Middle Earth",
+    "image": "./api/imgs/ian.gif",
+    "skill1": "fireballs",
+    "skill2": "infinite mana",
+    "skill3": "Has a staff",
+    "movies": ["The Lord of the Rings", "X-Men", "The Hobbit"]
   }
 ]

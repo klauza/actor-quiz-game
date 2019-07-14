@@ -49,6 +49,7 @@ const LevelCtrl = (function(){
         default:
           // clickable after level 3
           // may be put some string as an actor is completed
+          // update score to localstorage?
           console.log('error level - actor completed');
           break;
       }

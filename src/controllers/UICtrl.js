@@ -78,16 +78,16 @@ const UICtrl = (function(){
 
       let output = '';
 
-      // check game is completed
+      // check if game is completed
       if(filtered == ''){
         alert("Congratulations, you have completed all tasks, click reset button to start over xD");
+
       } else {
 
-        filtered.forEach(function(post){
+        filtered.forEach(function(post, index){
 
           person.items.push(post);  // put each json unit into person.items
-          let delay = (post.id)*150;
-          
+          let delay = index*150;
           output += 
           `
           <div id="${post.id}" class="person-block" style="animation-delay: ${delay}ms">
@@ -101,9 +101,9 @@ const UICtrl = (function(){
           
         });
 
-        // add random block
-        // let length = person.items;
-        let delay = 6*150;
+        /* "?" Random Block "?" */
+        let actorLength = filtered.length;  // get number of actors
+        let delay = actorLength*150;
         output += 
         `
         <div class="random-block" style="animation-delay: ${delay}ms">

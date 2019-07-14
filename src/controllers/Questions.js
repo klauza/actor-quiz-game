@@ -19,7 +19,7 @@ const QuestionsCtrl = (function(){
     },
 
     showQuestion: function(level){
-      console.log(level);
+      console.log('current level is: ',level);
       switch(level){
         case 1:
           console.log('hello 1');
@@ -32,6 +32,7 @@ const QuestionsCtrl = (function(){
           break
         
       }
+
       // display block with questions
       let allAnswers = document.querySelector('.answers');
       allAnswers.style.display = "flex";
@@ -39,7 +40,6 @@ const QuestionsCtrl = (function(){
 
 
       // get chosen actor's data
-      // let actorMovie = PersonCtrl.getPerson().movies[1];  // get a random movie
       let actor = PersonCtrl.getPerson();
       let actorMoviesAmount = actor.movies.length;   // sum of actor movies
 
@@ -129,7 +129,7 @@ const QuestionsCtrl = (function(){
           // store actor's id into LS
           LocalStorageCtrl.setPersonIdToLS(actorId);  // mark an actor as completed, put his/her id to local storage to filter it out at new game
 
-          document.querySelector('.welcome-text').textContent = "Very good, proceed to next level"; // change text before level 2 start
+          document.querySelector('.welcome-text').textContent = "Proceed to next question"; // change text before level 2 start
 
           LevelCtrl.updateLevel();  // update level by 1
 
