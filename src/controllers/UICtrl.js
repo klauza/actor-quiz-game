@@ -8,11 +8,14 @@ const UICtrl = (function(){
 
   
   const person = {
-    items: [], // all characters from renderPeople
+    items: [], // stores characters from renderPeople
     stage: 0
   }
 
   return {
+    getSelectors: function(){
+      return UISelectors;
+    },
     getStage: function(){
       return person.stage;
     },
@@ -65,7 +68,7 @@ const UICtrl = (function(){
       let output = '';
         data.forEach(function(post){
 
-          person.items.push(post);  // put all json into person.items
+          person.items.push(post);  // put each json unit into person.items
           let delay = (post.id)*150;
           
           output += 
@@ -167,13 +170,11 @@ const UICtrl = (function(){
         });
        });
        
-    },
+    }
 
     
     
-    getSelectors: function(){
-      return UISelectors;
-    }
+   
 
    
   }

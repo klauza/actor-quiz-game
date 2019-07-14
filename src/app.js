@@ -12,7 +12,7 @@ const App = (function(UICtrl, PersonCtrl){
   // Event Listeners
   const loadEventListeners = function(){
     const selectors = UICtrl.getSelectors();  
-    document.addEventListener('DOMContentLoaded', getJson);
+    document.addEventListener('DOMContentLoaded', displayDataFromAPI);
 
     document.querySelector('.button-1').addEventListener('click', getChosenPerson);
     document.querySelector('.button-2').addEventListener('click', changeSkill1);
@@ -23,20 +23,19 @@ const App = (function(UICtrl, PersonCtrl){
     ///////////-GAME INIT-//////////
 
   // Get from API from local file :)
-  function getJson(){
+  function displayDataFromAPI(){
     fetch('./api/db.json')
       .then(res => res.json())
       .then(data => {
-        UICtrl.renderPeople(data);    // Put data from json onto UI
-        setTimeout(() => {
-          UICtrl.getItemClickEvents(); //animations and stuff apply to each block of person
-          document.querySelectorAll('.person-block').forEach((button) => { button.addEventListener('click', personClick)}); //add listener to each block
-          document.querySelector('.random-block').addEventListener('click', randomPerson);
-        }, 350);
-         // passing data to another function
+        UICtrl.renderPeople(data);    // rendering people. Putting data from json onto UI.
+      })
+      .then(()=>{
+        UICtrl.getItemClickEvents(); //animations and stuff apply to each block of person
+        /*setting click events on blocks*/
+        document.querySelectorAll('.person-block').forEach((button) => { button.addEventListener('click', personClick)}); //add listener to each block
+        document.querySelector('.random-block').addEventListener('click', randomPerson);
       })
       .catch(err => console.log(err));
-      
   }
   
 
@@ -44,21 +43,23 @@ const App = (function(UICtrl, PersonCtrl){
 
   const personClick = function(){   
 
+    let id = parseInt(this.id); // get the ID of chosen actor
 
-    let id = parseInt(this.id); // convert ID to number
-
-    let person = UICtrl.getPersonById(id);
+    let person = UICtrl.getPersonById(id);  // store a person
     //console.log(person.skill1); //valid
+    console.log(person);
 
     PersonCtrl.savePerson(person);  // save locally
     PersonCtrl.personFillUi(); // get from local
     PersonCtrl.setPersonToLocalStorage(person); // save to LS
-    UICtrl.showPersonUi();
+    //UICtrl.showPersonUi();
     
    
     UICtrl.updateStage();
+    
     OneCtrl.initOne();
   }
+
   const randomPerson = function(){
     // Randomize the person's ID
     let allActors = Array.from(document.querySelectorAll('.person-block'));
