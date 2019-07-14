@@ -1,25 +1,30 @@
 import PersonCtrl from './PersonCtrl.js';
 import LevelCtrl from './Level.js';
+import LocalStorageCtrl from './LocalStorage.js';
 
 
 const QuestionsCtrl = (function(){
   
-  const current = {
-    question: ''
+  const question = {
+    cookie_1_movie: ''
   }
 
 
   return{
+    getCookie: function(){
+      // get cookie
+      // return question
+      // return question.cookie_1_movie
+    },
+
     showQuestion: function(){
-      // check  what actor is chosen and show a question depending from it
-      let actorName = PersonCtrl.getPerson().title;   // chosen actor's name
 
       // display block with questions
       let allAnswers = document.querySelector('.answers');
       allAnswers.style.display = "flex";
       let answers = Array.from(allAnswers.children);
 
-      
+
       // get chosen actor's data
       // let actorMovie = PersonCtrl.getPerson().movies[1];  // get a random movie
       let actor = PersonCtrl.getPerson();
@@ -28,9 +33,9 @@ const QuestionsCtrl = (function(){
 
       let randomActorMovieId = Math.floor(Math.random() * actorMoviesAmount); 
       let actorMovie = actor.movies[randomActorMovieId];
+      question.cookie_1_movie = actorMovie;
 
-
-
+     
       // hardcoded wrong answers
       let randomMovie1 = ['randomMovie1', 'randomMovie2', 'randomMovie3'];
       let randomMovie2 = ['randomMovie4', 'randomMovie5', 'randomMovie6'];
@@ -115,8 +120,8 @@ const QuestionsCtrl = (function(){
         if (correctAnswer == guess){ 
           console.log('correct!');
 
-          QuestionsCtrl.clearAnswers();
-          QuestionsCtrl.hideAnswers();
+          QuestionsCtrl.clearAnswers();  // empty string of answers
+          QuestionsCtrl.hideAnswers();   // hide block 'answers'
 
           LevelCtrl.IncreaseScoreByOne(); // incement score 
 
@@ -125,9 +130,10 @@ const QuestionsCtrl = (function(){
             button.removeEventListener("click", tryGuess, false);
           })
 
-          // clear block answers
-
-          LevelCtrl.initText();  // init next level
+          let actorId = actor.id;
+          console.log('the id of an actor: ',actor.id)
+          // store actor's id into LS
+          LocalStorageCtrl.setPersonIdToLS(actorId);  // init next level
          
 
         } else {
@@ -139,7 +145,7 @@ const QuestionsCtrl = (function(){
 
     },
 
-    clearAnswers: function(){
+    clearAnswers: function(){ 
       let allAnswers = document.querySelector('.answers');
       let answers = Array.from(allAnswers.children);
       answers.forEach((answer)=> {answer.textContent=''}); // loop
