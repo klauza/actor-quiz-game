@@ -3,10 +3,8 @@
 */
 import LocalStorageCtrl from './controllers/LocalStorage.js';
 import UICtrl from './controllers/UICtrl.js';
+
 import PersonCtrl from './controllers/PersonCtrl.js';
-
-import OneCtrl from './controllers/OneCtrl.js';
-
 import LevelCtrl from './controllers/Level.js';
 // import questions
 
@@ -15,7 +13,7 @@ const App = (function(UICtrl, PersonCtrl){
   
   // Event Listeners
   const loadEventListeners = function(){
-    const selectors = UICtrl.getSelectors();  
+    // const selectors = UICtrl.getSelectors();  
     document.addEventListener('DOMContentLoaded', displayDataFromAPI);
 
     // document.querySelector('.button-1').addEventListener('click', getChosenPerson);
@@ -53,7 +51,6 @@ const App = (function(UICtrl, PersonCtrl){
     let id = parseInt(this.id); // get the ID of chosen actor
 
     let person = UICtrl.getPersonById(id);  // store a person
-    //console.log(person.skill1); //valid
     //console.log(person);
 
     PersonCtrl.savePerson(person);  // save locally

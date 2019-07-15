@@ -78,10 +78,6 @@ body {
 
 .person-block:hover,
 .random-block:hover {
-  cursor: pointer; }
-
-.person-block:hover p,
-.random-block:hover p {
   cursor: pointer;
   color: white;
   background: black; }
@@ -115,6 +111,9 @@ body {
 .random-block p {
   text-align: center;
   padding: 15px 0; }
+
+.random-block {
+  background: white; }
 
 /* entry Buttons */
 .button-container {

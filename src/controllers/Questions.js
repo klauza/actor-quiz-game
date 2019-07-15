@@ -19,16 +19,16 @@ const QuestionsCtrl = (function(){
     },
 
     showQuestion: function(level){
-      console.log('current level is: ',level);
+      
       switch(level){
         case 1:
-          console.log('hello 1');
+          console.log('hello level 1');
           break;
         case 2:
-          console.log('hello 2');
+          console.log('hello level 2');
           break;
         case 3:
-          console.log('hello 3');
+          console.log('hello level 3');
           break
         
       }
@@ -119,7 +119,7 @@ const QuestionsCtrl = (function(){
           QuestionsCtrl.hideAnswers();   // hide block 'answers'
 
           LevelCtrl.IncreaseScoreByOne(); // incement score 
-          
+
           // remove event listeners from buttons
           answers.forEach((button)=>{
             button.removeEventListener("click", tryGuess, false);

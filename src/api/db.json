@@ -32,7 +32,7 @@
   {
     "id": 4,
     "title": "Ryan Gosling",
-    "body": "City",
+    "body": "Chevrolet Malibu",
     "image": "./api/imgs/maxresdefault.jpg",
     "skill1": "Has a Chevrolet Malibu",
     "skill2": "Firm and serious",
@@ -52,10 +52,10 @@
   {
     "id": 6,
     "title": "Ian McKellen",
-    "body": "Middle Earth",
+    "body": "Has infinite mana",
     "image": "./api/imgs/ian.gif",
     "skill1": "fireballs",
-    "skill2": "infinite mana",
+    "skill2": "Has infinite mana",
     "skill3": "Has a staff",
     "movies": ["The Lord of the Rings", "X-Men", "The Hobbit"]
   }
