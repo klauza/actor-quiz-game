@@ -7,7 +7,9 @@ const UICtrl = (function(){
     formSubmit: '#start-button',
     startingInput: '#start-input',
     createInput: '#create-input',
-    buttonAfterLayoutLoad: '.button-with-class'
+    buttonAfterLayoutLoad: '.button-with-class',
+    prevPerson: '',
+    nextPerson: ''
   }
 
   
@@ -51,6 +53,44 @@ const UICtrl = (function(){
       return found;
     },
 
+    onHoverPushSiblings: function(){
+      // get siblings
+      const hoverPerson = this;
+      const prevPerson = this.previousElementSibling;
+      const nextPerson = this.nextElementSibling;
+
+      // animate hovering person
+      //hoverPerson.style.transform = "translateY(-20px)";
+
+      // animate left for prevPerson except '0' block which does not exist
+      if(hoverPerson.id != 1){
+        prevPerson.style.animation = "animToLeft 250ms forwards";
+      }
+
+      // animate right for nextPerson
+      nextPerson.style.animation = "animToRight 250ms forwards";
+      
+    },
+    onLeaveDragSiblings: function(){
+      // get siblings
+      const hoverPerson = this;
+      const allPersonsCount = document.querySelectorAll('.person-block').length;
+      
+      const prevPerson = this.previousElementSibling;
+      const nextPerson = this.nextElementSibling;
+
+      // animate hovering person
+      // hoverPerson.style.transform = "translateY(0px)";
+
+      // animate back left person block
+      if(hoverPerson.id != 1){
+        prevPerson.style.animation = "animResetLeft 250ms forwards";
+      }
+
+      // animate right for nextPerson
+      nextPerson.style.animation = "animResetRight 250ms forwards";
+
+    },
   
 
     // Starting animation, display ="block" all UI
@@ -130,11 +170,17 @@ const UICtrl = (function(){
     },
 
    
-    // Add Animation on clicked person [ starting phase ]
+    // Add Animation on clicked person [ initializing phase ]
     getItemClickEvents: function(){
       const persons = document.querySelectorAll(".person-block");
       persons.forEach((person)=>{
         person.addEventListener('click', function(){
+          // remove transition animation
+          this.style.opacity = "1";
+          // get hover
+          // this.querySelector(':hover').style.transition = "0ms all ease";
+
+       
 
           setTimeout(()=>{
             document.querySelector('.fill-background-top > .welcome-text').style.opacity ="0";
@@ -150,8 +196,13 @@ const UICtrl = (function(){
            
           }, 625)
 
-
-          
+          // css margin-left
+          const personMargin = document.querySelector('.person-block');
+          const personMarginStyle = window.getComputedStyle(personMargin);  // example: margin = -25px
+          let margin = personMarginStyle.marginLeft;                        
+          margin = margin.split("px",1);                                    // margin = -25
+          let marginLeftCSS = -(margin/2);                                  // margin = 12.5
+         
           // Setting the coords of person
           let clickedPerson = this;
           let clickedPersonCoords = this.getBoundingClientRect();
@@ -161,7 +212,8 @@ const UICtrl = (function(){
 
           let contentWidth = document.querySelector('.content').getBoundingClientRect().width;
           let personBlockWidth = this.getBoundingClientRect().width;
-          personBlockWidth = personBlockWidth/2;
+          personBlockWidth = marginLeftCSS+personBlockWidth/2;              // apply margin 
+          
           positionLeft = positionLeft-contentWidth/2;
           positionLeft = positionLeft+personBlockWidth;
           
@@ -176,7 +228,9 @@ const UICtrl = (function(){
           let personCssSetBeforeAnimation = `display: block; transform: translate(${positionLeft}px, ${positionTop}px);`;
           //clickedPerson.style.cssText = personCssSetBeforeAnimation;
           clickedPerson.style.cssText = personCssSetBeforeAnimation;
-          
+
+          console.log(positionLeft, positionTop);   // TEST
+
           // animate chosen block to the top left corner
           personAnimationToTop(clickedPerson);
 

@@ -35,10 +35,19 @@ const App = (function(UICtrl, PersonCtrl){
         UICtrl.renderPeople(data);    // rendering people. Putting data from json onto UI.
       })
       .then(()=>{
+      
         UICtrl.getItemClickEvents(); //animations and stuff apply to each block of person
         /*setting click events on blocks*/
         document.querySelectorAll('.person-block').forEach((button) => { button.addEventListener('click', personClick)}); //add listener to each block
-        document.querySelector('.random-block').addEventListener('click', randomPerson);
+ 
+      })
+      .then(()=>{
+        setTimeout(()=>{
+          document.querySelectorAll('.person-block').forEach((button) => { button.addEventListener('mouseenter', UICtrl.onHoverPushSiblings)}); //adds hover listenrs
+          document.querySelectorAll('.person-block').forEach((button) => { button.addEventListener('mouseleave', UICtrl.onLeaveDragSiblings)}); 
+          document.querySelector('.random-block').addEventListener('click', randomPerson);
+        }, 1000)
+    
       })
       .catch(err => console.log(err));
   }

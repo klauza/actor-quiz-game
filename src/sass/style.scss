@@ -41,36 +41,58 @@ body{ height: 100%; }
   display: flex;
   flex-wrap: wrap;
 
+  
+
   .person-block,
   .random-block{
+    //transition: 250ms all ease;
+
+    perspective: 300px;
+
     background: white;
     display: inline-block;
     opacity: 0;
     animation: personAnimate 1s forwards;
-    border: 1px solid black;
-    /* transition: 1s all ease; */
+    margin-left: -50px;
+
+    // &>*{
+    //   transform: rotateY(10deg);
+    //   transform-origin: left;
+    //   transition: all 250ms ease;
+    // }
 
     &_img{
       height: 100px;
       width: 200px;
       display: block;
       margin: 0 auto;
+      border: 1px solid black;
       img{
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
     }
-
+   
     p{
       text-align: center;
       padding: 15px 0;
+      border: 1px solid black;
+    }
+
+    &:hover p{
+      color: white;
+      background: black;
     }
 
     &:hover{
-      cursor: pointer;
-      color: white;
-      background: black;
+      
+      //transition: 250ms all ease;
+      // &>*{
+      //   transition: all 250ms ease;
+      //   transform: rotateY(0deg);
+      //   transform-origin: left;
+      // }
     }
   }
 }
