@@ -33,10 +33,11 @@ const App = (function(UICtrl, PersonCtrl){
       .then(data => {
         UICtrl.showScore();
         UICtrl.renderPeople(data);    // rendering people. Putting data from json onto UI.
+        
       })
       .then(()=>{
       
-        UICtrl.getItemClickEvents(); //animations and stuff apply to each block of person
+        //UICtrl.getItemClickEvents(); //animations and stuff apply to each block of person
         /*setting click events on blocks*/
         document.querySelectorAll('.person-block').forEach((button) => { button.addEventListener('click', personClick)}); //add listener to each block
  
@@ -47,7 +48,9 @@ const App = (function(UICtrl, PersonCtrl){
           document.querySelectorAll('.person-block').forEach((button) => { button.addEventListener('mouseleave', UICtrl.onLeaveDragSiblings)}); 
           document.querySelector('.random-block').addEventListener('click', randomPerson);
         }, 1000)
-    
+      
+        
+        console.log(document.querySelectorAll('person-block'));
       })
       .catch(err => console.log(err));
   }

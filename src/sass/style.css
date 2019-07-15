@@ -3,10 +3,6 @@
     opacity: 1;
     -webkit-transform: translatey(0px);
             transform: translatey(0px); }
-  25% {
-    opacity: 0.75; }
-  75% {
-    opacity: 0.75; }
   100% {
     opacity: 1;
     -webkit-transform: translatey(-195px);
@@ -17,10 +13,6 @@
     opacity: 1;
     -webkit-transform: translatey(0px);
             transform: translatey(0px); }
-  25% {
-    opacity: 0.75; }
-  75% {
-    opacity: 0.75; }
   100% {
     opacity: 1;
     -webkit-transform: translatey(-195px);
@@ -71,85 +63,6 @@
     opacity: 1; } }
 
 /* HOVER PERSON ELEMENT */
-@-webkit-keyframes animToLeft {
-  0% {
-    opacity: 1;
-    -webkit-transform: translateX(0px);
-            transform: translateX(0px); }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateX(-50px);
-            transform: translateX(-50px); } }
-@keyframes animToLeft {
-  0% {
-    opacity: 1;
-    -webkit-transform: translateX(0px);
-            transform: translateX(0px); }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateX(-50px);
-            transform: translateX(-50px); } }
-
-@-webkit-keyframes animToRight {
-  0% {
-    opacity: 1;
-    -webkit-transform: translateX(0px);
-            transform: translateX(0px); }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateX(50px);
-            transform: translateX(50px); } }
-
-@keyframes animToRight {
-  0% {
-    opacity: 1;
-    -webkit-transform: translateX(0px);
-            transform: translateX(0px); }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateX(50px);
-            transform: translateX(50px); } }
-
-/*reset to starting position*/
-@-webkit-keyframes animResetLeft {
-  0% {
-    opacity: 1;
-    -webkit-transform: translateX(-50px);
-            transform: translateX(-50px); }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateX(0px);
-            transform: translateX(0px); } }
-@keyframes animResetLeft {
-  0% {
-    opacity: 1;
-    -webkit-transform: translateX(-50px);
-            transform: translateX(-50px); }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateX(0px);
-            transform: translateX(0px); } }
-
-@-webkit-keyframes animResetRight {
-  0% {
-    opacity: 1;
-    -webkit-transform: translateX(50px);
-            transform: translateX(50px); }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateX(0px);
-            transform: translateX(0px); } }
-
-@keyframes animResetRight {
-  0% {
-    opacity: 1;
-    -webkit-transform: translateX(50px);
-            transform: translateX(50px); }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateX(0px);
-            transform: translateX(0px); } }
-
 .fill-background-top {
   /* ICONS */ }
   .fill-background-top .social-icons-block {

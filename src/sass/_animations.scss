@@ -3,12 +3,6 @@
     opacity: 1;
     transform: translatey(0px);
   }
-  25%{  
-    opacity: 0.75;
-  }
-  75%{
-    opacity: 0.75;
-  }
   100%{
     opacity: 1;
     transform: translatey(-195px);
@@ -45,44 +39,44 @@
 
 
 /* HOVER PERSON ELEMENT */
-@keyframes animToLeft{
-  0%{
-    opacity: 1;
-    transform: translateX(0px);
-  }
-  100%{
-    opacity: 1;
-    transform: translateX(-50px);
-  }
-}
-@keyframes animToRight{
-  0%{
-    opacity: 1;
-    transform: translateX(0px);
-  }
-  100%{
-    opacity: 1;
-    transform: translateX(50px);
-  }
-}
-/*reset to starting position*/
-@keyframes animResetLeft{
-  0%{
-    opacity: 1;
-    transform: translateX(-50px);
-  }
-  100%{
-    opacity: 1;
-    transform: translateX(0px);
-  }
-}
-@keyframes animResetRight{
-  0%{
-    opacity: 1;
-    transform: translateX(50px);
-  }
-  100%{
-    opacity: 1;
-    transform: translateX(0px);
-  }
-}
+// @keyframes animToLeft{
+//   0%{
+//     opacity: 1;
+//     transform: translateX(0px);
+//   }
+//   100%{
+//     opacity: 1;
+//     transform: translateX(-50px);
+//   }
+// }
+// @keyframes animToRight{
+//   0%{
+//     opacity: 1;
+//     transform: translateX(0px);
+//   }
+//   100%{
+//     opacity: 1;
+//     transform: translateX(50px);
+//   }
+// }
+// /*reset to starting position*/
+// @keyframes animResetLeft{
+//   0%{
+//     opacity: 1;
+//     transform: translateX(-50px);
+//   }
+//   100%{
+//     opacity: 1;
+//     transform: translateX(0px);
+//   }
+// }
+// @keyframes animResetRight{
+//   0%{
+//     opacity: 1;
+//     transform: translateX(50px);
+//   }
+//   100%{
+//     opacity: 1;
+//     transform: translateX(0px);
+//   }
+// }

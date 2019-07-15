@@ -58,19 +58,21 @@ const UICtrl = (function(){
       const hoverPerson = this;
       const prevPerson = this.previousElementSibling;
       const nextPerson = this.nextElementSibling;
-
       // animate hovering person
       //hoverPerson.style.transform = "translateY(-20px)";
 
       // animate left for prevPerson except '0' block which does not exist
       if(hoverPerson.id != 1){
-        prevPerson.style.animation = "animToLeft 250ms forwards";
+        prevPerson.style.transform = "translateX(-50px)";
       }
 
       // animate right for nextPerson
-      nextPerson.style.animation = "animToRight 250ms forwards";
+      nextPerson.style.transform = "translateX(50px)";
       
+       // add event listener to the person being hovered
+      UICtrl.getItemClickEvents(hoverPerson);
     },
+
     onLeaveDragSiblings: function(){
       // get siblings
       const hoverPerson = this;
@@ -84,14 +86,114 @@ const UICtrl = (function(){
 
       // animate back left person block
       if(hoverPerson.id != 1){
-        prevPerson.style.animation = "animResetLeft 250ms forwards";
+        prevPerson.style.transform = "translateX(0px)";
       }
 
       // animate right for nextPerson
-      nextPerson.style.animation = "animResetRight 250ms forwards";
+      nextPerson.style.transform = "translateX(0px)";
 
+      UICtrl.removeItemClickEvents(hoverPerson);
+      
     },
-  
+    removeItemClickEvents: function(person){
+
+      //person.removeEventListener("click", UICtrl.getItemClickEvents.runFunction, false);
+     // console.log('removed');
+    },
+   
+    // Add Animation on clicked person [ initializing phase ]
+    getItemClickEvents: function(person){
+      person.style.opacity = "1";
+      person.addEventListener('click', runFunction);
+
+
+      function runFunction(){
+        // remove transition animation
+        this.style.opacity = "1";
+        // get hover
+        // this.querySelector(':hover').style.transition = "0ms all ease";
+        console.log(this, 'clicked');
+     
+
+        setTimeout(()=>{
+          document.querySelector('.fill-background-top > .welcome-text').style.opacity ="0";
+        }, 150);
+
+        setTimeout(()=>{
+          let textNode = document.querySelector('.welcome-text');
+          // let parent = document.querySelector('.fill-background-top');
+          
+          textNode.style.animation = "animationText forwards 2.5s";
+          textNode.textContent = "Okay, let's start! - click me to begin.";
+          
+         
+        }, 625)
+
+        // css margin-left
+        const personMargin = document.querySelector('.person-block');
+        const personMarginStyle = window.getComputedStyle(personMargin);  // example: margin = -25px
+        let margin = personMarginStyle.marginLeft;                        
+        margin = margin.split("px",1);                                    // margin = -25
+        let marginLeftCSS = -(margin/2);                                  // margin = 12.5
+       
+        // Setting the coords of person
+        let clickedPerson = this;
+        let clickedPersonCoords = this.getBoundingClientRect();
+        //console.log(clickedPersonCoords);
+        let positionLeft = (clickedPersonCoords.x);    // distance from left edge
+        let positionTop = (clickedPersonCoords.y);          // distance from top edge
+
+        let contentWidth = document.querySelector('.content').getBoundingClientRect().width;
+        let personBlockWidth = this.getBoundingClientRect().width;
+        personBlockWidth = marginLeftCSS+personBlockWidth/2;              // apply margin 
+        
+        positionLeft = positionLeft-contentWidth/2;
+        positionLeft = positionLeft+personBlockWidth;
+        
+        positionTop = positionTop-200;
+
+        // hide siblings of chosen actor
+        let content = Array.from(document.querySelector('.content').children);
+        let personCssSetBeforeAnimation = `display: block; transform: translate(${positionLeft}px, ${positionTop}px);`;
+
+        content.map((item) => {
+          if(item.id !== clickedPerson.id){
+            console.log(item, 'hidden');
+            item.style.display ='none';
+          } 
+        } ); // hide all blocks
+
+         
+        // set CSS of clicked element
+        // clickedPerson.style.cssText = personCssSetBeforeAnimation;
+        // clickedPerson.style.display = "block";
+        clickedPerson.style.cssText = `display: block; transform: translate(${positionLeft}px, ${positionTop}px);`;
+
+        // animate chosen block to the top left corner
+        personAnimationToTop(clickedPerson);
+
+        // move the item to the top center
+        function personAnimationToTop(person){
+          setTimeout(function(){
+            person.style.transition = 'transform 2s';
+            person.style.transform = `translate(0, -200px)`;
+            
+     
+          }, 550);
+          
+        }
+        person.style.pointerEvents = "none";    // prevent from clicking multiple times
+
+      
+        
+      };
+
+      
+       
+    },
+
+
+
 
     // Starting animation, display ="block" all UI
     showPersonUi: function(){
@@ -139,12 +241,14 @@ const UICtrl = (function(){
           let delay = index*150;
           output += 
           `
-          <div id="${post.id}" class="person-block" style="animation-delay: ${delay}ms">
+          <div class="dodatek'>
+          <div id="${post.id}" class="person-block" style="animation-delay: ${delay}ms;">
             <div class="person-block_img">
               <img src="${post.image}">
             </div>
             <p>${post.title}</p>
             <p>${post.body}</p>
+          </div>
           </div>
           `;
           
@@ -168,91 +272,6 @@ const UICtrl = (function(){
         return data
       }
     },
-
-   
-    // Add Animation on clicked person [ initializing phase ]
-    getItemClickEvents: function(){
-      const persons = document.querySelectorAll(".person-block");
-      persons.forEach((person)=>{
-        person.addEventListener('click', function(){
-          // remove transition animation
-          this.style.opacity = "1";
-          // get hover
-          // this.querySelector(':hover').style.transition = "0ms all ease";
-
-       
-
-          setTimeout(()=>{
-            document.querySelector('.fill-background-top > .welcome-text').style.opacity ="0";
-          }, 150);
-
-          setTimeout(()=>{
-            let textNode = document.querySelector('.welcome-text');
-            // let parent = document.querySelector('.fill-background-top');
-            
-            textNode.style.animation = "animationText forwards 2.5s";
-            textNode.textContent = "Okay, let's start! - click me to begin.";
-            
-           
-          }, 625)
-
-          // css margin-left
-          const personMargin = document.querySelector('.person-block');
-          const personMarginStyle = window.getComputedStyle(personMargin);  // example: margin = -25px
-          let margin = personMarginStyle.marginLeft;                        
-          margin = margin.split("px",1);                                    // margin = -25
-          let marginLeftCSS = -(margin/2);                                  // margin = 12.5
-         
-          // Setting the coords of person
-          let clickedPerson = this;
-          let clickedPersonCoords = this.getBoundingClientRect();
-          //console.log(clickedPersonCoords);
-          let positionLeft = (clickedPersonCoords.x);    // distance from left edge
-          let positionTop = (clickedPersonCoords.y);          // distance from top edge
-
-          let contentWidth = document.querySelector('.content').getBoundingClientRect().width;
-          let personBlockWidth = this.getBoundingClientRect().width;
-          personBlockWidth = marginLeftCSS+personBlockWidth/2;              // apply margin 
-          
-          positionLeft = positionLeft-contentWidth/2;
-          positionLeft = positionLeft+personBlockWidth;
-          
-          positionTop = positionTop-200;
-
-          // hide siblings of chosen actor
-          let content = Array.from(document.querySelector('.content').children);
-          content.map((item) => item.style.display ='none' ); // hide all blocks
-
-           
-          // set CSS of clicked element
-          let personCssSetBeforeAnimation = `display: block; transform: translate(${positionLeft}px, ${positionTop}px);`;
-          //clickedPerson.style.cssText = personCssSetBeforeAnimation;
-          clickedPerson.style.cssText = personCssSetBeforeAnimation;
-
-          console.log(positionLeft, positionTop);   // TEST
-
-          // animate chosen block to the top left corner
-          personAnimationToTop(clickedPerson);
-
-          // move the item to the top center
-          function personAnimationToTop(person){
-            setTimeout(function(){
-              person.style.transition = 'transform 2s';
-              person.style.transform = `translate(0, -200px)`;
-              
-       
-            }, 550);
-            
-          }
-          person.style.pointerEvents = "none";    // prevent from clicking multiple times
-
-        
-          
-        });
-       });
-       
-    },
-
     continueGame: function(){
       console.log('Actor questions complete!');
       document.querySelector('.welcome-text').textContent = "Actor questions complete!";
