@@ -100,7 +100,7 @@ const UICtrl = (function(){
           output += 
           `
           <div id="${post.id}" class="person-block" style="animation-delay: ${delay}ms">
-            <div class="img-container">
+            <div class="person-block_img">
               <img src="${post.image}">
             </div>
             <p>${post.title}</p>
@@ -116,7 +116,7 @@ const UICtrl = (function(){
         output += 
         `
         <div class="random-block" style="animation-delay: ${delay}ms">
-            <div class="img-container">
+            <div class="random-block_img">
               <img src="./img/random.jpg">
             </div>
             <p>Random</p>

@@ -1,0 +1,44 @@
+@keyframes person-to-top-animate{
+  0%{
+    opacity: 1;
+    transform: translatey(0px);
+  }
+  25%{  
+    opacity: 0.75;
+  }
+  75%{
+    opacity: 0.75;
+  }
+  100%{
+    opacity: 1;
+    transform: translatey(-195px);
+  }
+}
+
+@keyframes animationText{
+  0%{
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+  50%{
+    opacity: 0;
+    color: red;
+  }
+  95%{
+    color: red;
+  }
+  100%{
+    opacity: 1;
+    transform: translate(-50%, 550%);
+    color: black;
+  }
+}
+
+@keyframes personAnimate{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}

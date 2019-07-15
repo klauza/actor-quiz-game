@@ -1,105 +1,122 @@
+@import './animations.scss';
+@import './buttons-and-icons.scss';
+
 *, *::before, *::after{
   box-sizing: border-box;
   padding: 0; margin: 0;
 }
-body{
-  height: 100%;
-}
-.welcome-text{
-  display: none;
-}
+body{ height: 100%; }
+
+.welcome-text{ display: none; }
+
 .fill-background-top{
   text-align: center;
   width: 100%;
   height: 200px;
   background: whitesmoke;
   position: relative;
-}
-.fill-background-top span{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: black;
-  transition: 500ms all ease-in-out;
-  font-family: Verdana;
-}
 
-@keyframes animationText{
-  0%{
-    opacity: 0;
+  span{
+    position: absolute;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
+    color: black;
+    transition: 500ms all ease-in-out;
+    font-family: Verdana;
   }
 
-  50%{
-    opacity: 0;
-    color: red;
-  }
-  95%{
-    color: red;
-  }
-  100%{
-    opacity: 1;
-    transform: translate(-50%, 550%);
-    color: black;
-  }
+}
+
+/* Score counter */
+.scoreDiv{
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .content{
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
-}
-.person-block, 
-.random-block{
-  background: white;
-  display: inline-block;
-  opacity: 0;
-  animation: personAnimate 1s forwards;
-  border: 1px solid black;
-  /* transition: 1s all ease; */
-}
 
-.person-block:hover,
-.random-block:hover{
-  cursor: pointer;
-  color: white;
-  background: black;
-}
-
-@keyframes personAnimate{
-  0%{
+  .person-block,
+  .random-block{
+    background: white;
+    display: inline-block;
     opacity: 0;
-  }
-  100%{
-    opacity: 1;
+    animation: personAnimate 1s forwards;
+    border: 1px solid black;
+    /* transition: 1s all ease; */
+
+    &_img{
+      height: 100px;
+      width: 200px;
+      display: block;
+      margin: 0 auto;
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    p{
+      text-align: center;
+      padding: 15px 0;
+    }
+
+    &:hover{
+      cursor: pointer;
+      color: white;
+      background: black;
+    }
   }
 }
 
-.img-container{
-  height: 100px;
-  width: 200px;
-  display: block;
+/* STAGE1 */
+.textHover{
+}
+.textHover:hover{
+  cursor: pointer;
+}
+
+.answers{
+  display: none;
+  align-items: center;
+  flex-direction: column;
   margin: 0 auto;
-}
-.person-block .img-container img,
-.random-block .img-container img{
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+
+  & > .answer{
+    display: block;
+    margin-bottom: 10px;
+    width: 30%;
+    min-width: 300px;
+    height: 40px;
+    border: 0;
+    border-radius: 2px;
+    background: rgb(63, 178, 255);
+    color: black;
+    font-size: 18px;
+    font-family: verdana;
+    box-shadow: 0px 8px 8px -5px rgba(0,0,0,0.75);
+
+    &:hover{
+      cursor: pointer;
+      background: rgb(24, 216, 24);
+    }
+  }
 }
 
-.person-block p,
-.random-block p{
-  text-align: center;
-  padding: 15px 0;
-}
-.random-block{
-background: white;
-}
 
 
-/* entry Buttons */
+
+
+/* UNUSED ATM */
+
+/* entry Buttons  */
 .button-container{
   display: none;
   position: absolute;
@@ -108,7 +125,6 @@ background: white;
   height: 90px;
   /* border: 1px solid black; */
 }
-
 .button-with-class{
   z-index: 3;
   position: absolute;
@@ -135,133 +151,36 @@ background: white;
   display: none;
   opacity: 0;
   transition: 1s all ease;
-}
-.stats-name-from{
-  font-size: 0.75rem;
-  color: grey;
-}
-.stats-name-from, #personName, #personFrom{
-  display: inline-block;
-}
 
-.statistics ul li{
-  list-style: none;
-}
-.statistics #personName{
-  margin-top: 25px;
-}
-
-/* Attributes */
-.attributes{
-  margin-top: 5px;
-}
-.attributes label{
-  display: block;
-}
-
-/* Perks */
-.perks-container{
-  margin-top: 5px;
-  background: grey;
-}
-.perks-container p{
-  color: white;
-}
-
-
-
-/* Task counter */
-.scoreDiv{
-  position: absolute;
-  bottom: 60px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-/* Reset button */
-.local-storage-reset, .nextActor{
-  border: 1px solid black;
-  width: 100px;
-  height: 30px;
-  position: absolute;
-  bottom: 2%;
-  left: 50%;
-  transform: translateX(-50%);
-  color: black;
-  background-color: white;
-  transition: 250ms all ease;
-  border-radius: 2px;
-  box-shadow: 0px 10px 17px -5px rgba(0,0,0,0.75);
-}
-.local-storage-reset:hover{
-  cursor: pointer;
-  background-color: red;
-  color: white;
-  transition: 250ms all ease;
-  box-shadow: 0px 10px 17px 1px rgba(0,0,0,0.75);
-}
-
-/* Continue button */
-.nextActor{   // same style as reset button, see above
-  opacity: 0;
-  transition: 250ms all ease;
-  background-color: lightblue;
-  &:hover{
-    cursor: pointer;
-    color: white;
-    background-color: rgb(123, 195, 219);
-    transition: 250ms all ease;
-    box-shadow: 0px 10px 17px 1px rgba(0,0,0,0.75);
+  .stats-name-from{
+    font-size: 0.75rem;
+    color: grey;
   }
-}
+  .stats-name-from, #personName, #personFrom{
+    display: inline-block;
+  }
 
-/* ICONS */
-.social-icons-block{
-  text-align: right;
-  margin-right: 20px;
-}
-.fa-volume-up, .fa-volume-off{
-  font-size: 2em;
-  color: rgb(122, 122, 122);
-}
-.fa-volume-up:hover{
-  color: green;
-}
-.fa-volume-off:hover{
-  color: red;
-}
-.fa-volume-off{ margin-left: 10px;}
+  .statistics ul li{
+    list-style: none;
+  }
+  .statistics #personName{
+    margin-top: 25px;
+  }
 
+  /* Attributes */
+  .attributes{
+    margin-top: 5px;
+  }
+  .attributes label{
+    display: block;
+  }
 
-/* STAGE 1 */
-.textHover{
-}
-.textHover:hover{
-  cursor: pointer;
-}
-
-.answers{
-    display: none;
-    align-items: center;
-    flex-direction: column;
-    margin: 0 auto;
-    width: 100%;
-}
-.answers > .answer{
-  display: block;
-  margin-bottom: 10px;
-  width: 30%;
-  min-width: 300px;
-  height: 40px;
-  border: 0;
-  border-radius: 2px;
-  background: rgb(63, 178, 255);
-  color: black;
-  font-size: 18px;
-  font-family: verdana;
-  box-shadow: 0px 8px 8px -5px rgba(0,0,0,0.75);;
-}
-.answers > .answer:hover{
-  cursor: pointer;
-  background: rgb(24, 216, 24);
+  /* Perks */
+  .perks-container{
+    margin-top: 5px;
+    background: grey;
+  }
+  .perks-container p{
+    color: white;
+  }
 }
