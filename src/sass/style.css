@@ -63,6 +63,85 @@
     opacity: 1; } }
 
 /* HOVER PERSON ELEMENT */
+@-webkit-keyframes animToLeft {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px); }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(-50px);
+            transform: translateX(-50px); } }
+@keyframes animToLeft {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px); }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(-50px);
+            transform: translateX(-50px); } }
+
+@-webkit-keyframes animToRight {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px); }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(50px);
+            transform: translateX(50px); } }
+
+@keyframes animToRight {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px); }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(50px);
+            transform: translateX(50px); } }
+
+/*reset to starting position*/
+@-webkit-keyframes animResetLeft {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateX(-50px);
+            transform: translateX(-50px); }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px); } }
+@keyframes animResetLeft {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateX(-50px);
+            transform: translateX(-50px); }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px); } }
+
+@-webkit-keyframes animResetRight {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateX(50px);
+            transform: translateX(50px); }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px); } }
+
+@keyframes animResetRight {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateX(50px);
+            transform: translateX(50px); }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px); } }
+
 .fill-background-top {
   /* ICONS */ }
   .fill-background-top .social-icons-block {
@@ -161,13 +240,9 @@ body {
   flex-wrap: wrap; }
   .content .person-block,
   .content .random-block {
-    -webkit-perspective: 300px;
-            perspective: 300px;
     background: white;
     display: inline-block;
     opacity: 0;
-    -webkit-animation: personAnimate 1s forwards;
-            animation: personAnimate 1s forwards;
     margin-left: -50px; }
     .content .person-block_img,
     .content .random-block_img {

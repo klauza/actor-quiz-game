@@ -47,12 +47,12 @@ body{ height: 100%; }
   .random-block{
     // transition: 250ms all ease;
 
-    perspective: 300px;
+    //perspective: 300px;
 
     background: white;
     display: inline-block;
     opacity: 0;
-    animation: personAnimate 1s forwards;
+    //animation: personAnimate 1s forwards;
     margin-left: -50px;
 
     // &>*{
@@ -87,7 +87,7 @@ body{ height: 100%; }
 
     &:hover{
       
-      //transition: 250ms all ease;
+      // transition: 250ms all ease;
       // &>*{
       //   transition: all 250ms ease;
       //   transform: rotateY(0deg);

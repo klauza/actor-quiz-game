@@ -63,11 +63,13 @@ const UICtrl = (function(){
 
       // animate left for prevPerson except '0' block which does not exist
       if(hoverPerson.id != 1){
-        prevPerson.style.transform = "translateX(-50px)";
+        // prevPerson.style.transform = "translateX(-50px)";
+        prevPerson.style.animation = "animToLeft 250ms forwards";
       }
 
       // animate right for nextPerson
-      nextPerson.style.transform = "translateX(50px)";
+      // nextPerson.style.transform = "translateX(50px)";
+      nextPerson.style.animation = "animToRight 250ms forwards";
       
        // add event listener to the person being hovered
       UICtrl.getItemClickEvents(hoverPerson);
@@ -86,18 +88,20 @@ const UICtrl = (function(){
 
       // animate back left person block
       if(hoverPerson.id != 1){
-        prevPerson.style.transform = "translateX(0px)";
+        // prevPerson.style.transform = "translateX(0px)";
+        prevPerson.style.animation = "animResetLeft 250ms forwards";
       }
 
       // animate right for nextPerson
-      nextPerson.style.transform = "translateX(0px)";
+      // nextPerson.style.transform = "translateX(0px)";
+      nextPerson.style.animation = "animResetRight 250ms forwards";
 
       UICtrl.removeItemClickEvents(hoverPerson);
-      
+   
     },
     removeItemClickEvents: function(person){
 
-      //person.removeEventListener("click", UICtrl.getItemClickEvents.runFunction, false);
+      // person.removeEventListener("click", UICtrl.getItemClickEvents.runFunction, false);
      // console.log('removed');
     },
    
@@ -109,7 +113,7 @@ const UICtrl = (function(){
 
       function runFunction(){
         // remove transition animation
-        this.style.opacity = "1";
+        
         // get hover
         // this.querySelector(':hover').style.transition = "0ms all ease";
         console.log(this, 'clicked');
@@ -158,7 +162,7 @@ const UICtrl = (function(){
 
         content.map((item) => {
           if(item.id !== clickedPerson.id){
-            console.log(item, 'hidden');
+            //console.log(item, 'hidden');
             item.style.display ='none';
           } 
         } ); // hide all blocks
@@ -171,12 +175,12 @@ const UICtrl = (function(){
 
         // animate chosen block to the top left corner
         personAnimationToTop(clickedPerson);
-
+        this.style.opacity = "1";
         // move the item to the top center
         function personAnimationToTop(person){
           setTimeout(function(){
             person.style.transition = 'transform 2s';
-            person.style.transform = `translate(0, -200px)`;
+            person.style.transform = `translate(25px, -200px)`;
             
      
           }, 550);
@@ -241,14 +245,13 @@ const UICtrl = (function(){
           let delay = index*150;
           output += 
           `
-          <div class="dodatek'>
-          <div id="${post.id}" class="person-block" style="animation-delay: ${delay}ms;">
+          
+          <div id="${post.id}" class="person-block" style="animation: personAnimate 1s forwards; animation-delay: ${delay}ms;">
             <div class="person-block_img">
               <img src="${post.image}">
             </div>
             <p>${post.title}</p>
             <p>${post.body}</p>
-          </div>
           </div>
           `;
           
@@ -259,7 +262,7 @@ const UICtrl = (function(){
         let delay = actorLength*150;
         output += 
         `
-        <div class="random-block" style="animation-delay: ${delay}ms">
+        <div class="random-block" style="animation: personAnimate 1s forwards; animation-delay: ${delay}ms">
             <div class="random-block_img">
               <img src="./img/random.jpg">
             </div>
