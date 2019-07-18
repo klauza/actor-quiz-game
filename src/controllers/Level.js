@@ -18,7 +18,9 @@ const LevelCtrl = (function(){
       // increment level by 1
       storage.level++;
     },
-
+    getLevel: function(){
+      return storage.level
+    },
     initText: function(){
       document.querySelector('.welcome-text').classList.add('textHover'); // add hover
       document.querySelector('.welcome-text').addEventListener('click', LevelCtrl.showLevel); // puts first question
@@ -60,6 +62,7 @@ const LevelCtrl = (function(){
           // clickable after level 3
           // may be put some string as an actor is completed
           // update score to localstorage?
+          document.querySelector('.welcome-text').textContent = "Actor completed!"; // change text before level 2 start
           LocalStorageCtrl.addScore(3);
           console.log('score updated by 3 in LS');
 

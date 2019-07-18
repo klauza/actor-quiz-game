@@ -185,27 +185,32 @@ const QuestionsCtrl = (function(){
       if (correctAnswer == guess){ 
         console.log('correct!');
 
-        // animate blocks away
-        QuestionsCtrl.animateBlocksAway();
-
-        
+        QuestionsCtrl.animateBlocksAway();  // animate blocks away
 
         LevelCtrl.IncreaseScoreByOne(); // incement score 
 
-        // remove event listeners from buttons
-        // answers.forEach((button)=>{
-        //   button.removeEventListener("click", tryGuess, false);
-        // })
-        let actor = PersonCtrl.getPerson();
-        let actorId = actor.id;
-        // store actor's id into LS
-        LocalStorageCtrl.setPersonIdToLS(actorId);  // mark an actor as completed, put his/her id to local storage to filter it out at new game
+        // On actor complete
+        let level = LevelCtrl.getLevel();
+        if(level === 3){
+          let actor = PersonCtrl.getPerson();
+          let actorId = actor.id;
+          LocalStorageCtrl.setPersonIdToLS(actorId);  // put id to local storage to filter it out at new game
+          
+          LevelCtrl.updateLevel();  // update level by 1
+          LevelCtrl.showLevel();     // go to next level
+        } else {
+          document.querySelector('.welcome-text').textContent = "Proceed to next question"; // change text before level 2 start
+          LevelCtrl.initText();     // go to next level
+          LevelCtrl.updateLevel();  // update level by 1
+        }
+      
+        
 
-        document.querySelector('.welcome-text').textContent = "Proceed to next question"; // change text before level 2 start
+        
 
-        LevelCtrl.updateLevel();  // update level by 1
+        
 
-        LevelCtrl.initText();     // go to next level
+        
 
       } else {
         console.log('bad answer! Game over!');
@@ -221,7 +226,7 @@ const QuestionsCtrl = (function(){
       let delay;
       setTimeout(()=>{
         blockAnswers.forEach((answer, index)=>{
-          delay = 125 * index;
+          delay = 75 * index;
           answer.style.opacity = "1";
           answer.style.transform = "translateX(0px)";
           answer.style.transitionDelay = delay+'ms';
@@ -234,14 +239,14 @@ const QuestionsCtrl = (function(){
         const blockAnswers = document.querySelectorAll('.answer');
         let delay;
         blockAnswers.forEach((answer, index)=>{
-          delay = 125 * index;
-          answer.style.transition = 'all 250ms ease';
+          delay = 75 * index;
+          answer.style.transition = 'all 125ms ease';
           answer.style.transitionDelay = delay+'ms';
           answer.style.transform = "translateX(-200px)";
           answer.style.opacity = 0
         });
        
-        delay = 125 * blockAnswers.length;
+        delay = 75 * blockAnswers.length;
         setTimeout(()=>{
           QuestionsCtrl.clearAnswers();  // empty string of answers
           QuestionsCtrl.hideAnswers();   // hide block 'answers'

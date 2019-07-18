@@ -108,6 +108,7 @@ body{ height: 100%; }
     box-shadow: 0px 8px 8px -5px rgba(0,0,0,0.75);
 
     &:hover{
+      transition: all 125ms ease;
       cursor: pointer;
       background: rgb(24, 216, 24);
     }
