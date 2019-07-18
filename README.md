@@ -1,9 +1,9 @@
 ## About
 
-the person game
-- revealing module pattern
+This is an actor quiz game, made with a thought about progress and fun.
+- javascript; revealing module pattern
 - local storage
-- content is being fetched from local json file
+- local json database
 
 <br/>
 
