@@ -69,11 +69,10 @@ const QuestionsCtrl = (function(){
           let random1 = Math.floor(randomNumber1); 
           let randomNumber2 = Math.random() * randomMovie2.length;  // 0 1 2
           let random2 = Math.floor(randomNumber2); 
-          
+
           // put all, wrong and a correct answers in new array
           answerArray.push(currentMovie, randomMovie1[random1], randomMovie2[random2]);
 
-          
           // FILLING BLOCKS WITH ANSWERS
           fillAnswers(getRandomAnswer, answerArray);
 
@@ -99,12 +98,36 @@ const QuestionsCtrl = (function(){
           console.log(answerArray);
 
           // FILLING BLOCKS WITH ANSWERS
-           fillAnswers(getRandomAnswer, answerArray);
+          fillAnswers(getRandomAnswer, answerArray);
 
           break;
 
+
         case 3:
           console.log('hello level 3');
+
+          // get a correct answer
+          let trueFriend = question.cookie_3_friends;
+
+          //get the true random answer
+          let randomFriendIndex = Math.floor( Math.random() * trueFriend.length );  // 0 1 2 => length 3
+          // set randomized friend
+          trueFriend = trueFriend[randomFriendIndex];
+          // set a correct answer
+          question.correctAnsw = trueFriend;
+
+          // get wrong answers
+          let randomFalseArr_1 = ['Sauron', 'R2D2', 'Shrek'];                              // put characters from other movies
+          let randomFalseArr_2 = ['Julian from Madagaskar', 'Michael Jordan', 'Saruman'];  // put characters from other movies
+          let randomIndex_1 = Math.floor( Math.random() * randomFalseArr_1.length );  // 0 1 2 => length 3
+          let randomIndex_2 = Math.floor( Math.random() * randomFalseArr_2.length );  // 0 1 2
+
+          answerArray = []; // emptying the array with answers
+          answerArray.push(trueFriend, randomFalseArr_1[randomIndex_1], randomFalseArr_2[randomIndex_2]);
+
+          // FILLING BLOCKS WITH ANSWERS
+          fillAnswers(getRandomAnswer, answerArray);
+
           break
         
       }
