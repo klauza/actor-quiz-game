@@ -1,6 +1,8 @@
 import QuestionsCtrl from './Questions.js';
 import UICtrl from './UICtrl.js';
 import LocalStorageCtrl from './LocalStorage.js';
+import PersonCtrl from './PersonCtrl.js';
+
 
 const LevelCtrl = (function(){
   
@@ -37,13 +39,18 @@ const LevelCtrl = (function(){
           break;
 
         case 2:
-          document.querySelector('.welcome-text').textContent = "LEVEL 2";
+          const chosenActorName = PersonCtrl.getPerson().title;
+          const chosenActorMovie = QuestionsCtrl.getMovieCookie();
+
+          document.querySelector('.welcome-text').textContent = `As whom did ${chosenActorName} play in ${chosenActorMovie}?`;
           QuestionsCtrl.showQuestion(2);  // show question
           console.log('level 2');
           break;
 
         case 3:
-          document.querySelector('.welcome-text').textContent = "LEVEL 3";
+          const actorNameFromMovie = QuestionsCtrl.getActorCookie();
+
+          document.querySelector('.welcome-text').textContent = `Who was ${actorNameFromMovie}'s companion in ${chosenActorMovie} movie?'`;
           QuestionsCtrl.showQuestion(3);  // show question
           console.log('level 3');
           break;

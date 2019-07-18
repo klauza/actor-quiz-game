@@ -7,15 +7,22 @@ import LocalStorageCtrl from './LocalStorage.js';
 const QuestionsCtrl = (function(){
   
   const question = {
-    cookie_1_movie: ''
+    cookie_1_movie: '',
+    cookie_2_actor: ''
   }
 
 
   return{
-    getCookie: function(){
+    
+    getMovieCookie: function(){
       // get cookie
       // return question
-      // return question.cookie_1_movie
+       return question.cookie_1_movie
+    },
+    getActorCookie: function(){
+      // get cookie
+      // return question
+       return question.cookie_2_actor
     },
 
     showQuestion: function(level){
@@ -38,7 +45,16 @@ const QuestionsCtrl = (function(){
           let actorMoviesAmount = actor.movies.length;  
           let randomActorMovieId = Math.floor(Math.random() * actorMoviesAmount); 
           let actorMovie = actor.movies[randomActorMovieId];
-          question.cookie_1_movie = actorMovie;
+
+          var getRegexMovie = actorMovie;
+          var currentMovie = getRegexMovie.replace(/\|.*$/i,'');
+          var currentActorFromMovie = getRegexMovie.replace(/^.*\|/i,'');
+
+          console.log('MOVIE: ', currentMovie);
+          console.log('ACTOR: ', currentActorFromMovie);
+
+          question.cookie_1_movie = currentMovie;
+          question.cookie_2_actor = currentActorFromMovie;
 
           // hardcoded wrong answers
           let randomMovie1 = ['Fight Club', 'The Green Mile', 'The Matrix', 'Intouchables', 'Pirates of the Caribbean', 'Cast Away', 'The Butterfly Effect'];
@@ -47,10 +63,10 @@ const QuestionsCtrl = (function(){
           let random1 = Math.floor(randomNumber1); 
           let randomNumber2 = Math.random() * randomMovie2.length;  // 0 1 2
           let random2 = Math.floor(randomNumber2); 
-
+          
           // put all, wrong and a correct answers in new array
           let answerArray = new Array; // init new array with answers to be outputted later
-          answerArray.push(actorMovie, randomMovie1[random1], randomMovie2[random2]);
+          answerArray.push(currentMovie, randomMovie1[random1], randomMovie2[random2]);
 
           function getRandomAnswer(){
             let randomNum = Math.random() * answerArray.length;  // if length==3, will be [0 1 2]
@@ -59,43 +75,14 @@ const QuestionsCtrl = (function(){
           }
     
           // FILLING BLOCKS WITH ANSWERS
-          fillAnswers();
-
-          function fillAnswers(){
-            if(answers[0].textContent==''){
-            
-              const randomAnswerId = getRandomAnswer();   // variable for id of randomized answer
-    
-              // put random answer into first block
-              answers[0].textContent=answerArray[randomAnswerId];
-    
-              // delete answer with this id from answerArray
-              answerArray.splice(randomAnswerId, 1);   
-              
-              fillAnswers();   // run the whole function again!
-    
-            } else if(answers[1].textContent==''){
-              const randomAnswerId = getRandomAnswer();
-              answers[1].textContent=answerArray[randomAnswerId];
-              answerArray.splice(randomAnswerId, 1);  
-              fillAnswers();
-    
-            } else if(answers[2].textContent==''){
-              const randomAnswerId = getRandomAnswer();
-              answers[2].textContent=answerArray[randomAnswerId];
-              answerArray.splice(randomAnswerId, 1);  
-              fillAnswers();
-    
-            } else {
-              return
-            }
-          }
+          fillAnswers(getRandomAnswer, answerArray);
 
           break;
 
 
         case 2:
           console.log('hello level 2');
+          
           break;
           
 
@@ -105,6 +92,38 @@ const QuestionsCtrl = (function(){
         
       }
 
+
+      function fillAnswers(getRandomAnswer, answerArray){
+        if(answers[0].textContent==''){
+        
+          const randomAnswerId = getRandomAnswer();   // variable for id of randomized answer
+          
+          // put random answer into first block
+          answers[0].textContent=answerArray[randomAnswerId];
+
+          // delete answer with this id from answerArray
+          answerArray.splice(randomAnswerId, 1);   
+          
+          fillAnswers(getRandomAnswer, answerArray);   // run the whole function again!
+
+        } else if(answers[1].textContent==''){
+          const randomAnswerId = getRandomAnswer();
+          answers[1].textContent=answerArray[randomAnswerId];
+          answerArray.splice(randomAnswerId, 1);  
+          
+          fillAnswers(getRandomAnswer, answerArray);  // run the whole function again!
+
+        } else if(answers[2].textContent==''){
+          const randomAnswerId = getRandomAnswer();
+          answers[2].textContent=answerArray[randomAnswerId];
+          answerArray.splice(randomAnswerId, 1);  
+          
+          fillAnswers(getRandomAnswer, answerArray);  // run the whole function again!
+
+        } else {
+          return
+        }
+      }
       
       // GUESSING THE ANSWER
       answers.forEach((button)=>{
