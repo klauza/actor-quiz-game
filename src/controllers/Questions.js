@@ -9,6 +9,7 @@ const QuestionsCtrl = (function(){
   const question = {
     cookie_1_movie: '',
     cookie_2_actor: '',
+    cookie_3_friends: '',
     correctAnsw: ''
   }
 
@@ -47,16 +48,18 @@ const QuestionsCtrl = (function(){
           let actorMoviesAmount = actor.movies.length;  
           let randomActorMovieId = Math.floor(Math.random() * actorMoviesAmount); 
           let actorMovie = actor.movies[randomActorMovieId];
+          let actorFriends = actor.companions[randomActorMovieId];
+
 
           var getRegexMovie = actorMovie;
           var currentMovie = getRegexMovie.replace(/\|.*$/i,'');
           var currentActorFromMovie = getRegexMovie.replace(/^.*\|/i,'');
 
-          console.log('MOVIE: ', currentMovie);
-          console.log('ACTOR: ', currentActorFromMovie);
 
+          // set cookies
           question.cookie_1_movie = currentMovie;
           question.cookie_2_actor = currentActorFromMovie;
+          question.cookie_3_friends = actorFriends;
           question.correctAnsw = currentMovie;
 
           // hardcoded wrong answers
@@ -70,12 +73,7 @@ const QuestionsCtrl = (function(){
           // put all, wrong and a correct answers in new array
           answerArray.push(currentMovie, randomMovie1[random1], randomMovie2[random2]);
 
-          function getRandomAnswer(){
-            let randomNum = Math.random() * answerArray.length;  // if length==3, will be [0 1 2]
-            let random = Math.floor(randomNum);
-            return random;
-          }
-    
+          
           // FILLING BLOCKS WITH ANSWERS
           fillAnswers(getRandomAnswer, answerArray);
 
@@ -101,7 +99,7 @@ const QuestionsCtrl = (function(){
           console.log(answerArray);
 
           // FILLING BLOCKS WITH ANSWERS
-          
+           fillAnswers(getRandomAnswer, answerArray);
 
           break;
 
@@ -111,10 +109,15 @@ const QuestionsCtrl = (function(){
         
       }
 
+      function getRandomAnswer(){
+        let randomNum = Math.random() * answerArray.length;  // if length==3, will be [0 1 2]
+        let random = Math.floor(randomNum);
+        return random;
+      }
 
       function fillAnswers(getRandomAnswer, answerArray){
         if(answers[0].textContent==''){
-        
+       
           const randomAnswerId = getRandomAnswer();   // variable for id of randomized answer
           
           // put random answer into first block

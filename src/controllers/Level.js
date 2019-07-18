@@ -39,18 +39,19 @@ const LevelCtrl = (function(){
           break;
 
         case 2:
-          const chosenActorName = PersonCtrl.getPerson().title;
-          const chosenActorMovie = QuestionsCtrl.getMovieCookie();
+          const actorName = PersonCtrl.getPerson().title;
+          const actorMovie = QuestionsCtrl.getMovieCookie();
 
-          document.querySelector('.welcome-text').textContent = `As whom did ${chosenActorName} play in ${chosenActorMovie}?`;
+          document.querySelector('.welcome-text').textContent = `As whom did ${actorName} play in ${actorMovie}?`;
           QuestionsCtrl.showQuestion(2);  // show question
           console.log('level 2');
           break;
 
         case 3:
           const actorNameFromMovie = QuestionsCtrl.getActorCookie();
+          const chosenMovie = QuestionsCtrl.getMovieCookie();
 
-          document.querySelector('.welcome-text').textContent = `Who was ${actorNameFromMovie}'s companion in ${chosenActorMovie} movie?'`;
+          document.querySelector('.welcome-text').textContent = `Who was ${actorNameFromMovie}'s companion in ${chosenMovie} movie?`;
           QuestionsCtrl.showQuestion(3);  // show question
           console.log('level 3');
           break;
