@@ -8,7 +8,8 @@ const QuestionsCtrl = (function(){
   
   const question = {
     cookie_1_movie: '',
-    cookie_2_actor: ''
+    cookie_2_actor: '',
+    correctAnsw: ''
   }
 
 
@@ -35,7 +36,8 @@ const QuestionsCtrl = (function(){
       // get chosen actor's data
       let actor = PersonCtrl.getPerson();
       
-    
+      // initialize the array to fill with answers
+      let answerArray = new Array;
 
 
       switch(level){
@@ -55,6 +57,7 @@ const QuestionsCtrl = (function(){
 
           question.cookie_1_movie = currentMovie;
           question.cookie_2_actor = currentActorFromMovie;
+          question.correctAnsw = currentMovie;
 
           // hardcoded wrong answers
           let randomMovie1 = ['Fight Club', 'The Green Mile', 'The Matrix', 'Intouchables', 'Pirates of the Caribbean', 'Cast Away', 'The Butterfly Effect'];
@@ -65,7 +68,6 @@ const QuestionsCtrl = (function(){
           let random2 = Math.floor(randomNumber2); 
           
           // put all, wrong and a correct answers in new array
-          let answerArray = new Array; // init new array with answers to be outputted later
           answerArray.push(currentMovie, randomMovie1[random1], randomMovie2[random2]);
 
           function getRandomAnswer(){
@@ -82,9 +84,26 @@ const QuestionsCtrl = (function(){
 
         case 2:
           console.log('hello level 2');
+
+          // get the true answer
+          let theTrueAnswer = QuestionsCtrl.getActorCookie();
+          // set the true answer
+          question.correctAnsw = theTrueAnswer;
+
+          // get wrong answers
+          let wrongAnswerArr_1 = ['Bob', 'Jack', 'Merlin'];
+          let wrongAnswerArr_2 = ['Leon', 'Susan', 'Merry'];
+          let randomNr1 = Math.floor( Math.random() * wrongAnswerArr_1.length );  // 0 1 2 => length 3
+          let randomNr2 = Math.floor( Math.random() * wrongAnswerArr_2.length );  // 0 1 2
+
+          answerArray = []; // emptying the array with answers
+          answerArray.push(theTrueAnswer, wrongAnswerArr_1[randomNr1], wrongAnswerArr_2[randomNr2]);
+          console.log(answerArray);
+
+          // FILLING BLOCKS WITH ANSWERS
           
+
           break;
-          
 
         case 3:
           console.log('hello level 3');
@@ -130,13 +149,11 @@ const QuestionsCtrl = (function(){
         button.addEventListener('click', QuestionsCtrl.tryGuess);
       })
       
-
-
-    },
+    },  
 
     tryGuess: function(){
       let guess = this.textContent;   // string of clicked answer
-      let correctAnswer = question.cookie_1_movie;   // string of correct answer
+      let correctAnswer = question.correctAnsw;   // string of correct answer
 
       if (correctAnswer == guess){ 
         console.log('correct!');
