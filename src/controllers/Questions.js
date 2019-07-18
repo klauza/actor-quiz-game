@@ -1,6 +1,7 @@
 import PersonCtrl from './PersonCtrl.js';
 import LevelCtrl from './Level.js';
 import LocalStorageCtrl from './LocalStorage.js';
+import UICtrl from './UICtrl.js';
 
 
 
@@ -198,23 +199,17 @@ const QuestionsCtrl = (function(){
           
           LevelCtrl.updateLevel();  // update level by 1
           LevelCtrl.showLevel();     // go to next level
+
         } else {
           document.querySelector('.welcome-text').textContent = "Proceed to next question"; // change text before level 2 start
           LevelCtrl.initText();     // go to next level
           LevelCtrl.updateLevel();  // update level by 1
         }
       
-        
-
-        
-
-        
-
-        
 
       } else {
         console.log('bad answer! Game over!');
-        //game over, show score
+        UICtrl.gameOver();
       }
 
     },

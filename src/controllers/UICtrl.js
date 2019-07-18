@@ -224,11 +224,32 @@ const UICtrl = (function(){
       LocalStorageCtrl.deleteScore();
   
       location.reload(true);
+    },
+    cleanUI: function(){
+
+    },
+    
+    gameOver: function(){
+      console.log('show game over');
+      
+      
+      let totalScore = LevelCtrl.getScore();
+      if(totalScore == ''){
+        totalScore = 0;
+      }
+      document.querySelector('#game-over-points').textContent = totalScore;
+      
+      document.querySelector('#restart').addEventListener('click', UICtrl.resetGame);
+      document.querySelector('.statistics').style.display = "none";
+      document.querySelector('.content').style.display = "none";
+      document.querySelector('.button-container').style.display = "none";
+      document.querySelector('.answers').style.display = "none";
+      document.querySelector('.welcome-text').style.display = "none";
+
+      
+      document.querySelector('.game-over').style.display = "grid";
     }
     
-    
-   
-
    
   }
 })();

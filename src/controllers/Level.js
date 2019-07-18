@@ -85,6 +85,10 @@ const LevelCtrl = (function(){
       console.log('score has been increased');
       storage.score++;
       document.querySelector('.scoreValue').textContent = storage.score; 
+    },
+
+    getScore: function(){
+      return storage.score;
     }
 
   }
