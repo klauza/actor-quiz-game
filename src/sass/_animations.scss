@@ -1,17 +1,10 @@
-@keyframes person-to-top-animate{
+
+@keyframes image-to-top-animate{
   0%{
-    opacity: 1;
-    transform: translatey(0px);
-  }
-  25%{  
-    opacity: 0.75;
-  }
-  75%{
-    opacity: 0.75;
+    transform: rotateY(0);
   }
   100%{
-    opacity: 1;
-    transform: translatey(-195px);
+    transform: rotateY(180deg);
   }
 }
 
@@ -33,7 +26,6 @@
     color: black;
   }
 }
-
 @keyframes personAnimate{
   0%{
     opacity: 0;

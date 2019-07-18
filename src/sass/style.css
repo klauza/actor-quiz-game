@@ -1,30 +1,18 @@
-@-webkit-keyframes person-to-top-animate {
+@-webkit-keyframes image-to-top-animate {
   0% {
-    opacity: 1;
-    -webkit-transform: translatey(0px);
-            transform: translatey(0px); }
-  25% {
-    opacity: 0.75; }
-  75% {
-    opacity: 0.75; }
+    -webkit-transform: rotateY(0);
+            transform: rotateY(0); }
   100% {
-    opacity: 1;
-    -webkit-transform: translatey(-195px);
-            transform: translatey(-195px); } }
+    -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg); } }
 
-@keyframes person-to-top-animate {
+@keyframes image-to-top-animate {
   0% {
-    opacity: 1;
-    -webkit-transform: translatey(0px);
-            transform: translatey(0px); }
-  25% {
-    opacity: 0.75; }
-  75% {
-    opacity: 0.75; }
+    -webkit-transform: rotateY(0);
+            transform: rotateY(0); }
   100% {
-    opacity: 1;
-    -webkit-transform: translatey(-195px);
-            transform: translatey(-195px); } }
+    -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg); } }
 
 @-webkit-keyframes animationText {
   0% {
@@ -168,7 +156,8 @@ body {
   flex-wrap: wrap; }
   .content .person-block,
   .content .random-block {
-    background: white;
+    -webkit-perspective: 800px;
+            perspective: 800px;
     display: inline-block;
     opacity: 0;
     -webkit-animation: personAnimate 1s forwards;
@@ -177,7 +166,12 @@ body {
     /* transition: 1s all ease; */ }
     .content .person-block_img,
     .content .random-block_img {
-      height: 100px;
+      position: relative;
+      -webkit-transform-style: preserve-3d;
+              transform-style: preserve-3d;
+      -webkit-transform: rotateX(0) rotateY(0) rotateZ(0);
+              transform: rotateX(0) rotateY(0) rotateZ(0);
+      height: 200px;
       width: 200px;
       display: block;
       margin: 0 auto; }
@@ -187,10 +181,29 @@ body {
         height: 100%;
         -o-object-fit: cover;
            object-fit: cover; }
+      .content .person-block_img .front,
+      .content .random-block_img .front {
+        position: absolute;
+        -webkit-backface-visibility: visible;
+                backface-visibility: visible; }
+      .content .person-block_img .back,
+      .content .random-block_img .back {
+        position: absolute;
+        -webkit-backface-visibility: visible;
+                backface-visibility: visible;
+        -webkit-transform: rotateY(180deg);
+                transform: rotateY(180deg); }
+      .content .person-block_img .the-wall,
+      .content .random-block_img .the-wall {
+        -o-object-position: -50px;
+           object-position: -50px; }
+      .content .person-block_img .future,
+      .content .random-block_img .future {
+        -webkit-filter: brightness(1.1);
+                filter: brightness(1.1); }
     .content .person-block p,
     .content .random-block p {
-      text-align: center;
-      padding: 15px 0; }
+      text-align: center; }
     .content .person-block:hover,
     .content .random-block:hover {
       cursor: pointer;

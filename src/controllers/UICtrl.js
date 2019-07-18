@@ -101,10 +101,9 @@ const UICtrl = (function(){
           `
           <div id="${post.id}" class="person-block" style="animation-delay: ${delay}ms">
             <div class="person-block_img">
-              <img src="${post.image}">
+              <img class="front" src="${post.image}">
+              <img class="back ${post.adjust}" src="${post.gif}">
             </div>
-            <p>${post.title}</p>
-            <p>${post.body}</p>
           </div>
           `;
           
@@ -119,8 +118,6 @@ const UICtrl = (function(){
             <div class="random-block_img">
               <img src="./img/random.jpg">
             </div>
-            <p>Random</p>
-            <p>Actor</p>
           </div>
         `;
         
@@ -185,7 +182,7 @@ const UICtrl = (function(){
             setTimeout(function(){
               person.style.transition = 'transform 2s';
               person.style.transform = `translate(0, -200px)`;
-              
+              person.childNodes[1].style.animation = "image-to-top-animate 2s forwards"; // select img to animate
        
             }, 550);
             
