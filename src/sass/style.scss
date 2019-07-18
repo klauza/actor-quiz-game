@@ -90,6 +90,10 @@ body{ height: 100%; }
   width: 100%;
 
   & > .answer{
+    transform: translateX(-200px);
+    opacity: 0;
+    transition: all 250ms ease;
+
     display: block;
     margin-bottom: 10px;
     width: 30%;

@@ -30,8 +30,9 @@ const QuestionsCtrl = (function(){
     showQuestion: function(level){
       
       // display block with questions
+      QuestionsCtrl.animateBlocksIn();
+
       let allAnswers = document.querySelector('.answers');
-      allAnswers.style.display = "flex";
       let answers = Array.from(allAnswers.children);
 
       // get chosen actor's data
@@ -184,8 +185,10 @@ const QuestionsCtrl = (function(){
       if (correctAnswer == guess){ 
         console.log('correct!');
 
-        QuestionsCtrl.clearAnswers();  // empty string of answers
-        QuestionsCtrl.hideAnswers();   // hide block 'answers'
+        // animate blocks away
+        QuestionsCtrl.animateBlocksAway();
+
+        
 
         LevelCtrl.IncreaseScoreByOne(); // incement score 
 
@@ -206,9 +209,43 @@ const QuestionsCtrl = (function(){
 
       } else {
         console.log('bad answer! Game over!');
-        //game over
+        //game over, show score
       }
 
+    },
+    
+    animateBlocksIn: function(){
+      document.querySelector('.answers').style.display = "flex";  // container show
+      
+      const blockAnswers = document.querySelectorAll('.answer');
+      let delay;
+      setTimeout(()=>{
+        blockAnswers.forEach((answer, index)=>{
+          delay = 125 * index;
+          answer.style.opacity = "1";
+          answer.style.transform = "translateX(0px)";
+          answer.style.transitionDelay = delay+'ms';
+        });
+      }, 1);
+    },
+
+    animateBlocksAway: function(){
+
+        const blockAnswers = document.querySelectorAll('.answer');
+        let delay;
+        blockAnswers.forEach((answer, index)=>{
+          delay = 125 * index;
+          answer.style.transition = 'all 250ms ease';
+          answer.style.transitionDelay = delay+'ms';
+          answer.style.transform = "translateX(-200px)";
+          answer.style.opacity = 0
+        });
+       
+        delay = 125 * blockAnswers.length;
+        setTimeout(()=>{
+          QuestionsCtrl.clearAnswers();  // empty string of answers
+          QuestionsCtrl.hideAnswers();   // hide block 'answers'
+        }, delay);
     },
 
     clearAnswers: function(){ 
