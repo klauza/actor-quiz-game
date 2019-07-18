@@ -237,6 +237,10 @@ const UICtrl = (function(){
       if(totalScore == ''){
         totalScore = 0;
       }
+      if(totalScore===1){
+        totalScore = totalScore+' point';
+      } else { totalScore = totalScore+' points'}
+
       document.querySelector('#game-over-points').textContent = totalScore;
       
       document.querySelector('#restart').addEventListener('click', UICtrl.resetGame);
@@ -245,6 +249,8 @@ const UICtrl = (function(){
       document.querySelector('.button-container').style.display = "none";
       document.querySelector('.answers').style.display = "none";
       document.querySelector('.welcome-text').style.display = "none";
+      document.querySelector('.scoreDiv').style.display = "none";
+      document.querySelector('.local-storage-reset').style.display = "none";
 
       
       document.querySelector('.game-over').style.display = "grid";

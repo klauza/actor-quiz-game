@@ -117,15 +117,36 @@ body{ height: 100%; }
 
 // on game-over
 .game-over{
-  width: 600px;
+  text-align: center;
+  width: 450px;
   height: 200px;
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  background: greenyellow;
+  background: #d4d4d4;
   display: none;
   justify-content: center;
   align-content: center;
+  box-shadow: 0px 10px 13px -5px rgba(0,0,0,0.75);
+  p{
+    text-transform: uppercase;
+    padding: 15px 0;
+    line-height: 50px;
+    font-size: 1.4rem;
+    #game-over-points{
+      line-height: 50px;
+    }
+  }
+  #restart{
+    margin: 0 auto;
+    border: 0px;
+    width: 60px;
+    height: 30px;
+    background: red;
+    &:hover{
+      cursor: pointer;
+    }
+  }
 }
 
 
