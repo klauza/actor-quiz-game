@@ -29,8 +29,6 @@ const LevelCtrl = (function(){
     showLevel: function(){
       //update level
       LevelCtrl.updateLevel();
-      // update indicator
-       console.log('indicator updated');
 
       document.querySelector('.welcome-text').classList.remove('textHover'); // remove hover
 

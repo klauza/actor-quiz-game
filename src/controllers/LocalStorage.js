@@ -1,14 +1,14 @@
 // imports
 const LocalStorageCtrl = (function(){
 
-  const localstorageprivate = {
-    
-  }
+  const localstorageprivate = { }
 
   return{
+
+
     // SCORE
     getScore: function(){   // display on game start
-      let score; // actual score
+      let score; 
       if(localStorage.getItem('scoreAmount') === null){
         score = [];
 
@@ -24,7 +24,6 @@ const LocalStorageCtrl = (function(){
       if(localStorage.getItem('scoreAmount') === null){  // if null set first score
         score = [];
         score=score+sum;  // add X to sum
-
         localStorage.setItem('scoreAmount', JSON.stringify(score));
 
       } else {    // if not null, add more
@@ -42,14 +41,11 @@ const LocalStorageCtrl = (function(){
     // ID
     getIdFromStorage: function(){
       let ids;
-
       if(localStorage.getItem('actorIdToFilterOut') === null){
         ids = [];
-
       } else {
         ids = JSON.parse(localStorage.getItem('actorIdToFilterOut'));
       }
-
       return ids;
     },
 
@@ -68,9 +64,8 @@ const LocalStorageCtrl = (function(){
         localStorage.setItem('actorIdToFilterOut', JSON.stringify(existingIds));
         // another id stored
       }
-      
     },
-    
+
     deleteIdFromLS: function(){
       localStorage.removeItem('actorIdToFilterOut');
     },
@@ -79,7 +74,6 @@ const LocalStorageCtrl = (function(){
     // PERSON 
     setPersonToLocalStorage: function(data){  
       let person = data;
-     // console.log('person has been set successfully in LocalStorage');
       let LSperson = [];  // init person in local storage
 
       LSperson.push(person)
@@ -91,9 +85,6 @@ const LocalStorageCtrl = (function(){
     deletePersonFromLocalStorage: function(){
       localStorage.removeItem('LSperson');
     },
-
-  
-
 
   }
 
