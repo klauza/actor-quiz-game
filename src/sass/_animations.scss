@@ -34,3 +34,22 @@
     opacity: 1;
   }
 }
+
+@keyframes add-score-animation{
+  0%{
+    opacity: 0;
+    
+  }
+  33%{
+    opacity: 1;
+    transform: translateX(-50%) translateY(-50px);
+  }
+  66%{
+    opacity: 1;
+    transform: translateX(-50%) translateY(-50px);
+  }
+  100%{
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50px);
+  }
+}

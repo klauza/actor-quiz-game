@@ -92,6 +92,10 @@ const LevelCtrl = (function(){
     IncreaseScoreByOne: function(){
       storage.score++;
       document.querySelector('.scoreValue').textContent = storage.score; 
+      document.querySelector('.add-score').style.animation = "add-score-animation 500ms forwards";
+      setTimeout(()=>{
+        document.querySelector('.add-score').style.animation = '';
+      }, 550)
     },
 
     getScore: function(){

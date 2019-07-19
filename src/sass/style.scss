@@ -28,13 +28,6 @@ body{ height: 100%; }
 
 }
 
-/* Score counter */
-.scoreDiv{
-  position: absolute;
-  bottom: 60px;
-  left: 50%;
-  transform: translateX(-50%);
-}
 
 .content{
   justify-content: center;
@@ -44,7 +37,7 @@ body{ height: 100%; }
 
   .person-block,
   .random-block{
-    
+    overflow: hidden;
     perspective: 800px; 
     // transform: scale(2.2);
 
@@ -53,11 +46,11 @@ body{ height: 100%; }
     opacity: 0;
     animation: personAnimate 1s forwards;
     // border: 1px solid black;
-    /* transition: 1s all ease; */
     
+   
 
     &_img{
-      
+      transition: 250ms all ease-out; 
       position: relative;
       transform-style: preserve-3d;
       transform: rotateX(0) rotateY(0deg) rotateZ(0);
@@ -69,6 +62,10 @@ body{ height: 100%; }
         width: 20px;
         transform: rotateY(90deg) translateZ(-10px) translateX(10px);
       }
+      &:hover{
+        transform: scale(1.20);
+        transition: 175ms all ease-out;
+      }
 
       height: 200px;
       width: 200px;
@@ -78,6 +75,7 @@ body{ height: 100%; }
         width: 100%;
         height: 100%;
         object-fit: cover;
+        
       }
       .front{
         position: absolute; 
@@ -103,7 +101,7 @@ body{ height: 100%; }
 
     &:hover{
       cursor: pointer;
-
+      
     }
   }
   
@@ -152,7 +150,7 @@ body{ height: 100%; }
 // progress bar
 .progress_bar{
   
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 0.5%;
   height: 320px;
@@ -160,9 +158,7 @@ body{ height: 100%; }
   transform: translateY(-50%);
   display: grid;
   grid-template-rows: 1fr 1fr 1fr 1fr;
-  &--1{
-    //background:rgb(231, 218, 26);
-  }
+
   &>div{
     text-align: center;
     width: 100%;
