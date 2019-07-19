@@ -76,5 +76,19 @@
     "skill3": "Has a staff",
     "movies": ["The Lord of the Rings|Gandalf", "X-Men|Magneto", "The Hobbit|Gandalf"],
     "companions": [["Sam", "Legolas", "Pippin"], ["Mystique", "Sabretooth"], ["Bilbo", "Thorin"]]
+  },
+  {
+    "id": 7,
+    "title": "Johnny Depp",
+    "adjust": "depp",
+    "gender": "male",
+    "image": "./api/imgs/j-depp.jpg",
+    "gif": "./api/gifs/j-depp-gif.gif",
+    "skill1": "pirate with monkey",
+    "skill2": "Has Black Pearl",
+    "skill3": "Owns a pistol",
+    "movies": ["Pirates of the Caribbean|Captain Jack Sparrow", "City of Lies|Russell Poole", "Public Enemies|John Dillinger"],
+    "companions": [["Carina Smyth", "Gibbs", "Henry Turner"], ["Jack Jackson"], ["Billie Frechette"]]
   }
+
 ]

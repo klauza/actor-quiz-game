@@ -54,11 +54,11 @@ const QuestionsCtrl = (function(){
           let randomName_2;
 
           if(actor.gender !== 'male'){    // female
-            randomName_1 = ['female1', 'female2', 'female3'];
-            randomName_2 = ['female4', 'female5', 'female6'];
+            randomName_1 = ['Rebecca Da Costa', 'Bridget Moynahan', 'Jessica Sula'];
+            randomName_2 = ['Felicity Jones', 'Kristin Scott Thomas', 'Anya Taylor-Joy'];
           } else {                      //male
-            randomName_1 = ['male1', 'male2', 'male3'];
-            randomName_2 = ['male4', 'male5', 'male6'];
+            randomName_1 = ['Bruce Lee', 'Edward Norton', 'Brad Pitt', 'Robert De Niro', 'Martin Klebba', 'Crispin Glover', 'Sidney Poitier', 'Tom Hanks', 'Forest Whitaker', 'James McAvoy'];
+            randomName_2 = ['Morgan Freeman', 'Zach Grenier', 'David Shumbris', 'Nicolas Cage', 'Will Smith', 'Cary Grant', 'Alan Tudyk', 'Diego Luna', 'Guy Henry'];
           }
           
           // random index
@@ -93,8 +93,8 @@ const QuestionsCtrl = (function(){
           question.correctAnsw = currentMovie;
 
           // hardcoded wrong answers
-          let randomMovie1 = ['Fight Club', 'The Green Mile', 'The Matrix', 'Intouchables', 'Pirates of the Caribbean', 'Cast Away', 'The Butterfly Effect'];
-          let randomMovie2 = ['Léon', 'Gladiator', 'The Hangover', 'Se7en', 'Seven Pounds', 'A Beautiful Mind', 'The Da Vinci Code', 'Gran Torino'];
+          let randomMovie1 = ['Lord of War', 'Sabrina', 'Star Wars', 'Fight Club', 'The Green Mile', 'The Matrix', 'Intouchables', 'Cast Away', 'The Butterfly Effect'];
+          let randomMovie2 = ['Firewall', 'I, Robot', 'Léon', 'Gladiator', 'The Hangover', 'Se7en', 'Seven Pounds', 'A Beautiful Mind', 'The Da Vinci Code', 'Gran Torino'];
           let randomNumber1 = Math.random() * randomMovie1.length;  // 0 1 2 => length 3
           let random1 = Math.floor(randomNumber1); 
           let randomNumber2 = Math.random() * randomMovie2.length;  // 0 1 2
