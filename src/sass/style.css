@@ -153,7 +153,8 @@ body {
           justify-content: center;
   display: -webkit-box;
   display: flex;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  padding: 0 35px; }
   .content .person-block,
   .content .random-block {
     -webkit-perspective: 800px;
@@ -254,6 +255,24 @@ body {
       transition: all 125ms ease;
       cursor: pointer;
       background: #18d818; }
+
+.progress_bar {
+  position: absolute;
+  top: 50%;
+  left: 0.5%;
+  height: 320px;
+  width: 30px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr; }
+  .progress_bar > div {
+    text-align: center;
+    width: 100%;
+    border: 1px solid #9e9e9e;
+    cursor: default;
+    -webkit-transition: all 250ms ease;
+    transition: all 250ms ease; }
 
 .game-over {
   text-align: center;

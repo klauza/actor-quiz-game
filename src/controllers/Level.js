@@ -28,6 +28,11 @@ const LevelCtrl = (function(){
 
     // show level
     showLevel: function(){
+      //update level
+      LevelCtrl.updateLevel();
+      // update indicator
+       console.log('indicator updated');
+
       document.querySelector('.welcome-text').classList.remove('textHover'); // remove hover
 
       document.querySelector('.welcome-text').removeEventListener("click", LevelCtrl.showLevel, false);      // remove element from being clickable
@@ -37,12 +42,14 @@ const LevelCtrl = (function(){
         case 1: 
           document.querySelector('.welcome-text').textContent = "What's the actor's name?";
           QuestionsCtrl.showQuestion(1);  // show question
+          UICtrl.setIndicator(level, 'orange'); // set orange bg indicator
           console.log('level 1');
           break;
 
         case 2:
           document.querySelector('.welcome-text').textContent = "In which movie has this actor been playing?";
           QuestionsCtrl.showQuestion(2);  // show question
+          UICtrl.setIndicator(level, 'orange'); // set orange bg indicator
           console.log('level 2');
           break;
 
@@ -52,6 +59,7 @@ const LevelCtrl = (function(){
 
           document.querySelector('.welcome-text').textContent = `As whom did ${actorName} play in ${actorMovie}?`;
           QuestionsCtrl.showQuestion(3);  // show question
+          UICtrl.setIndicator(level, 'orange'); // set orange bg indicator
           console.log('level 3');
           break;
 
@@ -61,18 +69,12 @@ const LevelCtrl = (function(){
 
           document.querySelector('.welcome-text').textContent = `Who was ${actorNameFromMovie}'s companion in ${chosenMovie} movie?`;
           QuestionsCtrl.showQuestion(4);  // show question
+          UICtrl.setIndicator(level, 'orange'); // set orange bg indicator
           console.log('level 4');
           break;
           
         default:
-          // clickable after level 3
-          // may be put some string as an actor is completed
-          // update score to localstorage?
-          document.querySelector('.welcome-text').textContent = "Actor riddles completed!"; // change text before level 2 start
-          LocalStorageCtrl.addScore(4);
-          console.log('score updated by 4 in LS');
-
-          UICtrl.continueGame();
+         
           console.log('default from LevelCtrl - actor completed');
           break;
       }

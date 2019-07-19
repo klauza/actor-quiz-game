@@ -1,5 +1,6 @@
 import LocalStorageCtrl from './LocalStorage.js';
 import LevelCtrl from './Level.js';
+import PersonCtrl from './PersonCtrl.js';
 
 
 const UICtrl = (function(){
@@ -196,9 +197,19 @@ const UICtrl = (function(){
        
     },
 
+    setIndicator: function(level, color){
+      let indicator = document.querySelector(`.progress_bar--${level}`);
+      indicator.style.backgroundColor = color;
+    },
+
     continueGame: function(){
       console.log('Actor questions complete!');
-      document.querySelector('.welcome-text').textContent = "Actor questions complete!";
+      document.querySelector('.welcome-text').textContent = "Actor riddles completed!"; // change text before level 2 start
+      LocalStorageCtrl.addScore(4);
+      let actor = PersonCtrl.getPerson();
+      let actorId = actor.id;
+      LocalStorageCtrl.setPersonIdToLS(actorId);  // put id to local storage to filter it out at new game
+  
       document.querySelector('.nextActor').style.opacity = "1";
       document.querySelector('.nextActor').style.transform = 'translateY(-600px) translateX(-50%)';
       document.querySelector('.nextActor').style.transition = '250ms all ease';
@@ -235,6 +246,9 @@ const UICtrl = (function(){
       if(totalScore===1){
         totalScore = totalScore+' point';
       } else { totalScore = totalScore+' points'}
+
+      let level = LevelCtrl.getLevel();    // get level
+      UICtrl.setIndicator(level, 'red'); // set red indicator
 
       document.querySelector('#game-over-points').textContent = totalScore;
       

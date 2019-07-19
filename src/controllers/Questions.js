@@ -209,25 +209,18 @@ const QuestionsCtrl = (function(){
 
       if (correctAnswer == guess){ 
         console.log('correct!');
-
         QuestionsCtrl.animateBlocksAway();  // animate blocks away
-
         LevelCtrl.IncreaseScoreByOne(); // incement score 
 
-        // On actor complete
-        let level = LevelCtrl.getLevel();
-        if(level === 4){
-          let actor = PersonCtrl.getPerson();
-          let actorId = actor.id;
-          LocalStorageCtrl.setPersonIdToLS(actorId);  // put id to local storage to filter it out at new game
-          
-          LevelCtrl.updateLevel();  // update level by 1
-          LevelCtrl.showLevel();     // go to next level
+        let level = LevelCtrl.getLevel();   // get level
+        UICtrl.setIndicator(level, 'green'); // set indicator color to green
+
+        if(level === 4){        // On actor complete
+          UICtrl.continueGame();     // go to next actor
 
         } else {
           document.querySelector('.welcome-text').textContent = "Proceed to next question"; // change text before level 2 start
           LevelCtrl.initText();     // go to next level
-          LevelCtrl.updateLevel();  // update level by 1
         }
       
 

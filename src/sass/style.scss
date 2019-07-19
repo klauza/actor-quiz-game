@@ -40,6 +40,7 @@ body{ height: 100%; }
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
+  padding: 0 35px;
 
   .person-block,
   .random-block{
@@ -147,6 +148,32 @@ body{ height: 100%; }
     }
   }
 }
+
+// progress bar
+.progress_bar{
+  
+  position: absolute;
+  top: 50%;
+  left: 0.5%;
+  height: 320px;
+  width: 30px;
+  transform: translateY(-50%);
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  &--1{
+    //background:rgb(231, 218, 26);
+  }
+  &>div{
+    text-align: center;
+    width: 100%;
+    border: 1px solid rgb(158, 158, 158);
+    cursor: default;
+    transition: all 250ms ease;
+  }
+}
+
+
+
 
 // on game-over
 .game-over{

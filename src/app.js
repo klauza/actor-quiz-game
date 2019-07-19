@@ -62,7 +62,6 @@ const App = (function(UICtrl, PersonCtrl){
     UICtrl.updateStage();
     
     // initialization of game start           /* GAME STARTS HERE */
-    LevelCtrl.updateLevel();
     LevelCtrl.initText();
   }
 
