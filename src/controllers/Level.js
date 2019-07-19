@@ -35,39 +35,45 @@ const LevelCtrl = (function(){
       let level = storage.level;
       switch(level){
         case 1: 
-          document.querySelector('.welcome-text').textContent = "In which movie has this actor been playing?";
+          document.querySelector('.welcome-text').textContent = "What's the actor's name?";
           QuestionsCtrl.showQuestion(1);  // show question
           console.log('level 1');
           break;
 
         case 2:
-          const actorName = PersonCtrl.getPerson().title;
-          const actorMovie = QuestionsCtrl.getMovieCookie();
-
-          document.querySelector('.welcome-text').textContent = `As whom did ${actorName} play in ${actorMovie}?`;
+          document.querySelector('.welcome-text').textContent = "In which movie has this actor been playing?";
           QuestionsCtrl.showQuestion(2);  // show question
           console.log('level 2');
           break;
 
         case 3:
-          const actorNameFromMovie = QuestionsCtrl.getActorCookie();
-          const chosenMovie = QuestionsCtrl.getMovieCookie();
+          const actorName = PersonCtrl.getPerson().title;
+          const actorMovie = QuestionsCtrl.getMovieCookie();
 
-          document.querySelector('.welcome-text').textContent = `Who was ${actorNameFromMovie}'s companion in ${chosenMovie} movie?`;
+          document.querySelector('.welcome-text').textContent = `As whom did ${actorName} play in ${actorMovie}?`;
           QuestionsCtrl.showQuestion(3);  // show question
           console.log('level 3');
           break;
 
+        case 4:
+          const actorNameFromMovie = QuestionsCtrl.getActorCookie();
+          const chosenMovie = QuestionsCtrl.getMovieCookie();
+
+          document.querySelector('.welcome-text').textContent = `Who was ${actorNameFromMovie}'s companion in ${chosenMovie} movie?`;
+          QuestionsCtrl.showQuestion(4);  // show question
+          console.log('level 4');
+          break;
+          
         default:
           // clickable after level 3
           // may be put some string as an actor is completed
           // update score to localstorage?
-          document.querySelector('.welcome-text').textContent = "Actor completed!"; // change text before level 2 start
-          LocalStorageCtrl.addScore(3);
-          console.log('score updated by 3 in LS');
+          document.querySelector('.welcome-text').textContent = "Actor riddles completed!"; // change text before level 2 start
+          LocalStorageCtrl.addScore(4);
+          console.log('score updated by 4 in LS');
 
           UICtrl.continueGame();
-          console.log('error level - actor completed');
+          console.log('default from LevelCtrl - actor completed');
           break;
       }
     },
@@ -82,7 +88,6 @@ const LevelCtrl = (function(){
     },
 
     IncreaseScoreByOne: function(){
-      console.log('score has been increased');
       storage.score++;
       document.querySelector('.scoreValue').textContent = storage.score; 
     },

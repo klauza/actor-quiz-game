@@ -227,9 +227,7 @@ const UICtrl = (function(){
     },
     
     gameOver: function(){
-      console.log('show game over');
-      
-      
+
       let totalScore = LevelCtrl.getScore();
       if(totalScore == ''){
         totalScore = 0;
@@ -249,7 +247,6 @@ const UICtrl = (function(){
       document.querySelector('.scoreDiv').style.display = "none";
       document.querySelector('.local-storage-reset').style.display = "none";
 
-      
       document.querySelector('.game-over').style.display = "grid";
     }
     

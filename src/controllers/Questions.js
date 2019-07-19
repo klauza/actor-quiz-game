@@ -8,9 +8,10 @@ import UICtrl from './UICtrl.js';
 const QuestionsCtrl = (function(){
   
   const question = {
-    cookie_1_movie: '',
-    cookie_2_actor: '',
-    cookie_3_friends: '',
+    cookie_1_name: '',
+    cookie_2_movie: '',
+    cookie_3_actor: '',
+    cookie_4_friends: '',
     correctAnsw: ''
   }
 
@@ -20,12 +21,12 @@ const QuestionsCtrl = (function(){
     getMovieCookie: function(){
       // get cookie
       // return question
-       return question.cookie_1_movie
+       return question.cookie_2_movie
     },
     getActorCookie: function(){
       // get cookie
       // return question
-       return question.cookie_2_actor
+       return question.cookie_3_actor
     },
 
     showQuestion: function(level){
@@ -45,7 +46,34 @@ const QuestionsCtrl = (function(){
 
       switch(level){
         case 1:
-          console.log('hello level 1');
+          let actorName = actor.title;
+          question.correctAnsw = actorName;   // set correct answer
+
+          // random male & female
+          let randomName_1;
+          let randomName_2;
+
+          if(actor.gender !== 'male'){    // female
+            randomName_1 = ['female1', 'female2', 'female3'];
+            randomName_2 = ['female4', 'female5', 'female6'];
+          } else {                      //male
+            randomName_1 = ['male1', 'male2', 'male3'];
+            randomName_2 = ['male4', 'male5', 'male6'];
+          }
+          
+          // random index
+          let randomId_1 = Math.floor( Math.random() * randomName_1.length );  // 0 1 2 => length 3
+          let randomId_2 = Math.floor( Math.random() * randomName_2.length );  // 0 1 2
+
+          // populate array
+          answerArray = []; // emptying the array with answers
+          answerArray.push(actorName, randomName_1[randomId_1], randomName_2[randomId_2]); // correct & wrong answers
+
+          // FILLING BLOCKS WITH ANSWERS
+          fillAnswers(getRandomAnswer, answerArray);
+
+          break;
+        case 2:
           // sum of actor movies
           let actorMoviesAmount = actor.movies.length;  
           let randomActorMovieId = Math.floor(Math.random() * actorMoviesAmount); 
@@ -59,9 +87,9 @@ const QuestionsCtrl = (function(){
 
 
           // set cookies
-          question.cookie_1_movie = currentMovie;
-          question.cookie_2_actor = currentActorFromMovie;
-          question.cookie_3_friends = actorFriends;
+          question.cookie_2_movie = currentMovie;
+          question.cookie_3_actor = currentActorFromMovie;
+          question.cookie_4_friends = actorFriends;
           question.correctAnsw = currentMovie;
 
           // hardcoded wrong answers
@@ -72,6 +100,7 @@ const QuestionsCtrl = (function(){
           let randomNumber2 = Math.random() * randomMovie2.length;  // 0 1 2
           let random2 = Math.floor(randomNumber2); 
 
+          answerArray = []; // emptying the array with answers
           // put all, wrong and a correct answers in new array
           answerArray.push(currentMovie, randomMovie1[random1], randomMovie2[random2]);
 
@@ -81,9 +110,7 @@ const QuestionsCtrl = (function(){
           break;
 
 
-        case 2:
-          console.log('hello level 2');
-
+        case 3:
           // get the true answer
           let theTrueAnswer = QuestionsCtrl.getActorCookie();
           // set the true answer
@@ -97,7 +124,6 @@ const QuestionsCtrl = (function(){
 
           answerArray = []; // emptying the array with answers
           answerArray.push(theTrueAnswer, wrongAnswerArr_1[randomNr1], wrongAnswerArr_2[randomNr2]);
-          console.log(answerArray);
 
           // FILLING BLOCKS WITH ANSWERS
           fillAnswers(getRandomAnswer, answerArray);
@@ -105,11 +131,9 @@ const QuestionsCtrl = (function(){
           break;
 
 
-        case 3:
-          console.log('hello level 3');
-
+        case 4:
           // get a correct answer
-          let trueFriend = question.cookie_3_friends;
+          let trueFriend = question.cookie_4_friends;
 
           //get the true random answer
           let randomFriendIndex = Math.floor( Math.random() * trueFriend.length );  // 0 1 2 => length 3
@@ -192,7 +216,7 @@ const QuestionsCtrl = (function(){
 
         // On actor complete
         let level = LevelCtrl.getLevel();
-        if(level === 3){
+        if(level === 4){
           let actor = PersonCtrl.getPerson();
           let actorId = actor.id;
           LocalStorageCtrl.setPersonIdToLS(actorId);  // put id to local storage to filter it out at new game
