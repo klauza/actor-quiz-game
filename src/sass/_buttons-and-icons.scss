@@ -42,6 +42,97 @@
   box-shadow: 0px 10px 17px 1px rgba(0,0,0,0.75);
 }
 
+/* Next button */
+.next-question-container{
+  width: 80px; height: 40px;
+  position: absolute;
+  top: 30%; left: 50%;
+  transform: translateX(-50%);
+  perspective: 600px; 
+  opacity: 0; transition: all 1s ease;
+
+  .merge-buttons{
+    transform-style: preserve-3d;
+    // transform: rotateX(0deg) rotateY(20deg) rotateZ(0);   // WAIT
+    // transform: rotateX(180deg) rotateY(0deg) rotateZ(0deg);   // CONTINUE
+    // transform: rotateX(90deg) rotateY(0deg) rotateZ(0deg) translateZ(10px);   // START
+
+    transition: 500ms all ease;
+    width: 100%;
+    height: 100%;
+
+    .button-front{    // WAIT
+      transform-style: preserve-3d;
+      position: absolute; top: 0; left: 0;
+      transform: rotateX(0deg) rotateY(0deg) rotateZ(0);
+      width: 100%;
+      height: 100%;
+      background: rgb(228, 13, 13);
+      border: 0;
+      &::after{     // START
+        content: 'START';
+        display: block;
+        line-height: 40px; color: white; font-size: 18px;
+        position: absolute; top: 0; left: 0;
+        width: 80px; height: 40px;
+        background: rgb(209, 173, 11);
+        transform: translateY(20px) translateZ(-20px) rotateX(-90deg);
+      }
+      &::before{  // SIDE
+        content: '';
+        display: block;
+        position: absolute; top: 0; left: 0;
+        width: 40px; height: 40px;
+        background: rgb(136, 13, 13);
+        transform: translateX(-20px) translateZ(-20px) rotateY(90deg);
+      }
+      i{
+        font-size: 26px; color: white;
+      }
+    }
+    .button-top{    // NEXT
+      transform-style: preserve-3d;
+      position: absolute; top: 0; left: 0;
+      transform: rotateX(-270deg) rotateY(0deg) rotateZ(0) translateY(-20px) translateZ(20px);
+      background: lightgreen;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      &::after{   // CONTINUE
+        content: 'CONTINUE';
+        display: block;
+        color: white;
+        line-height: 40px; font-size: 0.85rem;
+        position: absolute; top: 0; right: 0;
+        width: 80px; height: 40px;
+        background: rgb(2, 15, 190);
+        transform: rotateX(90deg) translateY(-20px) translateZ(20px);
+        transform-origin: center center;
+      }
+      &::before{
+        content: '';
+        display: block;
+        position: absolute; top: 0; right: 0;
+        width: 40px; height: 40px;
+        background: rgb(0, 102, 0);
+        transform: translateX(20px) translateZ(-20px) rotateY(90deg);
+      }
+      i{
+        font-size: 17px;
+      }
+    }
+    button{
+      
+      border: 1px solid black;
+      transition: all 500ms ease;
+    }
+    &:hover{
+      transition: 500ms all ease;
+      // transform: translateY(20px) rotateX(-90deg) rotateY(0deg) rotateZ(-20deg);  // NEXT
+    }
+  }
+}
+
 /* Continue button */
 .nextActor{   // same style as reset button, see above
   opacity: 0;

@@ -10,7 +10,6 @@ const App = (function(UICtrl, PersonCtrl){
     
     document.addEventListener('DOMContentLoaded', displayDataFromAPI);
     document.querySelector('.local-storage-reset').addEventListener('click', UICtrl.resetGame); // reset the whole game
-    document.querySelector('.nextActor').addEventListener('click', function(){location.reload(true)}); // continue to next actor
   }
 
     ///////////-GAME INIT-//////////

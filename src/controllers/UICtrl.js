@@ -98,9 +98,9 @@ const UICtrl = (function(){
             // let parent = document.querySelector('.fill-background-top');
             
             textNode.style.animation = "animationText forwards 2.5s";
-            textNode.textContent = "Okay, let's start! - click me to begin.";
+            textNode.textContent = "Okay, let's start!";
+            document.querySelector('.next-question-container').style.opacity = "1";
             
-           
           }, 625)
 
 
@@ -159,16 +159,17 @@ const UICtrl = (function(){
 
     continueGame: function(){
       console.log('Actor questions complete!');
+
+      LevelCtrl.continueButton();
+      // add event
+      document.querySelector('.next-question-container').addEventListener('click', function(){location.reload(true)}); 
+      
       document.querySelector('.welcome-text').textContent = "Actor riddles completed!"; // change text before level 2 start
       LocalStorageCtrl.addScore(4);
       let actor = PersonCtrl.getPerson();
       let actorId = actor.id;
       LocalStorageCtrl.setPersonIdToLS(actorId);  // put id to local storage to filter it out at new game
   
-      document.querySelector('.nextActor').style.opacity = "1";
-      document.querySelector('.nextActor').style.transform = 'translateY(-600px) translateX(-50%)';
-      document.querySelector('.nextActor').style.transition = '250ms all ease';
-
     },
 
     winGame: function(){
