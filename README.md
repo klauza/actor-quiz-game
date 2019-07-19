@@ -3,7 +3,7 @@
 This is an actor quiz game, made with a thought about progress and fun.
 - javascript; revealing module pattern
 - local storage
-- local json database
+- local API from file
 
 <br/>
 

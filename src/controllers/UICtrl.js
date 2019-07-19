@@ -4,44 +4,21 @@ import PersonCtrl from './PersonCtrl.js';
 
 
 const UICtrl = (function(){
-  const UISelectors = {
-    formSubmit: '#start-button',
-    startingInput: '#start-input',
-    createInput: '#create-input',
-    buttonAfterLayoutLoad: '.button-with-class'
-  }
 
-  
   const person = {
-    items: [], // stores characters from renderPeople
-    stage: 0
+    items: []   // stores all characters from renderPeople
   }
 
   return {
-    getSelectors: function(){
-      return UISelectors;
-    },
-    getStage: function(){
-      return person.stage;
-    },
-    updateStage: function(){
-      person.stage++;
-      //console.log('stage updated, now stage: ', person.stage);
-    },
-    
+
     showScore: function(){
       let score = LocalStorageCtrl.getScore(); // get score
       LevelCtrl.updateScoreFromLS(score);
       if( score.length === 0 ){ score=Number(score); }  // sets score to 0 if the LS does not exist yet
-
-      //console.log('score is: ',score);
-      
       document.querySelector('.scoreValue').textContent = score; 
     },
 
     getPersonById: function(id){
-      // loop through the items and match the id
-
       let found = null;
       person.items.forEach(function(item){
         if(item.id === id){
@@ -51,28 +28,6 @@ const UICtrl = (function(){
 
       return found;
     },
-
-  
-
-    // Starting animation, display ="block" all UI
-    showPersonUi: function(){
-      setTimeout(() =>{
-        const buttons = document.querySelectorAll(UISelectors.buttonAfterLayoutLoad);
-        // console.log(buttons);
-        buttons.forEach((button) => {
-          button.style.display = "block";
-          setTimeout(()=> {
-            button.style.opacity = "1";
-          }, 50)
-        });
-        document.querySelector('.statistics').style.display = "block";
-        setTimeout(()=> {
-          document.querySelector('.statistics').style.opacity = "1";
-        }, 50)
-
-      }, 2500)
-    },
-
 
     renderPeople: function(data){
       document.querySelector('.welcome-text').style.display = "block";  // show text
@@ -232,9 +187,6 @@ const UICtrl = (function(){
       LocalStorageCtrl.deleteScore();
   
       location.reload(true);
-    },
-    cleanUI: function(){
-
     },
     
     gameOver: function(){

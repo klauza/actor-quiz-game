@@ -269,7 +269,7 @@ body {
     .content .random-block:hover {
       cursor: pointer; }
 
-/* STAGE1 */
+/* add hover on level init */
 .textHover:hover {
   cursor: pointer; }
 

@@ -19,13 +19,9 @@ const QuestionsCtrl = (function(){
   return{
     
     getMovieCookie: function(){
-      // get cookie
-      // return question
        return question.cookie_2_movie
     },
     getActorCookie: function(){
-      // get cookie
-      // return question
        return question.cookie_3_actor
     },
 
@@ -62,8 +58,8 @@ const QuestionsCtrl = (function(){
           }
           
           // random index
-          let randomId_1 = Math.floor( Math.random() * randomName_1.length );  // 0 1 2 => length 3
-          let randomId_2 = Math.floor( Math.random() * randomName_2.length );  // 0 1 2
+          let randomId_1 = Math.floor( Math.random() * randomName_1.length );  
+          let randomId_2 = Math.floor( Math.random() * randomName_2.length );  
 
           // populate array
           answerArray = []; // emptying the array with answers
@@ -95,9 +91,9 @@ const QuestionsCtrl = (function(){
           // hardcoded wrong answers
           let randomMovie1 = ['Lord of War', 'Sabrina', 'Star Wars', 'Fight Club', 'The Green Mile', 'The Matrix', 'Intouchables', 'Cast Away', 'The Butterfly Effect'];
           let randomMovie2 = ['Firewall', 'I, Robot', 'Léon', 'Gladiator', 'The Hangover', 'Se7en', 'Seven Pounds', 'A Beautiful Mind', 'The Da Vinci Code', 'Gran Torino'];
-          let randomNumber1 = Math.random() * randomMovie1.length;  // 0 1 2 => length 3
+          let randomNumber1 = Math.random() * randomMovie1.length;  
           let random1 = Math.floor(randomNumber1); 
-          let randomNumber2 = Math.random() * randomMovie2.length;  // 0 1 2
+          let randomNumber2 = Math.random() * randomMovie2.length;  
           let random2 = Math.floor(randomNumber2); 
 
           answerArray = []; // emptying the array with answers
@@ -119,8 +115,8 @@ const QuestionsCtrl = (function(){
           // get wrong answers
           let wrongAnswerArr_1 = ['Bob', 'Jack', 'Merlin'];
           let wrongAnswerArr_2 = ['Leon', 'Susan', 'Merry'];
-          let randomNr1 = Math.floor( Math.random() * wrongAnswerArr_1.length );  // 0 1 2 => length 3
-          let randomNr2 = Math.floor( Math.random() * wrongAnswerArr_2.length );  // 0 1 2
+          let randomNr1 = Math.floor( Math.random() * wrongAnswerArr_1.length );  
+          let randomNr2 = Math.floor( Math.random() * wrongAnswerArr_2.length );  
 
           answerArray = []; // emptying the array with answers
           answerArray.push(theTrueAnswer, wrongAnswerArr_1[randomNr1], wrongAnswerArr_2[randomNr2]);
@@ -136,17 +132,17 @@ const QuestionsCtrl = (function(){
           let trueFriend = question.cookie_4_friends;
 
           //get the true random answer
-          let randomFriendIndex = Math.floor( Math.random() * trueFriend.length );  // 0 1 2 => length 3
+          let randomFriendIndex = Math.floor( Math.random() * trueFriend.length );  
           // set randomized friend
           trueFriend = trueFriend[randomFriendIndex];
           // set a correct answer
           question.correctAnsw = trueFriend;
 
           // get wrong answers
-          let randomFalseArr_1 = ['Sauron', 'R2D2', 'Shrek'];                              // put characters from other movies
-          let randomFalseArr_2 = ['Julian from Madagaskar', 'Michael Jordan', 'Saruman'];  // put characters from other movies
-          let randomIndex_1 = Math.floor( Math.random() * randomFalseArr_1.length );  // 0 1 2 => length 3
-          let randomIndex_2 = Math.floor( Math.random() * randomFalseArr_2.length );  // 0 1 2
+          let randomFalseArr_1 = ['Sauron', 'R2D2', 'Shrek'];                             
+          let randomFalseArr_2 = ['Julian from Madagaskar', 'Michael Jordan', 'Saruman'];  
+          let randomIndex_1 = Math.floor( Math.random() * randomFalseArr_1.length ); 
+          let randomIndex_2 = Math.floor( Math.random() * randomFalseArr_2.length ); 
 
           answerArray = []; // emptying the array with answers
           answerArray.push(trueFriend, randomFalseArr_1[randomIndex_1], randomFalseArr_2[randomIndex_2]);
@@ -159,7 +155,7 @@ const QuestionsCtrl = (function(){
       }
 
       function getRandomAnswer(){
-        let randomNum = Math.random() * answerArray.length;  // if length==3, will be [0 1 2]
+        let randomNum = Math.random() * answerArray.length;  
         let random = Math.floor(randomNum);
         return random;
       }
@@ -228,7 +224,6 @@ const QuestionsCtrl = (function(){
         console.log('bad answer! Game over!');
         UICtrl.gameOver();
       }
-
     },
     
     animateBlocksIn: function(){
@@ -247,7 +242,6 @@ const QuestionsCtrl = (function(){
     },
 
     animateBlocksAway: function(){
-
         const blockAnswers = document.querySelectorAll('.answer');
         let delay;
         blockAnswers.forEach((answer, index)=>{
@@ -274,7 +268,6 @@ const QuestionsCtrl = (function(){
     hideAnswers: function(){
       document.querySelector('.answers').style.display = "none";    // hide buttons
     }
-
 
   }
 

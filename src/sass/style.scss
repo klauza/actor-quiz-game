@@ -25,9 +25,7 @@ body{ height: 100%; }
     transition: 500ms all ease-in-out;
     font-family: Verdana;
   }
-
 }
-
 
 .content{
   justify-content: center;
@@ -39,21 +37,20 @@ body{ height: 100%; }
   .random-block{
     overflow: hidden;
     perspective: 800px; 
-    // transform: scale(2.2);
-
-    //background: white;
     display: inline-block;
     opacity: 0;
     animation: personAnimate 1s forwards;
-    // border: 1px solid black;
     
-   
-
     &_img{
       transition: 250ms all ease-out; 
       position: relative;
       transform-style: preserve-3d;
       transform: rotateX(0) rotateY(0deg) rotateZ(0);
+      height: 200px;
+      width: 200px;
+      display: block;
+      margin: 0 auto;
+
       &::before{
         content:'';
         background: black;
@@ -67,15 +64,10 @@ body{ height: 100%; }
         transition: 175ms all ease-out;
       }
 
-      height: 200px;
-      width: 200px;
-      display: block;
-      margin: 0 auto;
       img{
         width: 100%;
         height: 100%;
         object-fit: cover;
-        
       }
       .front{
         position: absolute; 
@@ -88,28 +80,23 @@ body{ height: 100%; }
       }
       .the-wall { // Kit Harrington gif adjust
           object-position: -50px;}
-      .future{
+      .future{    // Michael J Fox gif adjust
         filter: brightness(1.1);
       }
-      
     }
 
     p{
       text-align: center;
-      //padding: 15px 0;
     }
 
     &:hover{
       cursor: pointer;
-      
     }
   }
   
 }
 
-/* STAGE1 */
-.textHover{
-}
+/* add hover on level init */
 .textHover:hover{
   cursor: pointer;
 }
@@ -128,11 +115,9 @@ body{ height: 100%; }
 
     display: block;
     margin-bottom: 10px;
-    width: 30%;
-    min-width: 300px;
+    width: 30%; min-width: 300px;
     height: 40px;
-    border: 0;
-    border-radius: 2px;
+    border: 0;  border-radius: 2px;
     background: rgb(63, 178, 255);
     color: black;
     font-size: 18px;
@@ -147,9 +132,7 @@ body{ height: 100%; }
   }
 }
 
-// progress bar
 .progress_bar{
-  
   position: fixed;
   top: 50%;
   left: 0.5%;
@@ -168,10 +151,6 @@ body{ height: 100%; }
   }
 }
 
-
-
-
-// on game-over
 .game-over{
   text-align: center;
   width: 450px;

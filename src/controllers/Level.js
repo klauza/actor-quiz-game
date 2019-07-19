@@ -7,7 +7,6 @@ import PersonCtrl from './PersonCtrl.js';
 const LevelCtrl = (function(){
   
   const storage = {
-    number: '',
     score: 0,
     level: 0
   }
@@ -78,11 +77,6 @@ const LevelCtrl = (function(){
           console.log('default from LevelCtrl - actor completed');
           break;
       }
-    },
-
-
-    initQuestion: function(){
-      // get question from QuestionCtrl.js
     },
     
     updateScoreFromLS: function(data){
