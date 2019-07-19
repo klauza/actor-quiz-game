@@ -162,19 +162,29 @@ body {
     opacity: 0;
     -webkit-animation: personAnimate 1s forwards;
             animation: personAnimate 1s forwards;
-    border: 1px solid black;
     /* transition: 1s all ease; */ }
     .content .person-block_img,
     .content .random-block_img {
       position: relative;
       -webkit-transform-style: preserve-3d;
               transform-style: preserve-3d;
-      -webkit-transform: rotateX(0) rotateY(0) rotateZ(0);
-              transform: rotateX(0) rotateY(0) rotateZ(0);
+      -webkit-transform: rotateX(0) rotateY(0deg) rotateZ(0);
+              transform: rotateX(0) rotateY(0deg) rotateZ(0);
       height: 200px;
       width: 200px;
       display: block;
       margin: 0 auto; }
+      .content .person-block_img::before,
+      .content .random-block_img::before {
+        content: '';
+        background: black;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 200px;
+        width: 20px;
+        -webkit-transform: rotateY(90deg) translateZ(-10px) translateX(10px);
+                transform: rotateY(90deg) translateZ(-10px) translateX(10px); }
       .content .person-block_img img,
       .content .random-block_img img {
         width: 100%;
@@ -191,8 +201,8 @@ body {
         position: absolute;
         -webkit-backface-visibility: visible;
                 backface-visibility: visible;
-        -webkit-transform: rotateY(180deg);
-                transform: rotateY(180deg); }
+        -webkit-transform: rotateY(180deg) translateZ(20px);
+                transform: rotateY(180deg) translateZ(20px); }
       .content .person-block_img .the-wall,
       .content .random-block_img .the-wall {
         -o-object-position: -50px;
@@ -206,9 +216,7 @@ body {
       text-align: center; }
     .content .person-block:hover,
     .content .random-block:hover {
-      cursor: pointer;
-      color: white;
-      background: black; }
+      cursor: pointer; }
 
 /* STAGE1 */
 .textHover:hover {

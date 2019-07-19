@@ -43,22 +43,31 @@ body{ height: 100%; }
 
   .person-block,
   .random-block{
+    
     perspective: 800px; 
+    // transform: scale(2.2);
 
     //background: white;
     display: inline-block;
     opacity: 0;
     animation: personAnimate 1s forwards;
-    border: 1px solid black;
+    // border: 1px solid black;
     /* transition: 1s all ease; */
-
     
 
     &_img{
+      
       position: relative;
       transform-style: preserve-3d;
-      transform: rotateX(0) rotateY(0) rotateZ(0);
-
+      transform: rotateX(0) rotateY(0deg) rotateZ(0);
+      &::before{
+        content:'';
+        background: black;
+        position: absolute; top: 0; left: 0;
+        height: 200px;
+        width: 20px;
+        transform: rotateY(90deg) translateZ(-10px) translateX(10px);
+      }
 
       height: 200px;
       width: 200px;
@@ -76,7 +85,7 @@ body{ height: 100%; }
       .back{
         position: absolute; 
         backface-visibility: visible;
-        transform: rotateY(180deg);
+        transform: rotateY(180deg) translateZ(20px);
       }
       .the-wall { // Kit Harrington gif adjust
           object-position: -50px;}
@@ -93,10 +102,8 @@ body{ height: 100%; }
 
     &:hover{
       cursor: pointer;
-      color: white;
-      background: black;
+
     }
-    
   }
   
 }
