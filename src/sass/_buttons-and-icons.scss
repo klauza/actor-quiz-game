@@ -19,7 +19,7 @@
   }
 }
 
-/* Reset button */
+/* Main operative button */
 .local-storage-reset, .nextActor{
   border: 1px solid black;
   width: 100px;
@@ -42,12 +42,13 @@
   box-shadow: 0px 10px 17px 1px rgba(0,0,0,0.75);
 }
 
+
 /* Next button */
 .next-question-container{
   width: 80px; height: 40px;
   position: absolute;
-  top: 30%; left: 50%;
-  transform: translateX(-50%);
+  top: 125%; left: 50%;
+  transform: translate(-50%);
   perspective: 600px; 
   opacity: 0; transition: all 1s ease;
 
@@ -133,19 +134,8 @@
   }
 }
 
-/* Continue button */
-.nextActor{   // same style as reset button, see above
-  opacity: 0;
-  transition: 250ms all ease;
-  background-color: lightblue;
-  &:hover{
-    cursor: pointer;
-    color: white;
-    background-color: rgb(123, 195, 219);
-    transition: 250ms all ease;
-    box-shadow: 0px 10px 17px 1px rgba(0,0,0,0.75);
-  }
-}
+
+
 
 /* Score counter */
 .scoreDiv{
