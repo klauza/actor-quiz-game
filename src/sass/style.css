@@ -167,7 +167,8 @@
           perspective: 600px;
   opacity: 0;
   -webkit-transition: all 1s ease;
-  transition: all 1s ease; }
+  transition: all 1s ease;
+  display: none; }
   .next-question-container .merge-buttons {
     -webkit-transform-style: preserve-3d;
             transform-style: preserve-3d;

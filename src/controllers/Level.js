@@ -21,6 +21,7 @@ const LevelCtrl = (function(){
       return storage.level
     },
     startButton: function(){
+      document.querySelector('.next-question-container').style.display = "block";
       document.querySelector('.merge-buttons').style.transform = "rotateX(90deg) rotateY(0deg) rotateZ(0deg) translateZ(10px)";
     },
     nextButton: function(){
