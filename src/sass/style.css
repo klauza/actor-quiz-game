@@ -106,7 +106,7 @@
       margin-left: 10px; }
 
 /* Main operative button */
-.local-storage-reset, .nextActor {
+.local-storage-reset {
   border: 1px solid black;
   width: 100px;
   height: 30px;
@@ -130,7 +130,7 @@
   transition: 250ms all ease;
   box-shadow: 0px 10px 17px 1px rgba(0, 0, 0, 0.75); }
 
-/* Next button */
+/* Main button */
 .next-question-container {
   width: 80px;
   height: 40px;
@@ -190,13 +190,15 @@
                 transform: translateX(-20px) translateZ(-20px) rotateY(90deg); }
       .next-question-container .merge-buttons .button-front i {
         font-size: 26px;
-        color: white; }
+        color: white;
+        line-height: 40px; }
     .next-question-container .merge-buttons .button-top {
       -webkit-transform-style: preserve-3d;
               transform-style: preserve-3d;
       position: absolute;
       top: 0;
       left: 0;
+      line-height: 40px;
       -webkit-transform: rotateX(-270deg) rotateY(0deg) rotateZ(0) translateY(-20px) translateZ(20px);
               transform: rotateX(-270deg) rotateY(0deg) rotateZ(0) translateY(-20px) translateZ(20px);
       background: lightgreen;
@@ -232,10 +234,15 @@
                 transform: translateX(20px) translateZ(-20px) rotateY(90deg); }
       .next-question-container .merge-buttons .button-top i {
         font-size: 17px; }
-    .next-question-container .merge-buttons button {
-      border: 1px solid black;
+    .next-question-container .merge-buttons .button-front,
+    .next-question-container .merge-buttons .button-top {
+      cursor: pointer;
+      border: 0;
       -webkit-transition: all 500ms ease;
       transition: all 500ms ease; }
+      .next-question-container .merge-buttons .button-front:checked,
+      .next-question-container .merge-buttons .button-top:checked {
+        border: 0; }
     .next-question-container .merge-buttons:hover {
       -webkit-transition: 500ms all ease;
       transition: 500ms all ease; }
