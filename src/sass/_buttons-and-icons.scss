@@ -143,7 +143,16 @@
   }
 }
 
-
+// falling dollar
+.dollar{
+  transform: translateX(50%);
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  // left: 100px;
+  display: block;
+  font-size: 2em;
+}
 
 
 /* Score counter */
@@ -162,3 +171,5 @@
   color: green;
   font-size: 2rem;
 }
+
+

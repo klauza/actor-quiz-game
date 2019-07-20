@@ -174,6 +174,7 @@ const UICtrl = (function(){
 
     winGame: function(){
       console.log('Game completed');
+      UICtrl.fallingDollars();
       document.querySelector('.local-storage-reset').style.transform = 'translateY(-600px) translateX(-50%)';
       document.querySelector('.statistics').style.display = "none";
       document.querySelector('.content').style.display = "none";
@@ -191,6 +192,7 @@ const UICtrl = (function(){
     },
     
     gameOver: function(){
+      UICtrl.fallingDollars();
 
       let totalScore = LevelCtrl.getScore();
       if(totalScore == ''){
@@ -205,6 +207,7 @@ const UICtrl = (function(){
 
       document.querySelector('#game-over-points').textContent = totalScore;
       
+      document.querySelector('.next-question-container').style.display = "none";
       document.querySelector('#restart').addEventListener('click', UICtrl.resetGame);
       document.querySelector('.statistics').style.display = "none";
       document.querySelector('.content').style.display = "none";
@@ -215,8 +218,29 @@ const UICtrl = (function(){
       document.querySelector('.local-storage-reset').style.display = "none";
 
       document.querySelector('.game-over').style.display = "grid";
+    },
+    
+    fallingDollars: function(){
+
+    for(let i =0; i<40; i++){
+      document.querySelector('body').style.overflow = "hidden";
+      let randomTime = Math.random()*6+1;
+      let delay = Math.floor(Math.random()*5);
+      let leftDistance = Math.random()*1600;    // 200px
+      let rotate = Math.random()*100;
+      
+      
+      const dollar = document.createElement('i');
+      dollar.className = "dollar fa fa-money";
+      dollar.style.left = `${leftDistance}px`;
+      dollar.style.transform = `translateX(50%) translateY(0) rotateZ(${rotate}deg)`;
+      dollar.style.animation = `falling-dollar-animation ${randomTime}s infinite`;
+      dollar.style.animationDelay = `${delay}s`;
+
+      document.querySelector('body').appendChild(dollar);
     }
     
+    }
    
   }
 })();
