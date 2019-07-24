@@ -38,7 +38,6 @@ const App = (function(UICtrl, PersonCtrl){
     let person = UICtrl.getPersonById(id);  // get json person
 
     PersonCtrl.savePerson(person);                    // save locally
-    PersonCtrl.personFillUi();                        // get from local
     LocalStorageCtrl.setPersonToLocalStorage(person); // save to LS
     
     LevelCtrl.initText();   // initialization of game start           /* GAME STARTS HERE */
@@ -57,35 +56,9 @@ const App = (function(UICtrl, PersonCtrl){
   }
 
 
- ///////////-GAME AFTER CHOOSING PERSON-//////////
-
- // Button-1 test - log into console chosen person
- /*
-  const getChosenPerson = function(e){
-
-  const person = PersonCtrl.getPerson();
-
-  console.log('Chosen person is: ',person);
-  e.preventDefault();
-}
-
-  const changeSkill1 = function(e){
-    let person = PersonCtrl.getPerson();
-    // console.log(person.skill1); // -valid
-    let newValue = "Has skateboard";
-
-    PersonCtrl.changeSkill(newValue);   // change skill with newValue
-    PersonCtrl.personFillUi();        // repaint the UI
-    e.preventDefault();
-  }
-*/
-
-
-
   return {
     init: function(){
       
-      document.querySelector('.button-container').style.display = "none";
       loadEventListeners();
     }
   }

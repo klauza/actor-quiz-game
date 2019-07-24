@@ -37,7 +37,7 @@ const LevelCtrl = (function(){
     initText: function(){
       document.querySelector('.next-question-container').addEventListener('click', LevelCtrl.showLevel); // puts first question
       let level = LevelCtrl.getLevel();
-      console.log(level);
+      // console.log(level);
       if(level == 0){
         LevelCtrl.startButton();
       } else {
@@ -59,14 +59,14 @@ const LevelCtrl = (function(){
           document.querySelector('.welcome-text').textContent = "What's the actor's name?";
           QuestionsCtrl.showQuestion(1);  // show question
           UICtrl.setIndicator(level, 'orange'); // set orange bg indicator
-          console.log('level 1');
+          //console.log('level 1');
           break;
 
         case 2:
           document.querySelector('.welcome-text').textContent = "In which movie has this actor been playing?";
           QuestionsCtrl.showQuestion(2);  // show question
           UICtrl.setIndicator(level, 'orange'); // set orange bg indicator
-          console.log('level 2');
+          //console.log('level 2');
           break;
 
         case 3:
@@ -76,7 +76,7 @@ const LevelCtrl = (function(){
           document.querySelector('.welcome-text').textContent = `As whom did ${actorName} play in ${actorMovie}?`;
           QuestionsCtrl.showQuestion(3);  // show question
           UICtrl.setIndicator(level, 'orange'); // set orange bg indicator
-          console.log('level 3');
+          //console.log('level 3');
           break;
 
         case 4:
@@ -86,7 +86,7 @@ const LevelCtrl = (function(){
           document.querySelector('.welcome-text').textContent = `Who was ${actorNameFromMovie}'s companion in ${chosenMovie} movie?`;
           QuestionsCtrl.showQuestion(4);  // show question
           UICtrl.setIndicator(level, 'orange'); // set orange bg indicator
-          console.log('level 4');
+          //console.log('level 4');
           break;
           
         default:

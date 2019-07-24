@@ -176,9 +176,7 @@ const UICtrl = (function(){
       console.log('Game completed');
       UICtrl.fallingDollars();
       document.querySelector('.local-storage-reset').style.transform = 'translateY(-600px) translateX(-50%)';
-      document.querySelector('.statistics').style.display = "none";
       document.querySelector('.content').style.display = "none";
-      document.querySelector('.button-container').style.display = "none";
     },
 
     resetGame: function(e){
@@ -209,9 +207,7 @@ const UICtrl = (function(){
       
       document.querySelector('.next-question-container').style.display = "none";
       document.querySelector('#restart').addEventListener('click', UICtrl.resetGame);
-      document.querySelector('.statistics').style.display = "none";
       document.querySelector('.content').style.display = "none";
-      document.querySelector('.button-container').style.display = "none";
       document.querySelector('.answers').style.display = "none";
       document.querySelector('.welcome-text').style.display = "none";
       document.querySelector('.scoreDiv').style.display = "none";
