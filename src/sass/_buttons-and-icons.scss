@@ -2,8 +2,11 @@
 
   /* ICONS */
   .social-icons-block{
-    text-align: right;
     margin-right: 20px;
+    margin-top: 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
   
     .fa-volume-up, .fa-volume-off{
       font-size: 2em;

@@ -58,7 +58,6 @@
 @keyframes falling-dollar-animation{
 
   0%{
-    transform: translateX(-50%);
     opacity: 0;
     
   }
@@ -67,6 +66,6 @@
   }
   100%{
     opacity: 0;
-    transform: translateX(-50%) translateY(110vh) rotateZ(-220deg);
+    transform: translateX(-50%) translateY(120vh) rotateZ(-320deg);
   }
 }
