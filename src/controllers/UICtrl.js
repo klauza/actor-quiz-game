@@ -118,7 +118,7 @@ const UICtrl = (function(){
           positionLeft = positionLeft-contentWidth/2;
           positionLeft = positionLeft+personBlockWidth;
           
-          positionTop = positionTop-200;
+          positionTop = positionTop-200-15; // 200 is height of top grey filler, and 15 is a margin bottom of it
 
           // hide siblings of chosen actor
           let content = Array.from(document.querySelector('.content').children);
@@ -137,7 +137,7 @@ const UICtrl = (function(){
           function personAnimationToTop(person){
             setTimeout(function(){
               person.style.transition = 'transform 2s';
-              person.style.transform = `translate(0, -200px)`;
+              person.style.transform = `translate(0, -215px)`;
               person.childNodes[1].style.animation = "image-to-top-animate 2s forwards"; // select img to animate
        
             }, 550);
