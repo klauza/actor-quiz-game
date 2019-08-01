@@ -30,9 +30,10 @@ const QuestionsCtrl = (function(){
       // display block with questions
       QuestionsCtrl.animateBlocksIn();
 
-      let allAnswers = document.querySelector('.answers');
-      let answers = Array.from(allAnswers.children);
-
+      // let allAnswers = document.querySelector('.answers');
+      // let answers = Array.from(allAnswers.children);
+      let answers = document.querySelectorAll('.test-text');
+      console.log(answers);
       // get chosen actor's data
       let actor = PersonCtrl.getPerson();
       
@@ -260,8 +261,7 @@ const QuestionsCtrl = (function(){
     },
 
     clearAnswers: function(){ 
-      let allAnswers = document.querySelector('.answers');
-      let answers = Array.from(allAnswers.children);
+      let answers = document.querySelectorAll('.test-text');
       answers.forEach((answer)=> {answer.textContent=''}); // loop
       
     },
